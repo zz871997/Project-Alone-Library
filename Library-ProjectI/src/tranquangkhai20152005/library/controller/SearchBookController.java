@@ -30,7 +30,16 @@ public class SearchBookController {
 	
 	private final Color COLOR_DEFAULT   = Color.WHITE;
 	private final Color COLOR_NOT_FOUND = Color.PINK;
-	
+
+	// Setter - Getter
+	public ArrayList<Book> getResultSearch() {
+		return resultSearch;
+	}
+
+	public void setResultSearch(ArrayList<Book> resultSearch) {
+		this.resultSearch = resultSearch;
+	}
+
 	// Constructor
 	public SearchBookController(MainUI mainUI) {
 		this.mainUI = mainUI;
