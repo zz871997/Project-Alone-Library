@@ -170,7 +170,7 @@ public class BookDB implements BookDAO{
 	public void insertBook(Book book) {
 		String maSach  = book.getMaSach();
 		String tenSach = book.getTenSach();
-		String tacGia  = book.getTenSach();
+		String tacGia  = book.getTacGia();
 		String NXB     = book.getNXB();
 		String theLoai = book.getTheLoai();
 		String namXB   = book.getNamXB();

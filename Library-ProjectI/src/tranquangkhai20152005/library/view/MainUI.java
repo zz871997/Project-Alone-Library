@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class MainUI extends JFrame{
-	
+	private SearchBookView searchBookView;
 	private TableBookView tableBookView;
 	private ManagerView managerView;
 	
@@ -22,6 +22,12 @@ public class MainUI extends JFrame{
 	}
 	public void setManagerView(ManagerView managerView) {
 		this.managerView = managerView;
+	}
+	public SearchBookView getSearchBookView() {
+		return searchBookView;
+	}
+	public void setSearchBookView(SearchBookView searchBookView) {
+		this.searchBookView = searchBookView;
 	}
 	
 	// Constructor
@@ -46,8 +52,10 @@ public class MainUI extends JFrame{
 	private JPanel createTablePanel() {
 		JPanel panel = new JPanel(new BorderLayout());
 		tableBookView = new TableBookView();
+		searchBookView = new SearchBookView();
 		
-		panel.add(tableBookView);
+		panel.add(searchBookView, BorderLayout.PAGE_START);
+		panel.add(tableBookView, BorderLayout.CENTER);
 		return panel;
 		
 	}
