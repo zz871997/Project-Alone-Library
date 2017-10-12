@@ -41,6 +41,10 @@ public class SearchBookController {
 	}
 
 	// Constructor
+	public SearchBookController() {
+		
+	}
+	
 	public SearchBookController(MainUI mainUI) {
 		this.mainUI = mainUI;
 		bookDB = new BookDB();
