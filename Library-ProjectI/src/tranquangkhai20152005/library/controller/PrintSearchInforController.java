@@ -104,6 +104,8 @@ public class PrintSearchInforController {
 	//Print Header of Document
 	private void printHeaderOfDoc (String path, XWPFDocument document) throws IOException, URISyntaxException, InvalidFormatException {		
 		XWPFTable table  = document.createTable();
+		// Hide border
+		table.getCTTbl().getTblPr().unsetTblBorders();
 		XWPFTableRow row = table.getRow(0);
 		
 		// Set data for cell1
@@ -167,12 +169,14 @@ public class PrintSearchInforController {
 		titleRun.setText("THÔNG TIN SÁCH CÓ TRONG THƯ VIỆN");
 		titleRun.setFontSize(20);
 		titleRun.setBold(true);
-		titleRun.setTextPosition(20);
+		titleRun.setTextPosition(30);
 	}
 	
 	// Print Footer of Document
 	private void printFooterOfDoc (String path, XWPFDocument document) throws IOException, URISyntaxException, InvalidFormatException {		
 		XWPFTable table  = document.createTable();
+		// Hide border
+		table.getCTTbl().getTblPr().unsetTblBorders();
 		XWPFTableRow row = table.getRow(0);
 		
 		// Set data for cell1
