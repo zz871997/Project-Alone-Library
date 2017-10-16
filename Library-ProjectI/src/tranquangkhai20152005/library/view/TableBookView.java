@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 import tranquangkhai20152005.library.model.Book;
@@ -56,34 +57,49 @@ public class TableBookView extends JPanel{
 		JTable table = new JTable();
 		table.setCellSelectionEnabled(false);
 		table.setRowSelectionAllowed(true);
+		table.setAutoCreateRowSorter(true);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		return table;
 	}
 	
 	// Load Data
 	private void loadData(JTable table) {
-		String data[][] = null;
-		DefaultTableModel tableModel = new DefaultTableModel(data, titleItem) {
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				// TODO Auto-generated method stub
-				return false;
-			}
-		};
-		table.setModel(tableModel);		
+		
+		SwingUtilities.invokeLater(new Runnable(){public void run(){
+			String data[][] = null;
+		    //Update the model here
+			DefaultTableModel tableModel = new DefaultTableModel(data, titleItem) {
+				@Override
+				public boolean isCellEditable(int row, int column) {
+					// TODO Auto-generated method stub
+					return false;
+				}
+			};
+			table.setModel(tableModel);		
+		}});
+		
+		
+		
 	}
 	
 	// Update Model of Table
 	public void updateTable(ArrayList<Book> list) {
-		String data[][] = convertData(list);
-		DefaultTableModel tableModel = new DefaultTableModel(data, titleItem) {
-			@Override
-			public boolean isCellEditable(int row, int column) {
-				// TODO Auto-generated method stub
-				return false;
-			}
-		};
-		table.setModel(tableModel);	
+		SwingUtilities.invokeLater(new Runnable(){public void run(){
+		    //Update the model here
+			String data[][] = convertData(list);
+			DefaultTableModel tableModel = new DefaultTableModel(data, titleItem) {
+				@Override
+				public boolean isCellEditable(int row, int column) {
+					// TODO Auto-generated method stub
+					return false;
+				}
+			};
+			table.setModel(tableModel);	
+			
+			
+		}});
+		
+		
 	}
 	
 	// Convert list of Book => Array 2D

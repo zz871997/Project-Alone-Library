@@ -1,6 +1,7 @@
 package tranquangkhai20152005.library.test;
 
 import tranquangkhai20152005.library.controller.AddBookController;
+import tranquangkhai20152005.library.controller.ChangeTableController;
 import tranquangkhai20152005.library.controller.DeleteBookController;
 import tranquangkhai20152005.library.controller.EditBookController;
 import tranquangkhai20152005.library.controller.PrintSearchInforController;
@@ -15,6 +16,7 @@ public class Test {
 		new DeleteBookController(mainUI);
 		new SearchBookController(mainUI);
 		new PrintSearchInforController(mainUI);
+		new ChangeTableController(mainUI);
 		mainUI.setVisible(true);
 	}
 }

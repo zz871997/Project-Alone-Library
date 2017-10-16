@@ -145,7 +145,7 @@ public class BookDB implements BookDAO{
 			int rows = preStatement.executeUpdate();
 			if (rows > 0) System.out.println("This book has been update");
 			
-			// Close connectuin
+			// Close connection
 			preStatement.close();
 			connection.close();
 		} 
