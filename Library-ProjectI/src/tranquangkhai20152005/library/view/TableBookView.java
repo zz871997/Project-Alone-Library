@@ -16,7 +16,7 @@ import tranquangkhai20152005.library.model.Book;
 public class TableBookView extends JPanel{
 	private JTable table;
 	public static final int TABLE_BOOK_WIDTH = 900;
-	public static final int TABLE_BOOK_HEIGHT = 200;
+	public static final int TABLE_BOOK_HEIGHT = 300;
 	private String[] titleItem = {"Mã sách", "Tên sách", "Tác giả", "Nhà xuất bản", "Thể loại", "Năm xuất bản", "Số lượng"};
 	
 	// setter - getter

@@ -19,7 +19,6 @@ public class AddBookController {
 	private BookDB bookDB;
 	
 	private AddBookView addBookView;
-	
 	private BookInformation bookInformation;
 	private TableBookView tableBookView;
 	
@@ -33,15 +32,13 @@ public class AddBookController {
 		tableBookView.updateTable(bookDB.getAllBooks());
 		
 		btnAddBookManager.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				addBookView = new AddBookView(mainUI);
+				addBookView     = new AddBookView(mainUI);
 				bookInformation = addBookView.getBookInformation();
 				addBookView.setVisible(true);
 				// Set actions on AddBook View
 				setActions();
-				
 			}
 		});
 	}
@@ -63,13 +60,12 @@ public class AddBookController {
 		}
 		// Check namXB and soLuong are integer?
 		try {
-			String strNamXB = bookInformation.getTfNamXB().getText().toString();
 			//if (strNamXB.length() == 0) continue;
-			int namXB = Integer.parseInt(bookInformation.getTfNamXB().getText().toString());
+			int namXB = Integer.parseInt(bookInformation.getTfNamXB().getText().trim().toString());
 			int soLuong = Integer.parseInt(bookInformation.getTfSoLuong().getText().toString().trim());
 			// Test < 0 ????
-			if(namXB < 0 || soLuong <0) {
-				JOptionPane.showMessageDialog(this.addBookView, "Các trường số không được âm");
+			if(namXB < 0 || soLuong <0 || namXB > 9999 || namXB < 1000) {
+				JOptionPane.showMessageDialog(this.addBookView, "Nhập lại đúng định dạng các trường số !!!");
 				return false;
 			}	
 		}
@@ -145,7 +141,7 @@ public class AddBookController {
 		clearInput();
 		this.addBookView.setVisible(false);
 	}
-	//??????????????????????????
+	
 	private void clearInput() {
 		bookInformation.getTfMaSach().setText(null);;
 		bookInformation.getTfTenSach().setText(null);
@@ -155,15 +151,4 @@ public class AddBookController {
 		bookInformation.getTfTheLoai().setText(null);
 		bookInformation.getTfSoLuong().setText(null);
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

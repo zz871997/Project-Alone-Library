@@ -35,14 +35,13 @@ public class SearchBookController {
 	public ArrayList<Book> getResultSearch() {
 		return resultSearch;
 	}
-
 	public void setResultSearch(ArrayList<Book> resultSearch) {
 		this.resultSearch = resultSearch;
 	}
 
 	// Constructor
 	public SearchBookController() {
-		
+	
 	}
 	
 	public SearchBookController(MainUI mainUI) {
@@ -191,5 +190,4 @@ public class SearchBookController {
 			tableBookView.updateTable(bookDB.getAllBooks());
 		}
 	}
-	
 }

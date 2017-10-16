@@ -63,8 +63,4 @@ public class Book {
 		this.namXB   = namXB;
 		this.soLuong = soLuong;
 	}
-	
-	
-	
-	
 }

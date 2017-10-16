@@ -6,13 +6,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class MainUI extends JFrame{
+	private LoginView loginView = new LoginView();
+	
 	private SearchBookView searchBookView;
 	private TableBookView tableBookView;
-	
 	
 	private TablePersonView tablePersonView;
 	private	SearchPersonView searchPersonView;
 	
+	private MenuView menuView = new MenuView();
 	private ManagerView managerView;
 	
 	private JPanel bookDataPanel = createBookDataPanel();
@@ -20,14 +22,22 @@ public class MainUI extends JFrame{
 	private JPanel employmentDataPanel = createEmploymentDataPanel();
 	
 	private JPanel dataPanel;
-	
-	
-	
-	
-	
 	// Setter - Getter
+	
 	public void setDataPanel(JPanel dataPanel) {
 		this.dataPanel = dataPanel;
+	}
+	public MenuView getMenuView() {
+		return menuView;
+	}
+	public void setMenuView(MenuView menuView) {
+		this.menuView = menuView;
+	}
+	public LoginView getLoginView() {
+		return loginView;
+	}
+	public void setLoginView(LoginView loginView) {
+		this.loginView = loginView;
 	}
 	public SearchPersonView getSearchPersonView() {
 		return searchPersonView;
@@ -82,8 +92,7 @@ public class MainUI extends JFrame{
 	public void setSearchBookView(SearchBookView searchBookView) {
 		this.searchBookView = searchBookView;
 	}
-	
-	// Constructor
+
 	public MainUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(950, 600);
@@ -91,35 +100,30 @@ public class MainUI extends JFrame{
 		setResizable(true);
 		setLocationRelativeTo(null);
 		
+		//loginView = new LoginView();
 		managerView = new ManagerView();
 		
 		setLayout(new BorderLayout(10, 19));
 		
-		/////////////////////////////////
-		dataPanel = new JPanel();
-		dataPanel.setLayout(new BorderLayout());
-		dataPanel.add(bookDataPanel, BorderLayout.CENTER);;
-		add(dataPanel, BorderLayout.CENTER);
-		add(managerView, BorderLayout.PAGE_END);
+		add(createMainPanel(), BorderLayout.CENTER);
+		add(menuView, BorderLayout.WEST);
+		
 		pack();
 		setVisible(true);
 	}
 	
-//	// Create data panel
-//	
-//	
-//	
-//	// Create Table panel
-//	private JPanel createTablePanel() {
-//		JPanel panel = new JPanel(new BorderLayout());
-//		tableBookView = new TableBookView();
-//		searchBookView = new SearchBookView();
-//		
-//		panel.add(searchBookView, BorderLayout.PAGE_START);
-//		panel.add(tableBookView, BorderLayout.CENTER);
-//		return panel;
-//		
-//	}
+	// Create MainPanel
+	private JPanel createMainPanel() {
+		JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
+		
+		dataPanel = new JPanel();
+		dataPanel.setLayout(new BorderLayout());
+		dataPanel.add(bookDataPanel, BorderLayout.CENTER);;
+		mainPanel.add(dataPanel, BorderLayout.CENTER);
+		mainPanel.add(managerView, BorderLayout.PAGE_END);
+		
+		return mainPanel;
+	}
 	
 	// Create Table Book Data
 	public JPanel createBookDataPanel() {
@@ -153,5 +157,4 @@ public class MainUI extends JFrame{
 		panel.add(tablePersonView, BorderLayout.CENTER);
 		return panel;
 	}
-	
 }

@@ -15,7 +15,7 @@ import tranquangkhai20152005.library.model.Person;
 public class TablePersonView extends JPanel{
 	private JTable table;
 	public static final int TABLE_BOOK_WIDTH = 900;
-	public static final int TABLE_BOOK_HEIGHT = 200;
+	public static final int TABLE_BOOK_HEIGHT = 300;
 	private String[] titleItem = {"Mã", "Họ tên", "Năm sinh", "Giới tính", "Quê quán", "Địa chỉ", "Số điện thoại"};
 	
 	

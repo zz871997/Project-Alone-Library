@@ -17,6 +17,6 @@ public class Test {
 		new SearchBookController(mainUI);
 		new PrintSearchInforController(mainUI);
 		new ChangeTableController(mainUI);
-		mainUI.setVisible(true);
+		mainUI.setVisible(true);	
 	}
 }

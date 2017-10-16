@@ -25,7 +25,7 @@ public class DeleteBookController {
 		this.mainUI = mainUI;
 		bookDB = new BookDB();
 		
-		btnDelete = mainUI.getManagerView().getBtnDeleteBook();
+		btnDelete     = mainUI.getManagerView().getBtnDeleteBook();
 		tableBookView = mainUI.getTableBookView();
 		tableBookView.updateTable(bookDB.getAllBooks());
 		setAction();

@@ -16,16 +16,18 @@ public class ChangeTableController {
 	private TableBookView tableBookView;
 	private TablePersonView tablePersonView;
 	private JPanel dataPanel;
+	private JPanel managerPanel;
 	
 	JButton btnViewListBook;
 	JButton btnViewListUser;
 	JButton btnViewListEmployment;
 	public ChangeTableController(MainUI mainUI) {
 		this.mainUI = mainUI;
-		btnViewListBook = mainUI.getManagerView().getBtnViewListBook();
-		btnViewListUser = mainUI.getManagerView().getBtnViewListUser();
-		btnViewListEmployment = mainUI.getManagerView().getBtnViewListEmployment();
-		dataPanel = mainUI.getDataPanel();
+		btnViewListBook = mainUI.getMenuView().getBtnViewListBook();
+		btnViewListUser = mainUI.getMenuView().getBtnViewListUser();
+		btnViewListEmployment = mainUI.getMenuView().getBtnViewListEmployment();
+		dataPanel    = mainUI.getDataPanel();
+		managerPanel = mainUI.getManagerView();
 		
 		setActions();
 	}
@@ -38,6 +40,11 @@ public class ChangeTableController {
 				dataPanel.add(mainUI.getBookDataPanel(), BorderLayout.CENTER);
 				dataPanel.revalidate();
 				dataPanel.repaint();
+
+				managerPanel.remove(managerPanel.getComponent(0));
+				managerPanel.add(mainUI.getManagerView().getBookManagerPanel(), BorderLayout.CENTER);
+				managerPanel.revalidate();
+				managerPanel.repaint();
 			}
 		});
 		
@@ -48,6 +55,11 @@ public class ChangeTableController {
 				dataPanel.add(mainUI.getUserDataPanel(), BorderLayout.CENTER);
 				dataPanel.revalidate();
 				dataPanel.repaint();
+				
+				managerPanel.remove(managerPanel.getComponent(0));
+				managerPanel.add(mainUI.getManagerView().getUserManagerPanel(), BorderLayout.CENTER);
+				managerPanel.revalidate();
+				managerPanel.repaint();
 			}
 		});
 		
@@ -58,6 +70,11 @@ public class ChangeTableController {
 				dataPanel.add(mainUI.getEmploymentDataPanel(), BorderLayout.CENTER);
 				dataPanel.revalidate();
 				dataPanel.repaint();
+				
+				managerPanel.remove(managerPanel.getComponent(0));
+				managerPanel.add(mainUI.getManagerView().getEmploymentManagerPanel(), BorderLayout.CENTER);
+				managerPanel.revalidate();
+				managerPanel.repaint();
 			}
 		});
 	}

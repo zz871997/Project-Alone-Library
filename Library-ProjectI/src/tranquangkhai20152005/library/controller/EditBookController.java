@@ -126,8 +126,8 @@ public class EditBookController {
 			int namXB = Integer.parseInt(bookInformation.getTfNamXB().getText().toString());
 			int soLuong = Integer.parseInt(bookInformation.getTfSoLuong().getText().toString().trim());
 			// Test < 0 ????
-			if(namXB < 0 || soLuong <0) {
-				JOptionPane.showMessageDialog(this.editBookView, "Các trường số không được âm");
+			if(namXB < 0 || soLuong <0 || namXB > 9999 || namXB < 1000) {
+				JOptionPane.showMessageDialog(this.editBookView, "Nhập đúng định dạng các trường số !!!!");
 				return false;
 			}	
 		}
@@ -167,24 +167,4 @@ public class EditBookController {
 	private void huy() {		
 		this.editBookView.setVisible(false);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

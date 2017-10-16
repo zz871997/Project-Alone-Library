@@ -1,5 +1,6 @@
 package tranquangkhai20152005.library.view;
 
+import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
@@ -9,37 +10,29 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 public class ManagerView extends JPanel{
-	private JButton btnViewListBook = new JButton("DANH SÁCH SÁCH");
-	private JButton btnAddBook      = new JButton("THÊM");
-	private JButton btnEditBook     = new JButton("SỬA");
-	private JButton btnDeleteBook   = new JButton("XÓA");
-	private JButton btnThongKeSach  = new JButton("THỐNG KÊ");
+	private JButton btnAddBook     = new JButton("THÊM S");
+	private JButton btnEditBook    = new JButton("SỬA S");
+	private JButton btnDeleteBook  = new JButton("XÓA S");
+	private JButton btnThongKeSach = new JButton("THỐNG KÊ S");
 	
-	private JButton btnViewListUser = new JButton("DANH SÁCH ĐỘC GIẢ");
-	private JButton btnAddUser      = new JButton("THÊM");
-	private JButton btnEditUser     = new JButton("SỬA");
-	private JButton btnDeleteUser   = new JButton("XÓA");
-	private JButton btnThongKeUser  = new JButton("THỐNG KÊ");
 	
-	private JButton btnViewListEmployment = new JButton("DANH SÁCH NHÂN VIÊN");
-	private JButton btnAddEmployment      = new JButton("THÊM");
-	private JButton btnEditEmployment     = new JButton("SỬA");
-	private JButton btnDeleteEmployment   = new JButton("XÓA");
-	private JButton btnThongKeEmployment  = new JButton("THỐNG KÊ");
+	private JButton btnAddUser     = new JButton("THÊM DG");
+	private JButton btnEditUser    = new JButton("SỬA DG");
+	private JButton btnDeleteUser  = new JButton("XÓA DG");
+	private JButton btnThongKeUser = new JButton("THỐNG KÊ DG");
 	
-	// Constructor
-	public ManagerView() {
-		setBorder(new EmptyBorder(10, 10, 10, 10));
-		setLayout(new GridLayout(1, 3, 10, 10));
-		add(createBookManagerPanel());
-		add(createUserManagerPanel());
-		add(createEmploymentManagerPanel());
-	}
+	private JButton btnAddEmployment     = new JButton("THÊM NV");
+	private JButton btnEditEmployment    = new JButton("SỬA NV");
+	private JButton btnDeleteEmployment  = new JButton("XÓA NV");
+	private JButton btnThongKeEmployment = new JButton("THỐNG KÊ NV");
 	
-	// Setter - getter
-	public JButton getBtnViewListBook() {
-		return btnViewListBook;
-	}
+	private JPanel bookManagerPanel = createBookManagerPanel();
+	private JPanel userManagerPanel = createUserManagerPanel();
+	private JPanel employmentManagerPanel = createEmploymentManagerPanel();
+	
+	private JPanel managerPanel;
+	
+	
 	public JButton getBtnAddBook() {
 		return btnAddBook;
 	}
@@ -51,9 +44,6 @@ public class ManagerView extends JPanel{
 	}
 	public JButton getBtnThongKeSach() {
 		return btnThongKeSach;
-	}
-	public JButton getBtnViewListUser() {
-		return btnViewListUser;
 	}
 	public JButton getBtnAddUser() {
 		return btnAddUser;
@@ -67,9 +57,6 @@ public class ManagerView extends JPanel{
 	public JButton getBtnThongKeUser() {
 		return btnThongKeUser;
 	}
-	public JButton getBtnViewListEmployment() {
-		return btnViewListEmployment;
-	}
 	public JButton getBtnAddEmployment() {
 		return btnAddEmployment;
 	}
@@ -82,60 +69,69 @@ public class ManagerView extends JPanel{
 	public JButton getBtnThongKeEmployment() {
 		return btnThongKeEmployment;
 	}
+	public JPanel getBookManagerPanel() {
+		return bookManagerPanel;
+	}
+	public JPanel getUserManagerPanel() {
+		return userManagerPanel;
+	}
+	public JPanel getEmploymentManagerPanel() {
+		return employmentManagerPanel;
+	}
+	public JPanel getManagerPanel() {
+		return managerPanel;
+	}
 
-	// Create Book Manager Panel
+
+	public ManagerView () {
+		setBorder(new EmptyBorder(30, 200, 10, 200));
+		setLayout(new BorderLayout());
+		managerPanel = bookManagerPanel;
+		add(managerPanel, BorderLayout.CENTER);
+	}
+	
+	/* Create Book Manager Panel */
 	private JPanel createBookManagerPanel() {
-		JPanel panel = new JPanel(new GridLayout(3, 1, 10, 10));
-		TitledBorder title = BorderFactory.createTitledBorder("Quản lí sách");
-		panel.setBorder(title);
-		panel.add(btnViewListBook);
+		JPanel panel = new JPanel(new GridLayout(2, 1, 10, 10));
 		panel.add(createBookActionsPanel());
 		panel.add(btnThongKeSach);
 		return panel;
 	}
-	
 	private JPanel createBookActionsPanel() {
-		JPanel panel = new JPanel(new GridLayout(1, 3, 5, 5));
+		JPanel panel = new JPanel (new GridLayout(1, 3, 10, 10));
 		panel.add(btnAddBook);
 		panel.add(btnEditBook);
 		panel.add(btnDeleteBook);
 		return panel;
 	}
 	
-	// Create User Manager Panel
+	/* Create User Manager Panel */
 	private JPanel createUserManagerPanel() {
-		JPanel panel = new JPanel(new GridLayout(3, 1, 10, 10));
-		TitledBorder title = BorderFactory.createTitledBorder("Quản lí độc giả");
-		panel.setBorder(title);
-		panel.add(btnViewListUser);
+		JPanel panel = new JPanel(new GridLayout(2, 1, 10, 10));
 		panel.add(createUserActionsPanel());
 		panel.add(btnThongKeUser);
 		return panel;
 	}
 	private JPanel createUserActionsPanel() {
-		JPanel panel = new JPanel(new GridLayout(1, 3, 5, 5));
+		JPanel panel = new JPanel (new GridLayout(1, 3, 10, 10));
 		panel.add(btnAddUser);
 		panel.add(btnEditUser);
 		panel.add(btnDeleteUser);
 		return panel;
 	}
 	
-	// Create Employment Manager Panel
+	/* Create Employment Manager Panel */
 	private JPanel createEmploymentManagerPanel() {
-		JPanel panel = new JPanel(new GridLayout(3, 1, 10, 10));
-		TitledBorder title = BorderFactory.createTitledBorder("Quản lí nhân viên");
-		panel.setBorder(title);
-		panel.add(btnViewListEmployment);
+		JPanel panel = new JPanel(new GridLayout(2, 1, 10, 10));
 		panel.add(createEmploymentActionsPanel());
 		panel.add(btnThongKeEmployment);
 		return panel;
 	}
 	private JPanel createEmploymentActionsPanel() {
-		JPanel panel = new JPanel(new GridLayout(1, 3, 5, 5));
+		JPanel panel = new JPanel (new GridLayout(1, 3, 10, 10));
 		panel.add(btnAddEmployment);
 		panel.add(btnEditEmployment);
 		panel.add(btnDeleteEmployment);
 		return panel;
 	}
-	
 }

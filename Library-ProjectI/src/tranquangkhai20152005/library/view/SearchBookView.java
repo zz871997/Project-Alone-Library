@@ -40,7 +40,7 @@ public class SearchBookView extends JPanel{
 	public SearchBookView() {
 		setSize(450, 30);
 		setLayout(new BorderLayout(5, 5));
-		setBorder(new EmptyBorder(10, 10, 10, 10));
+		setBorder(new EmptyBorder(10, 10, 30, 10));
 		add(new JLabel("Tìm kiếm"), BorderLayout.WEST);
 		add(tfSearch, BorderLayout.CENTER);
 		add(createActionsPanel(), BorderLayout.EAST);
