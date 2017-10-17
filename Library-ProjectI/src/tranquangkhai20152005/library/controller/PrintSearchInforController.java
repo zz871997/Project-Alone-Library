@@ -58,11 +58,11 @@ public class PrintSearchInforController {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					setAction();
-				} catch (UnsupportedEncodingException | FileNotFoundException e1) {
-					// TODO Auto-generated catch block
+				}
+				catch (UnsupportedEncodingException | FileNotFoundException e1) {
 					e1.printStackTrace();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
+				} 
+				catch (Exception e1) {
 					e1.printStackTrace();
 				}
 				
@@ -79,9 +79,14 @@ public class PrintSearchInforController {
 		int select = fileChooser.showSaveDialog(this.mainUI);
 		
 		if(select == JFileChooser.APPROVE_OPTION) {
-			saveFilePath = fileChooser.getCurrentDirectory().toString() 
-					       + "\\" + fileChooser.getSelectedFile().getName();
-			
+			String path = fileChooser.getCurrentDirectory().toString() 
+				       	   + "\\" + fileChooser.getSelectedFile().getName();
+			if(path.indexOf(".docx") >= 0) {
+				saveFilePath = path;
+			}
+			else {
+				saveFilePath = path + ".docx";
+			}
 			System.out.println(saveFilePath);
 			printToWord(saveFilePath);
 			

@@ -17,7 +17,7 @@ public class MenuView extends JPanel {
 	private JButton btnViewListBook = new JButton("SÁCH");
 	private JButton btnViewListUser = new JButton("ĐỘC GIẢ");
 	private JButton btnViewListEmployment = new JButton("NHÂN VIÊN");
-	private JButton btnBorrowLoan = new JButton("MƯỢN TRẢ");
+	private JButton btnBorrow = new JButton("MƯỢN SÁCH");
 	
 	private JButton btnLogout = new JButton("ĐĂNG XUẤT");
 	private JButton btnChangePass = new JButton("ĐỔI MẬT KHẨU");
@@ -25,6 +25,14 @@ public class MenuView extends JPanel {
 	private JButton btnAboutMe = new JButton("ABOUT ME");
 
 	
+	public JButton getBtnLogout() {
+		return btnLogout;
+	}
+
+	public JButton getBtnChangePass() {
+		return btnChangePass;
+	}
+
 	public JButton getBtnViewListBook() {
 		return btnViewListBook;
 	}
@@ -37,8 +45,8 @@ public class MenuView extends JPanel {
 		return btnViewListEmployment;
 	}
 
-	public JButton getBtnBorrowLoan() {
-		return btnBorrowLoan;
+	public JButton getBtnBorrow() {
+		return btnBorrow;
 	}
 
 	public JButton getBtnAboutMe() {
@@ -58,7 +66,7 @@ public class MenuView extends JPanel {
 		panel.add(btnViewListBook);
 		panel.add(btnViewListUser);
 		panel.add(btnViewListEmployment);
-		panel.add(btnBorrowLoan);
+		panel.add(btnBorrow);
 		panel.add(btnLogout);
 		panel.add(btnChangePass);
 		return panel;

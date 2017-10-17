@@ -21,11 +21,14 @@ public class ChangeTableController {
 	JButton btnViewListBook;
 	JButton btnViewListUser;
 	JButton btnViewListEmployment;
+	JButton btnBorrow;
+	
 	public ChangeTableController(MainUI mainUI) {
 		this.mainUI = mainUI;
 		btnViewListBook = mainUI.getMenuView().getBtnViewListBook();
 		btnViewListUser = mainUI.getMenuView().getBtnViewListUser();
 		btnViewListEmployment = mainUI.getMenuView().getBtnViewListEmployment();
+		btnBorrow = mainUI.getMenuView().getBtnBorrow();
 		dataPanel    = mainUI.getDataPanel();
 		managerPanel = mainUI.getManagerView();
 		
@@ -73,6 +76,21 @@ public class ChangeTableController {
 				
 				managerPanel.remove(managerPanel.getComponent(0));
 				managerPanel.add(mainUI.getManagerView().getEmploymentManagerPanel(), BorderLayout.CENTER);
+				managerPanel.revalidate();
+				managerPanel.repaint();
+			}
+		});
+		
+		btnBorrow.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dataPanel.remove(dataPanel.getComponent(0));
+				dataPanel.add(mainUI.getBorrowDataPanel(), BorderLayout.CENTER);
+				dataPanel.revalidate();
+				dataPanel.repaint();
+				
+				managerPanel.remove(managerPanel.getComponent(0));
+				managerPanel.add(mainUI.getManagerView().getBorrowManagerPanel(), BorderLayout.CENTER);
 				managerPanel.revalidate();
 				managerPanel.repaint();
 			}

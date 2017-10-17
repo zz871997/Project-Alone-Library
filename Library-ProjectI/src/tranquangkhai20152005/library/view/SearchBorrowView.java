@@ -10,34 +10,24 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class SearchBookView extends JPanel{
+public class SearchBorrowView extends JPanel{
 	private JTextField tfSearch = new JTextField(20);
-	private String[] listSearch = {"Tên sách", "Mã sách", "Tác giả", "Nhà xuất bản", "Thể loại", "Năm xuất bản"};
+	private String[] listSearch = {"Mã mượn trả", "Mã độc giả", "Mã nhân viên", "Ngày mượn", "Ngày hẹn trả"};
 	private JComboBox<String> cbSearch = new JComboBox<String>(listSearch);
 	private JButton btnPrint = new JButton("IN");
 	
-	// Setter - Getter
+	/* Settẻ - Gettẻ */
 	public JTextField getTfSearch() {
 		return tfSearch;
-	}
-	public void setTfSearch(JTextField tfSearch) {
-		this.tfSearch = tfSearch;
 	}
 	public JComboBox<String> getCbSearch() {
 		return cbSearch;
 	}
-	public void setCbSearch(JComboBox<String> cbSearch) {
-		this.cbSearch = cbSearch;
-	}
 	public JButton getBtnPrint() {
 		return btnPrint;
 	}
-	public void setBtnPrint(JButton btnPrint) {
-		this.btnPrint = btnPrint;
-	}
 	
-	// Constructor
-	public SearchBookView() {
+	public SearchBorrowView() {
 		setSize(450, 30);
 		setLayout(new BorderLayout(5, 5));
 		setBorder(new EmptyBorder(10, 10, 15, 10));

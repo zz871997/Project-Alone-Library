@@ -45,6 +45,7 @@ public class LoginView extends JPanel{
 	
 	private JPanel createButtonPanel() {
 		JPanel buttonPanel = new JPanel(new GridLayout(1, 2, 10, 10));
+		buttonPanel.setBorder(new EmptyBorder(5, 150, 5, 150));
 		buttonPanel.add(btnLogin);
 		buttonPanel.add(btnCancel);
 		return buttonPanel;

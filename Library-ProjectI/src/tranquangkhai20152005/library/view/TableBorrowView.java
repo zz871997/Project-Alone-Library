@@ -13,13 +13,12 @@ import javax.swing.table.DefaultTableModel;
 
 import tranquangkhai20152005.library.model.Book;
 
-public class TableBookView extends JPanel{
+public class TableBorrowView extends JPanel{
 	private JTable table;
-	public static final int TABLE_BOOK_WIDTH = 900;
-	public static final int TABLE_BOOK_HEIGHT = 250;
-	private String[] titleItem = {"Mã sách", "Tên sách", "Tác giả", "Nhà xuất bản", "Thể loại", "Năm xuất bản", "Số lượng"};
+	public static final int TABLE_BOOK_WIDTH = 800;
+	public static final int TABLE_BOOK_HEIGHT = 200;
+	private String[] titleItem = {"Mã mượn", "Mã độc giả", "Mã nhân viên", "Ngày mượn", "Ngày hẹn trả"};
 	
-	// setter - getter
 	public JTable getTable() {
 		return table;
 	}
@@ -27,16 +26,15 @@ public class TableBookView extends JPanel{
 		this.table = table;
 	}
 	
-	// Constructor
-	public TableBookView() {
+	public TableBorrowView() {
 		setLayout(new BorderLayout());
-		add(createBookPanel(), BorderLayout.CENTER);
+		add(createBorrowPanel(), BorderLayout.CENTER);
 	}
 	
-	private JPanel createBookPanel() {
-		JPanel bookPanel = new JPanel();
-		bookPanel.add(createTablePanel());
-		return bookPanel;
+	private JPanel createBorrowPanel() {
+		JPanel borrowPanel = new JPanel();
+		borrowPanel.add(createTablePanel());
+		return borrowPanel;
 	}
 	
 	// Create Table Panel
@@ -79,35 +77,35 @@ public class TableBookView extends JPanel{
 	}
 	
 	// Update Model of Table
-	public void updateTable(ArrayList<Book> list) {
-		SwingUtilities.invokeLater(new Runnable(){public void run(){
-		    //Update the model here
-			String data[][] = convertData(list);
-			DefaultTableModel tableModel = new DefaultTableModel(data, titleItem) {
-				@Override
-				public boolean isCellEditable(int row, int column) {
-					// TODO Auto-generated method stub
-					return false;
-				}
-			};
-			table.setModel(tableModel);	
-		}});
-	}
-	
-	// Convert list of Book => Array 2D
-	private String[][] convertData(ArrayList<Book> list) {
-		int size = list.size();
-		String data[][] = new String[size][titleItem.length];
-		for (int i = 0; i < size; i++) {
-			Book aBook = list.get(i);
-			data[i][0] = aBook.getMaSach();
-			data[i][1] = aBook.getTenSach();
-			data[i][2] = aBook.getTacGia();
-			data[i][3] = aBook.getNXB();
-			data[i][4] = aBook.getTheLoai();
-			data[i][5] = aBook.getNamXB();
-			data[i][6] = aBook.getSoLuong()+"";		
-		}
-		return data;
-	}
+//	public void updateTable(ArrayList<Book> list) {
+//		SwingUtilities.invokeLater(new Runnable(){public void run(){
+//		    //Update the model here
+//			String data[][] = convertData(list);
+//			DefaultTableModel tableModel = new DefaultTableModel(data, titleItem) {
+//				@Override
+//				public boolean isCellEditable(int row, int column) {
+//					// TODO Auto-generated method stub
+//					return false;
+//				}
+//			};
+//			table.setModel(tableModel);	
+//		}});
+//	}
+//	
+//	// Convert list of Book => Array 2D
+//	private String[][] convertData(ArrayList<Book> list) {
+//		int size = list.size();
+//		String data[][] = new String[size][titleItem.length];
+//		for (int i = 0; i < size; i++) {
+//			Book aBook = list.get(i);
+//			data[i][0] = aBook.getMaSach();
+//			data[i][1] = aBook.getTenSach();
+//			data[i][2] = aBook.getTacGia();
+//			data[i][3] = aBook.getNXB();
+//			data[i][4] = aBook.getTheLoai();
+//			data[i][5] = aBook.getNamXB();
+//			data[i][6] = aBook.getSoLuong()+"";		
+//		}
+//		return data;
+//	}
 }

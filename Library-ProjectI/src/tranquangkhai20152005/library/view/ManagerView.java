@@ -26,15 +26,36 @@ public class ManagerView extends JPanel{
 	private JButton btnDeleteEmployment  = new JButton("XÓA NV");
 	private JButton btnThongKeEmployment = new JButton("THỐNG KÊ NV");
 	
+	private JButton btnBorrow      = new JButton("THÊM MƯỢN");
+	private JButton btnPrintBorrow = new JButton("IN");
+	private JButton btnViewDetail  = new JButton("XEM CHI TIẾT");
+	private JButton btnThongKeMuon = new JButton("THỐNG KÊ");
+	
 	private JPanel bookManagerPanel = createBookManagerPanel();
 	private JPanel userManagerPanel = createUserManagerPanel();
 	private JPanel employmentManagerPanel = createEmploymentManagerPanel();
+	private JPanel borrowManagerPanel = createBorrowManagerPanel();
 	
 	private JPanel managerPanel;
 	
 	
 	public JButton getBtnAddBook() {
 		return btnAddBook;
+	}
+	public JPanel getBorrowManagerPanel() {
+		return borrowManagerPanel;
+	}
+	public JButton getBtnBorrow() {
+		return btnBorrow;
+	}
+	public JButton getBtnPrintBorrow() {
+		return btnPrintBorrow;
+	}
+	public JButton getBtnViewDetail() {
+		return btnViewDetail;
+	}
+	public JButton getBtnThongKeMuon() {
+		return btnThongKeMuon;
 	}
 	public JButton getBtnEditBook() {
 		return btnEditBook;
@@ -84,7 +105,7 @@ public class ManagerView extends JPanel{
 
 
 	public ManagerView () {
-		setBorder(new EmptyBorder(30, 200, 10, 200));
+		setBorder(new EmptyBorder(10, 200, 10, 200));
 		setLayout(new BorderLayout());
 		managerPanel = bookManagerPanel;
 		add(managerPanel, BorderLayout.CENTER);
@@ -132,6 +153,16 @@ public class ManagerView extends JPanel{
 		panel.add(btnAddEmployment);
 		panel.add(btnEditEmployment);
 		panel.add(btnDeleteEmployment);
+		return panel;
+	}
+	
+	/* Create Borrow Manager Panel */
+	private JPanel createBorrowManagerPanel() {
+		JPanel panel = new JPanel(new GridLayout(1, 4, 10, 10));
+		panel.add(btnBorrow);
+		panel.add(btnPrintBorrow);
+		panel.add(btnViewDetail);
+		panel.add(btnThongKeMuon);
 		return panel;
 	}
 }
