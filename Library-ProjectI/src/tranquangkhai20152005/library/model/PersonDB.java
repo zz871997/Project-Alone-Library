@@ -62,17 +62,19 @@ public class PersonDB implements PersonDAO{
 				}
 			}
 			else if (tableName.equals("nhanvien")) {
-				String id       = result.getString("MaNV");
-				String name     = result.getString("TenNV");
-				String namSinh  = result.getString("Namsinh");
-				String gioiTinh = result.getString("Gioitinh");
-				String queQuan  = result.getString("Quequan");
-				String diaChi   = result.getString("Diachi");
-				String sdt      = result.getString("SDT");
-				
-				Person person = new Person(id, name, namSinh, gioiTinh, queQuan, diaChi, sdt);
-				
-				listPerson.add(person);
+				while (result.next()) {
+					String id       = result.getString("MaNV");
+					String name     = result.getString("TenNV");
+					String namSinh  = result.getString("Namsinh");
+					String gioiTinh = result.getString("Gioitinh");
+					String queQuan  = result.getString("Quequan");
+					String diaChi   = result.getString("Diachi");
+					String sdt      = result.getString("SDT");
+					
+					Person person = new Person(id, name, namSinh, gioiTinh, queQuan, diaChi, sdt);
+					
+					listPerson.add(person);
+				}
 			}
 			
 			// Close connection
@@ -227,7 +229,7 @@ public class PersonDB implements PersonDAO{
 		}
 		else if (tableName.equals("nhanvien")) {
 			try {
-				String sql = "UPDATE nhanvien SET MaNV=?, TenNV=?, Namsinh=?, Gioitinh=?, Quequan=?, Diachi=?, SDT=? WHERE MaDG=?";
+				String sql = "UPDATE nhanvien SET MaNV=?, TenNV=?, Namsinh=?, Gioitinh=?, Quequan=?, Diachi=?, SDT=? WHERE MaNV=?";
 				preStatement = connection.prepareStatement(sql);
 				preStatement.setString(1, idMoi);
 				preStatement.setString(2, nameMoi);

@@ -16,8 +16,11 @@ public class MainUI extends JFrame{
 	private SearchBookView searchBookView;
 	private TableBookView tableBookView;
 	
-	private TablePersonView tablePersonView;
-	private	SearchPersonView searchPersonView;
+	private TablePersonView tableUserView;
+	private	SearchPersonView searchUserView;
+	
+	private TablePersonView tableEmploymentView;
+	private SearchPersonView searchEmploymentView;
 	
 	private SearchBorrowView searchBorrowView;
 	private TableBorrowView tableBorrowView;
@@ -57,11 +60,17 @@ public class MainUI extends JFrame{
 	public TableBookView getTableBookView() {
 		return tableBookView;
 	}
-	public TablePersonView getTablePersonView() {
-		return tablePersonView;
+	public TablePersonView getTableUserView() {
+		return tableUserView;
 	}
-	public SearchPersonView getSearchPersonView() {
-		return searchPersonView;
+	public SearchPersonView getSearchUserView() {
+		return searchUserView;
+	}
+	public TablePersonView getTableEmploymentView() {
+		return tableEmploymentView;
+	}
+	public SearchPersonView getSearchEmploymentView() {
+		return searchEmploymentView;
 	}
 	public MenuView getMenuView() {
 		return menuView;
@@ -142,22 +151,22 @@ public class MainUI extends JFrame{
 	//Create Table User Data
 	public JPanel createUserDataPanel() {
 		JPanel panel = new JPanel(new BorderLayout());
-		tablePersonView = new TablePersonView();
-		searchPersonView = new SearchPersonView();
+		tableUserView = new TablePersonView();
+		searchUserView = new SearchPersonView();
 	
-		panel.add(searchPersonView, BorderLayout.NORTH);
-		panel.add(tablePersonView, BorderLayout.CENTER);
+		panel.add(searchUserView, BorderLayout.NORTH);
+		panel.add(tableUserView, BorderLayout.CENTER);
 		return panel;
 	}
 	
 	//Create Table Employment Data
 	public JPanel createEmploymentDataPanel() {
 		JPanel panel = new JPanel(new BorderLayout());
-		tablePersonView = new TablePersonView();
-		searchPersonView = new SearchPersonView();
+		tableEmploymentView = new TablePersonView();
+		searchEmploymentView = new SearchPersonView();
 	
-		panel.add(searchPersonView, BorderLayout.NORTH);
-		panel.add(tablePersonView, BorderLayout.CENTER);
+		panel.add(searchEmploymentView, BorderLayout.NORTH);
+		panel.add(tableEmploymentView, BorderLayout.CENTER);
 		return panel;
 	}
 	

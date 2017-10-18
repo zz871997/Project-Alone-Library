@@ -19,9 +19,6 @@ import tranquangkhai20152005.library.view.ChangePassView;
 import tranquangkhai20152005.library.view.MainUI;
 
 public class LoginController {
-	private boolean isLogin;
-	
-	
 	private JPanel loginPanel;
 	private MainUI mainUI;
 	
@@ -45,13 +42,7 @@ public class LoginController {
 	
 	
 	
-	public boolean isLogin() {
-		return isLogin;
-	}
-
-	public void setLogin(boolean isLogin) {
-		this.isLogin = isLogin;
-	}
+	
 
 	public LoginController(MainUI mainUI) {
 		this.mainUI = mainUI;
@@ -75,6 +66,10 @@ public class LoginController {
 		searchBookController = new SearchBookController(mainUI);
 		printSearchInforController = new PrintSearchInforController(mainUI);
 		changeTableController = new ChangeTableController(mainUI);
+		new AddPersonController(mainUI);
+		new EditPersonController(mainUI);
+		new DeletePersonController(mainUI);
+		new SearchPersonController(mainUI);
 	}
 	
 	private void cancelController() {
@@ -94,7 +89,7 @@ public class LoginController {
 				String passFromDB = getPassFromDB();
 				System.out.println(pass);
 				if(pass.equals(passFromDB)) {
-					isLogin = true;
+					
 					System.out.println("Login success");
 					tfPass.setText("");
 					
@@ -127,7 +122,7 @@ public class LoginController {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				isLogin = false;
+			
 				
 				cancelController();
 				

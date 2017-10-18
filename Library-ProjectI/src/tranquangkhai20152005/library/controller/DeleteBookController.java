@@ -38,7 +38,7 @@ public class DeleteBookController {
 			public void actionPerformed(ActionEvent arg0) {
 				int index = findIndexOfData();
 				if(index >= 0) {
-					int select = JOptionPane.showOptionDialog(null, "Bạn có muốn xoá sản phẩm này không?",
+					int select = JOptionPane.showOptionDialog(null, "Bạn có muốn xoá sách này không?",
 							 "Xoá", JOptionPane.YES_NO_OPTION,
 							 JOptionPane.QUESTION_MESSAGE, null, null, null);
 					if(select == 0) {
@@ -61,7 +61,7 @@ public class DeleteBookController {
 		return index;
 	}
 	
-	/* Get id's Product */
+	/* Get id's Book */
 	private String getId(int indexRow, int indexCol) {
 		JTable table = tableBookView.getTable();
 		String id = table.getModel().getValueAt(indexRow, indexCol).toString();

@@ -2,8 +2,10 @@ package tranquangkhai20152005.library.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
@@ -18,6 +20,7 @@ public class EditBookController {
 	private MainUI mainUI;
 	private Book book;
 	private BookDB bookDB;
+	private String oldID = "";
 	
 	//Initialize edit BookPanel
 	private EditBookView editBookView;
@@ -50,8 +53,9 @@ public class EditBookController {
 				if (index >= 0) {
 					editBookView.setVisible(true);
 					// Get maSach
-					String maSach = getId(index, 0);
-					loadInfor(maSach);
+					oldID = getId(index, 0);
+					loadInfor(oldID);
+					//oldID = getOldID(maSach);
 					setActions();
 				}
 				else {
@@ -60,6 +64,8 @@ public class EditBookController {
 			}
 		});
 	}
+	
+	//private String getOldID(String i)
 	
 	private int findIndexOfData() {
 		int index = tableBookView.getTable().getSelectedRow();
@@ -136,11 +142,23 @@ public class EditBookController {
 			System.out.println(e.toString());
 			return false;
 		}
-		return true;
 		
 		/* Check if maSach is exist*/
-		
+		if (!checkID(bookInformation.getTfMaSach().getText().toString())) {
+			JOptionPane.showMessageDialog(new JDialog(), "Mã sách đã tồn tại - Hãy nhập lại");
+			return false;
+		}
 		///////////////////////////////...............//////////
+		return true;
+	}
+	
+	private boolean checkID(String id) {
+		ArrayList<Book> listBook = bookDB.getAllBooks();
+		for (int i = 0; i < listBook.size(); i++) {
+			String maSachFromDB = listBook.get(i).getMaSach();
+			if (id.equals(maSachFromDB) && (id.equals(oldID) == false)) return false;
+		}
+		return true;
 	}
 	
 	// Edit Book
@@ -159,7 +177,7 @@ public class EditBookController {
 			this.editBookView.setVisible(false);
 		}
 		else {
-			System.out.println("Insert Fail !!!");
+			System.out.println("Edit Fail !!!");
 		}
 	}		
 	

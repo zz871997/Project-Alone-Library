@@ -2,8 +2,10 @@ package tranquangkhai20152005.library.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import tranquangkhai20152005.library.model.Book;
@@ -74,11 +76,25 @@ public class AddBookController {
 			System.out.println(e.toString());
 			return false;
 		}
-		return true;
+		
 		
 		/* Check if maSach is exist*/
+		if (!checkID(bookInformation.getTfMaSach().getText().toString())) {
+			JOptionPane.showMessageDialog(new JDialog(), "Mã sách đã tồn tại - Hãy nhập lại");
+			return false;
+		}
 		
 		///////////////////////////////...............//////////
+		return true;
+	}
+	
+	private boolean checkID(String id) {
+		ArrayList<Book> listBook = bookDB.getAllBooks();
+		for (int i = 0; i < listBook.size(); i++) {
+			String maSachFromDB = listBook.get(i).getMaSach();
+			if (id.equals(maSachFromDB)) return false;
+		}
+		return true;
 	}
 	
 	/* Set Actions */

@@ -1,7 +1,10 @@
 eclipse.preferences.version=1
 encoding//src/tranquangkhai20152005/library/controller/AddBookController.java=UTF-8
+encoding//src/tranquangkhai20152005/library/controller/AddPersonController.java=UTF-8
 encoding//src/tranquangkhai20152005/library/controller/DeleteBookController.java=UTF-8
+encoding//src/tranquangkhai20152005/library/controller/DeletePersonController.java=UTF-8
 encoding//src/tranquangkhai20152005/library/controller/EditBookController.java=UTF-8
+encoding//src/tranquangkhai20152005/library/controller/EditPersonController.java=UTF-8
 encoding//src/tranquangkhai20152005/library/controller/LoginController.java=UTF-8
 encoding//src/tranquangkhai20152005/library/controller/PrintSearchInforController.java=UTF-8
 encoding//src/tranquangkhai20152005/library/test/DemoPOI.java=UTF-8

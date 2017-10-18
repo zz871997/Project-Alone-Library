@@ -20,7 +20,7 @@ public class AddPersonView extends JDialog{
 		this.mainUI = mainUI;
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setResizable(false);
-		setTitle("Thêm sách mới");
+		setTitle("Thêm người mới");
 		
 		personInformation =  new PersonInformation();
 		
