@@ -95,7 +95,7 @@ public class MainUI extends JFrame{
 	public MainUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(850, 500);
-		setTitle("Demo quản lí thư viện");
+		setTitle("Demo quản lí thư viện by Tran Quang Khai");
 		setResizable(false);
 		setLocationRelativeTo(null);
 		

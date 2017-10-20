@@ -10,21 +10,24 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 
 public class ManagerView extends JPanel{
-	private JButton btnAddBook     = new JButton("THÊM S");
-	private JButton btnEditBook    = new JButton("SỬA S");
-	private JButton btnDeleteBook  = new JButton("XÓA S");
-	private JButton btnThongKeSach = new JButton("THỐNG KÊ S");
+	private JButton btnAddBook      = new JButton("THÊM S");
+	private JButton btnAddFromExcel = new JButton("THÊM EXCEL");
+	private JButton btnEditBook     = new JButton("SỬA S");
+	private JButton btnDeleteBook   = new JButton("XÓA S");
+	private JButton btnThongKeSach  = new JButton("THỐNG KÊ S");
 	
 	
-	private JButton btnAddUser     = new JButton("THÊM DG");
-	private JButton btnEditUser    = new JButton("SỬA DG");
-	private JButton btnDeleteUser  = new JButton("XÓA DG");
-	private JButton btnThongKeUser = new JButton("THỐNG KÊ DG");
+	private JButton btnAddUser      = new JButton("THÊM DG");
+	private JButton btnAddUserExcel = new JButton ("THÊM ĐG EXCEL");
+	private JButton btnEditUser     = new JButton("SỬA DG");
+	private JButton btnDeleteUser   = new JButton("XÓA DG");
+	private JButton btnThongKeUser  = new JButton("THỐNG KÊ DG");
 	
-	private JButton btnAddEmployment     = new JButton("THÊM NV");
-	private JButton btnEditEmployment    = new JButton("SỬA NV");
-	private JButton btnDeleteEmployment  = new JButton("XÓA NV");
-	private JButton btnThongKeEmployment = new JButton("THỐNG KÊ NV");
+	private JButton btnAddEmployment      = new JButton("THÊM NV");
+	private JButton btnAddEmploymentExcel = new JButton("THÊM NV EXCEL");
+	private JButton btnEditEmployment     = new JButton("SỬA NV");
+	private JButton btnDeleteEmployment   = new JButton("XÓA NV");
+	private JButton btnThongKeEmployment  = new JButton("THỐNG KÊ NV");
 	
 	private JButton btnBorrow      = new JButton("THÊM MƯỢN");
 	private JButton btnPrintBorrow = new JButton("IN");
@@ -41,6 +44,15 @@ public class ManagerView extends JPanel{
 	
 	public JButton getBtnAddBook() {
 		return btnAddBook;
+	}
+	public JButton getBtnAddFromExcel() {
+		return btnAddFromExcel;
+	}
+	public JButton getBtnAddUserExcel() {
+		return btnAddUserExcel;
+	}
+	public JButton getBtnAddEmploymentExcel() {
+		return btnAddEmploymentExcel;
 	}
 	public JPanel getBorrowManagerPanel() {
 		return borrowManagerPanel;
@@ -105,7 +117,7 @@ public class ManagerView extends JPanel{
 
 
 	public ManagerView () {
-		setBorder(new EmptyBorder(10, 200, 10, 200));
+		setBorder(new EmptyBorder(10, 180, 10, 180));
 		setLayout(new BorderLayout());
 		managerPanel = bookManagerPanel;
 		add(managerPanel, BorderLayout.CENTER);
@@ -119,8 +131,9 @@ public class ManagerView extends JPanel{
 		return panel;
 	}
 	private JPanel createBookActionsPanel() {
-		JPanel panel = new JPanel (new GridLayout(1, 3, 10, 10));
+		JPanel panel = new JPanel (new GridLayout(1, 4, 10, 10));
 		panel.add(btnAddBook);
+		panel.add(btnAddFromExcel);
 		panel.add(btnEditBook);
 		panel.add(btnDeleteBook);
 		return panel;
@@ -134,8 +147,9 @@ public class ManagerView extends JPanel{
 		return panel;
 	}
 	private JPanel createUserActionsPanel() {
-		JPanel panel = new JPanel (new GridLayout(1, 3, 10, 10));
+		JPanel panel = new JPanel (new GridLayout(1, 4, 10, 10));
 		panel.add(btnAddUser);
+		panel.add(btnAddUserExcel);
 		panel.add(btnEditUser);
 		panel.add(btnDeleteUser);
 		return panel;
@@ -149,8 +163,9 @@ public class ManagerView extends JPanel{
 		return panel;
 	}
 	private JPanel createEmploymentActionsPanel() {
-		JPanel panel = new JPanel (new GridLayout(1, 3, 10, 10));
+		JPanel panel = new JPanel (new GridLayout(1, 4, 10, 10));
 		panel.add(btnAddEmployment);
+		panel.add(btnAddEmploymentExcel);
 		panel.add(btnEditEmployment);
 		panel.add(btnDeleteEmployment);
 		return panel;
