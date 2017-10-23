@@ -70,6 +70,7 @@ public class LoginController {
 		new EditPersonController(mainUI);
 		new DeletePersonController(mainUI);
 		new SearchPersonController(mainUI);
+		new AddLoanBookController(mainUI);
 	}
 	
 	private void cancelController() {

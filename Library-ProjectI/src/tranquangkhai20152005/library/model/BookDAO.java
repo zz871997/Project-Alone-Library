@@ -9,6 +9,10 @@ public interface BookDAO {
 	// Update a Book - not update soLuong
 	public void updateBook(Book book, String maSachMoi, String tenSachMoi, String tacGiaMoi,
 						   String NXBMoi, String theLoaiMoi, String namXBMoi);
+
+	// Update a Book - update soLuong
+	public void updateBook(Book book, int soLuongMoi);
+	
 	
 	// Insert a book
 	public void insertBook(Book book);

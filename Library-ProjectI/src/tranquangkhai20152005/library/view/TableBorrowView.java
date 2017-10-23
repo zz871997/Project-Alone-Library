@@ -12,6 +12,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
 
 import tranquangkhai20152005.library.model.Book;
+import tranquangkhai20152005.library.model.LoanBook;
 
 public class TableBorrowView extends JPanel{
 	private JTable table;
@@ -77,35 +78,33 @@ public class TableBorrowView extends JPanel{
 	}
 	
 	// Update Model of Table
-//	public void updateTable(ArrayList<Book> list) {
-//		SwingUtilities.invokeLater(new Runnable(){public void run(){
-//		    //Update the model here
-//			String data[][] = convertData(list);
-//			DefaultTableModel tableModel = new DefaultTableModel(data, titleItem) {
-//				@Override
-//				public boolean isCellEditable(int row, int column) {
-//					// TODO Auto-generated method stub
-//					return false;
-//				}
-//			};
-//			table.setModel(tableModel);	
-//		}});
-//	}
+	public void updateTable(ArrayList<LoanBook> list) {
+		SwingUtilities.invokeLater(new Runnable(){public void run(){
+		    //Update the model here
+			String data[][] = convertData(list);
+			DefaultTableModel tableModel = new DefaultTableModel(data, titleItem) {
+				@Override
+				public boolean isCellEditable(int row, int column) {
+					// TODO Auto-generated method stub
+					return false;
+				}
+			};
+			table.setModel(tableModel);	
+		}});
+	}
 //	
-//	// Convert list of Book => Array 2D
-//	private String[][] convertData(ArrayList<Book> list) {
-//		int size = list.size();
-//		String data[][] = new String[size][titleItem.length];
-//		for (int i = 0; i < size; i++) {
-//			Book aBook = list.get(i);
-//			data[i][0] = aBook.getMaSach();
-//			data[i][1] = aBook.getTenSach();
-//			data[i][2] = aBook.getTacGia();
-//			data[i][3] = aBook.getNXB();
-//			data[i][4] = aBook.getTheLoai();
-//			data[i][5] = aBook.getNamXB();
-//			data[i][6] = aBook.getSoLuong()+"";		
-//		}
-//		return data;
-//	}
+	// Convert list of Book => Array 2D
+	private String[][] convertData(ArrayList<LoanBook> list) {
+		int size = list.size();
+		String data[][] = new String[size][titleItem.length];
+		for (int i = 0; i < size; i++) {
+			LoanBook aLoanBook = list.get(i);
+			data[i][0] = aLoanBook.getMaMT();
+			data[i][1] = aLoanBook.getMaDG();
+			data[i][2] = aLoanBook.getMaNV();
+			data[i][3] = aLoanBook.getNgayMuon();
+			data[i][4] = aLoanBook.getNgayHenTra();
+		}
+		return data;
+	}
 }

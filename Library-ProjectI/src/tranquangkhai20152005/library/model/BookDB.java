@@ -250,4 +250,40 @@ public class BookDB implements BookDAO{
 		}
 		
 	}
+
+	@Override
+	public void updateBook(Book book, int soLuongMoi) {
+		String maSach = book.getMaSach();
+		connection = getConnection();
+		PreparedStatement preStatement = null;
+		try {
+			String sql = "UPDATE sach SET Soluong=? WHERE Masach=?";
+			preStatement = connection.prepareStatement(sql);
+			preStatement.setInt(1, soLuongMoi);
+			preStatement.setString(2, maSach);
+			
+			
+			int rows = preStatement.executeUpdate();
+			if (rows > 0) System.out.println("This book has been update number of book");
+			
+			// Close connection
+			preStatement.close();
+			connection.close();
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(new JDialog(), "Can't connect to database...");
+		}
+		finally {
+			try {
+				if(preStatement != null) preStatement.close();
+				if(connection != null) connection.close();	
+			} 
+			catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
 }
