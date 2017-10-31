@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
@@ -63,6 +64,13 @@ public class MenuView extends JPanel {
 	private JPanel createMainPanel() {
 		JPanel panel = new JPanel (new GridLayout(6, 1, 5, 5));
 		panel.setBorder(new TitledBorder(" Quản lí "));
+		
+		btnViewListBook.setIcon(new ImageIcon(this.getClass().getResource("/book-icon.png")));
+		btnViewListUser.setIcon(new ImageIcon(this.getClass().getResource("/user-icon.png")));
+		btnViewListEmployment.setIcon(new ImageIcon(this.getClass().getResource("/employee-icon.png")));
+		btnBorrow.setIcon(new ImageIcon(this.getClass().getResource("/loan-book-icon.png")));
+		btnLogout.setIcon(new ImageIcon(this.getClass().getResource("/log-out-icon.png")));
+		btnChangePass.setIcon(new ImageIcon(this.getClass().getResource("/change-pass-icon.png")));
 		panel.add(btnViewListBook);
 		panel.add(btnViewListUser);
 		panel.add(btnViewListEmployment);

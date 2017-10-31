@@ -3,6 +3,7 @@ package tranquangkhai20152005.library.view;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JPanel;
@@ -53,6 +54,11 @@ public class AddPersonView extends JDialog{
 	private JPanel createButtonPanel() {
 		JPanel panel = new JPanel (new GridLayout(1, 3, 10, 10));
 		panel.setBorder(new EmptyBorder(10,10,10,10));
+		
+		btnAdd.setIcon(new ImageIcon(this.getClass().getResource("/add-icon.png")));
+		btnReset.setIcon(new ImageIcon(this.getClass().getResource("/refresh-icon.png")));
+		btnCancel.setIcon(new ImageIcon(this.getClass().getResource("/cancel-icon.png")));
+		
 		panel.add(btnAdd);
 		panel.add(btnReset);
 		panel.add(btnCancel);

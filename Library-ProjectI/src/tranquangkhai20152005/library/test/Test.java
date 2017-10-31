@@ -12,30 +12,6 @@ import tranquangkhai20152005.library.view.MainUI;
 public class Test {
 	public static void main(String[] args) {
 		MainUI mainUI = new  MainUI();
-//		new AddBookController(mainUI);
-//		new EditBookController(mainUI);
-//		new DeleteBookController(mainUI);
-//		new SearchBookController(mainUI);
-//		new PrintSearchInforController(mainUI);
-//		new ChangeTableController(mainUI);
-//		mainUI.setVisible(true);	
 		LoginController loginController = new LoginController(mainUI);
-//		if (loginController.isLogin()) {
-//			System.out.println("Khai da vao");
-//			loginController.setLogin(true);
-//			
-//			
-//			
-//			new AddBookController(mainUI);
-//			new EditBookController(mainUI);
-//			new DeleteBookController(mainUI);
-//			new SearchBookController(mainUI);
-//			new PrintSearchInforController(mainUI);
-//			new ChangeTableController(mainUI);
-//			mainUI.setVisible(true);	
-//		}
-//		else {
-//			System.out.println("WTF");
-//		}
 	}
 }

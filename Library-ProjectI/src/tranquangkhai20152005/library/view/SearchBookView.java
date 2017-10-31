@@ -3,6 +3,7 @@ package tranquangkhai20152005.library.view;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -48,6 +49,9 @@ public class SearchBookView extends JPanel{
 	
 	private JPanel createActionsPanel() {
 		JPanel panel = new JPanel (new GridLayout(1, 2, 5, 5));
+		
+		btnPrint.setIcon(new ImageIcon(this.getClass().getResource("/print-icon.png")));
+		
 		panel.add(cbSearch);
 		panel.add(btnPrint);
 		return panel;

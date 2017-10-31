@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -117,7 +118,7 @@ public class ManagerView extends JPanel{
 
 
 	public ManagerView () {
-		setBorder(new EmptyBorder(10, 180, 10, 180));
+		setBorder(new EmptyBorder(10, 150, 10, 150));
 		setLayout(new BorderLayout());
 		managerPanel = bookManagerPanel;
 		add(managerPanel, BorderLayout.CENTER);
@@ -127,12 +128,18 @@ public class ManagerView extends JPanel{
 	private JPanel createBookManagerPanel() {
 		JPanel panel = new JPanel(new GridLayout(2, 1, 10, 10));
 		panel.add(createBookActionsPanel());
+		btnThongKeSach.setIcon(new ImageIcon(this.getClass().getResource("/chart-add-icon.png")));
 		panel.add(btnThongKeSach);
 		return panel;
 	}
 	private JPanel createBookActionsPanel() {
 		JPanel panel = new JPanel (new GridLayout(1, 4, 10, 10));
+		btnAddBook.setIcon(new ImageIcon(this.getClass().getResource("/book-add-icon.png")));
+		btnAddFromExcel.setIcon(new ImageIcon(this.getClass().getResource("/book-add-icon.png")));
+		btnEditBook.setIcon(new ImageIcon(this.getClass().getResource("/edit-book-icon.png")));
+		btnDeleteBook.setIcon(new ImageIcon(this.getClass().getResource("/delete-book-icon.png")));
 		panel.add(btnAddBook);
+		
 		panel.add(btnAddFromExcel);
 		panel.add(btnEditBook);
 		panel.add(btnDeleteBook);
@@ -143,11 +150,18 @@ public class ManagerView extends JPanel{
 	private JPanel createUserManagerPanel() {
 		JPanel panel = new JPanel(new GridLayout(2, 1, 10, 10));
 		panel.add(createUserActionsPanel());
+		btnThongKeUser.setIcon(new ImageIcon(this.getClass().getResource("/chart-add-icon.png")));
 		panel.add(btnThongKeUser);
 		return panel;
 	}
 	private JPanel createUserActionsPanel() {
 		JPanel panel = new JPanel (new GridLayout(1, 4, 10, 10));
+		
+		btnAddUser.setIcon(new ImageIcon(this.getClass().getResource("/user-add-icon.png")));
+		btnAddUserExcel.setIcon(new ImageIcon(this.getClass().getResource("/user-add-icon.png")));
+		btnEditUser.setIcon(new ImageIcon(this.getClass().getResource("/edit-user-icon.png")));
+		btnDeleteUser.setIcon(new ImageIcon(this.getClass().getResource("/delete-user-icon.png")));
+		
 		panel.add(btnAddUser);
 		panel.add(btnAddUserExcel);
 		panel.add(btnEditUser);
@@ -159,11 +173,18 @@ public class ManagerView extends JPanel{
 	private JPanel createEmploymentManagerPanel() {
 		JPanel panel = new JPanel(new GridLayout(2, 1, 10, 10));
 		panel.add(createEmploymentActionsPanel());
+		btnThongKeEmployment.setIcon(new ImageIcon(this.getClass().getResource("/chart-add-icon.png")));
 		panel.add(btnThongKeEmployment);
 		return panel;
 	}
 	private JPanel createEmploymentActionsPanel() {
 		JPanel panel = new JPanel (new GridLayout(1, 4, 10, 10));
+		
+		btnAddEmployment.setIcon(new ImageIcon(this.getClass().getResource("/add-employee-icon.png")));
+		btnAddEmploymentExcel.setIcon(new ImageIcon(this.getClass().getResource("/add-employee-icon.png")));
+		btnEditEmployment.setIcon(new ImageIcon(this.getClass().getResource("/edit-employee-icon.png")));
+		btnDeleteEmployment.setIcon(new ImageIcon(this.getClass().getResource("/delete-employee-icon.png")));
+		
 		panel.add(btnAddEmployment);
 		panel.add(btnAddEmploymentExcel);
 		panel.add(btnEditEmployment);
@@ -174,6 +195,12 @@ public class ManagerView extends JPanel{
 	/* Create Borrow Manager Panel */
 	private JPanel createBorrowManagerPanel() {
 		JPanel panel = new JPanel(new GridLayout(1, 4, 10, 10));
+		
+		btnBorrow.setIcon(new ImageIcon(this.getClass().getResource("/add-loan-icon.png")));
+		btnThongKeMuon.setIcon(new ImageIcon(this.getClass().getResource("/chart-add-icon.png")));
+		btnPrintBorrow.setIcon(new ImageIcon(this.getClass().getResource("/print-icon.png")));
+		btnViewDetail.setIcon(new ImageIcon(this.getClass().getResource("/detail-icon.png")));
+		
 		panel.add(btnBorrow);
 		panel.add(btnPrintBorrow);
 		panel.add(btnViewDetail);
