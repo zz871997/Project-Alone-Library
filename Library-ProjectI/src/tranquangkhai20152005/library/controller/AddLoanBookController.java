@@ -16,6 +16,8 @@ import javax.swing.JPopupMenu;
 
 import tranquangkhai20152005.library.model.Book;
 import tranquangkhai20152005.library.model.BookDB;
+import tranquangkhai20152005.library.model.Detail;
+import tranquangkhai20152005.library.model.DetailDB;
 import tranquangkhai20152005.library.model.LoanBook;
 import tranquangkhai20152005.library.model.LoanBookDB;
 import tranquangkhai20152005.library.model.Person;
@@ -246,6 +248,7 @@ public class AddLoanBookController {
 			loanBookInformation.getTfNgayMuon().getText().toString().trim().equals("")    ||
 			loanBookInformation.getCbMaDG().getSelectedIndex() == 0 ||
 			loanBookInformation.getCbMaNV().getSelectedIndex() == 0 ||
+			loanBookInformation.getTfTienCoc().getText().toString().trim().equals("")     ||
 			listBookIsLoan.size() == 0) {
 			System.out.println("Khong de trong cac truong du lieu");
 			JOptionPane.showMessageDialog(this.addLoanBookView, "Các trường dữ liệu không được để trống");
@@ -269,7 +272,20 @@ public class AddLoanBookController {
 			return false;
 		}
 		
-		
+		// Check tienCoc is integer?
+		try {
+			int tienCoc = Integer.parseInt(loanBookInformation.getTfTienCoc().getText().toString());
+			// Test < 0 ????
+			if(tienCoc <= 0) {
+				JOptionPane.showMessageDialog(this.addLoanBookView, "Nhập lại đúng định dạng các trường số !!!");
+				return false;
+			}	
+		}
+		catch (NumberFormatException e) {
+			JOptionPane.showMessageDialog(this.addLoanBookView, "Tiền cọc phải là số nguyên");
+			System.out.println(e.toString());
+			return false;
+		}
 		
 		return true;
 	}
@@ -321,9 +337,28 @@ public class AddLoanBookController {
 			String ngayHenTra = loanBookInformation.getCbNgayHenTra().getSelectedItem().toString() + "-"
 							   + loanBookInformation.getCbThangHenTra().getSelectedItem().toString() + "-"
 							   + loanBookInformation.getCbNamHenTra().getSelectedItem().toString();
+			int tienCoc       = Integer.parseInt(loanBookInformation.getTfTienCoc().getText().trim().toString());
 			
-			loanBook = new LoanBook(maMT, maDG, maNV, ngayMuon, ngayHenTra);
+			loanBook = new LoanBook(maMT, maDG, maNV, ngayMuon, ngayHenTra, tienCoc);
 			loanBookDB.insertLoanBook(loanBook);
+			
+//			for (int i  = 0; i < listBookIsLoan.size(); i++) {
+//				Detail detail = new Detail(maMT, listBookIsLoan.get(i).getMaSach(),Integer.parseInt(loanBookInformation.getTfSoLuongSach().getText().trim().toString()) 
+//										   , "", 0.0);
+//				DetailDB detailDB = new DetailDB();
+//				detailDB.insertDetail(detail);
+//			}
+			
+			for (int i = 0; i < arrBookIsLoanView.size(); i++) {
+				String maSach = arrBookIsLoanView.get(i).getLbMaSach().getText().trim().toString();
+				String tenSach = arrBookIsLoanView.get(i).getLbTenSach().getText().trim().toString();
+				int soLuongMuon = Integer.parseInt(arrBookIsLoanView.get(i).getLbSoluong().getText().trim().toString());
+				Detail aDetail = new Detail(maMT, maSach, soLuongMuon, "", 0.0);
+				DetailDB detailDB = new DetailDB();
+				detailDB.insertDetail(aDetail);
+			}
+			
+			
 			// Recreate number of Book is Loan
 			for (int i = 0; i < listBookIsLoan.size(); i++) {
 				int soLuongMoi = listBookIsLoan.get(i).getSoLuong() - Integer.parseInt(arrBookIsLoanView.get(i).getLbSoluong().getText().toString());
@@ -356,6 +391,7 @@ public class AddLoanBookController {
 		loanBookInformation.getTfMaMT().setText("");
 		loanBookInformation.getTfMaSach().setText("");
 		loanBookInformation.getTfSoLuongSach().setText("");
+		loanBookInformation.getTfTienCoc().setText("");
 		loanBookInformation.getCbMaDG().setSelectedIndex(0);
 		loanBookInformation.getCbMaNV().setSelectedIndex(0);
 		loanBookInformation.getCbNgayHenTra().setSelectedIndex(0);

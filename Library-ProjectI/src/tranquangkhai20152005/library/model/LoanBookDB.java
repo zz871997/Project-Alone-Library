@@ -53,8 +53,9 @@ public class LoanBookDB implements LoanBookDAO{
 				String maNV       = result.getString("MaNV");
 				String ngayMuon   = result.getString("Ngaymuon");
 				String ngayHenTra = result.getString("Ngayhentra");
+				int tienCoc       = result.getInt("Tiencoc");
 				
-				LoanBook loanBook = new LoanBook(maMT, maDG, maNV, ngayMuon, ngayHenTra);
+				LoanBook loanBook = new LoanBook(maMT, maDG, maNV, ngayMuon, ngayHenTra, tienCoc);
 				listLoanBook.add(loanBook);
 			}
 		} 
@@ -93,8 +94,8 @@ public class LoanBookDB implements LoanBookDAO{
 				String maNV       = result.getString("MaNV");
 				String ngayMuon   = result.getString("Ngaymuon");
 				String ngayHenTra = result.getString("Ngayhentra");
-				
-				loanBook = new LoanBook(maMT, maDG, maNV, ngayMuon, ngayHenTra);
+				int tienCoc       = result.getInt("Tiencoc");
+				loanBook = new LoanBook(maMT, maDG, maNV, ngayMuon, ngayHenTra, tienCoc);
 			}
 			// Close connection
 			result.close();
@@ -128,19 +129,21 @@ public class LoanBookDB implements LoanBookDAO{
 		String maNV       = loanBook.getMaNV();
 		String ngayMuon   = loanBook.getNgayMuon();
 		String ngayHenTra = loanBook.getNgayHenTra();
+		int    tienCoc    = loanBook.getTienCoc();
 		
 		connection = getConnection();
 		PreparedStatement preStatement = null;
 		
 		try {
-			String sql = "INSERT INTO muontra (MaMT, MaDG, MaNV, Ngaymuon, Ngayhentra)"
-                    + "VALUE (?, ?, ?, ?, ?)";
+			String sql = "INSERT INTO muontra (MaMT, MaDG, MaNV, Ngaymuon, Ngayhentra, Tiencoc)"
+                    + "VALUE (?, ?, ?, ?, ?, ?)";
 			preStatement = connection.prepareStatement(sql);
 			preStatement.setString(1, maMT);
 			preStatement.setString(2, maDG);
 			preStatement.setString(3, maNV);
 			preStatement.setString(4, ngayMuon);
 			preStatement.setString(5, ngayHenTra);
+			preStatement.setInt(6, tienCoc);
 			
 			int rows = preStatement.executeUpdate();
 			if (rows > 0) System.out.println("This loanBook has been inserted");

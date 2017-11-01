@@ -24,6 +24,7 @@ public class LoanBookInformation extends JPanel {
 	private JTextField tfMaSach;
 	private JTextField tfSoLuongSach;
 	private JTextField tfNgayMuon;
+	private JTextField tfTienCoc;
 	
 	private String[] date = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", 
 							 "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
@@ -114,27 +115,9 @@ public class LoanBookInformation extends JPanel {
 	public JButton getBtnAddThisBook() {
 		return btnAddThisBook;
 	}
-	// Create detail Book Panel
-//		private JPanel createDetailBookPanel() {
-//			JPanel detailPanel = new JPanel(new BorderLayout());
-//			contentBookPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-//			JScrollPane scroll = new JScrollPane(contentBookPanel);
-//			scroll.setBounds(50, 30, 300, 50);
-//			detailPanel.add(scroll, BorderLayout.CENTER);
-//			
-//			for (int i = 0; i < 10; i++) {
-//				contentBookPanel.add(new BookIsLoanView("1", "afg", "2"));
-//			}
-//			
-//			contentBookPanel.setVisible(true);
-//			contentBookPanel.setBorder(new TitledBorder(""));
-//			detailPanel.setBorder(new TitledBorder("a"));
-//			detailPanel.setVisible(true);
-//			return detailPanel;
-//			
-//		}
-	
-	
+	public JTextField getTfTienCoc() {
+		return tfTienCoc;
+	}
 	// Create Right panel 
 	private JPanel createRightPanel() {
 		JPanel right = new JPanel();
@@ -233,7 +216,7 @@ public class LoanBookInformation extends JPanel {
 		subPanel.add(lbHoTenNV = new JLabel());
 		subPanel.add(createSoLuongPanel());
 		subPanel.add(new JLabel(""));
-		subPanel.add(new JLabel(""));
+		subPanel.add(createTienCocPanel());
 
 		return subPanel;
 	}
@@ -256,6 +239,11 @@ public class LoanBookInformation extends JPanel {
 		return ngayHenTraPanel;
 	}
 	
-	
+	private JPanel createTienCocPanel() {
+		JPanel tienCocPanel = new JPanel(new BorderLayout(5, 5));
+		tienCocPanel.add(new JLabel("Tiền cọc"), BorderLayout.WEST);
+		tienCocPanel.add(tfTienCoc = new JTextField(10));
+		return tienCocPanel;
+	}
 	
 }
