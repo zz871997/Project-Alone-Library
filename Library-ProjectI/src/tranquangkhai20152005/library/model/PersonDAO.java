@@ -15,4 +15,7 @@ public interface PersonDAO {
 	
 	// Delete a person
 	public void deletePerson(String tableName, Person person);
+	
+	// Thong ke person
+	public ArrayList<ArrayList<String>> thongKePerson(String tableName, String colName);
 }

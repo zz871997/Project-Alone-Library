@@ -293,7 +293,6 @@ public class BookDB implements BookDAO{
 		Statement statement = null;
 		ArrayList<ArrayList<String>> arrResult = new ArrayList<ArrayList<String>>();
 		
-		
 		try {
 			String sql = "SELECT " + colName + ", sum(Soluong)" + " FROM sach group by " + colName;
 			statement = connection.createStatement();
@@ -317,7 +316,6 @@ public class BookDB implements BookDAO{
 		catch (SQLException e) {
 			e.printStackTrace();
 			JOptionPane.showMessageDialog(new JDialog(), "Can't connect to database...");
-			
 		}
 		finally {
 			try {

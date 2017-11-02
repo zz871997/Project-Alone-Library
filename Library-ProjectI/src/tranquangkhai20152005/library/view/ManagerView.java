@@ -25,12 +25,15 @@ public class ManagerView extends JPanel{
 	private JButton btnEditUser     = new JButton("SỬA DG");
 	private JButton btnDeleteUser   = new JButton("XÓA DG");
 	private JButton btnThongKeUser  = new JButton("THỐNG KÊ DG");
+	private String[] listTKPerson   = {"--Chọn kiểu thống kê--","Năm sinh", "Giới tính", "Quê quán", "Địa chỉ"};
+	private JComboBox<String> cbTKUser = new JComboBox<String>(listTKPerson);
 	
 	private JButton btnAddEmployment      = new JButton("THÊM NV");
 	private JButton btnAddEmploymentExcel = new JButton("THÊM NV EXCEL");
 	private JButton btnEditEmployment     = new JButton("SỬA NV");
 	private JButton btnDeleteEmployment   = new JButton("XÓA NV");
 	private JButton btnThongKeEmployment  = new JButton("THỐNG KÊ NV");
+	private JComboBox<String> cbTKEmployment = new JComboBox<String>(listTKPerson);
 	
 	private JButton btnBorrow      = new JButton("THÊM MƯỢN");
 	private JButton btnPrintBorrow = new JButton("IN");
@@ -46,6 +49,12 @@ public class ManagerView extends JPanel{
 	
 	public JComboBox<String> getCbTKSach() {
 		return cbTKSach;
+	}
+	public JComboBox<String> getCbTKUser() {
+		return cbTKUser;
+	}
+	public JComboBox<String> getCbTKEmployment() {
+		return cbTKEmployment;
 	}
 	public JButton getBtnAddBook() {
 		return btnAddBook;
@@ -132,7 +141,6 @@ public class ManagerView extends JPanel{
 	private JPanel createBookManagerPanel() {
 		JPanel panel = new JPanel(new GridLayout(2, 1, 10, 10));
 		panel.add(createBookActionsPanel());
-		
 		panel.add(createTKSachPanel());
 		return panel;
 	}
@@ -161,10 +169,10 @@ public class ManagerView extends JPanel{
 	private JPanel createUserManagerPanel() {
 		JPanel panel = new JPanel(new GridLayout(2, 1, 10, 10));
 		panel.add(createUserActionsPanel());
-		btnThongKeUser.setIcon(new ImageIcon(this.getClass().getResource("/chart-add-icon.png")));
-		panel.add(btnThongKeUser);
+		panel.add(createTKUserPanel());
 		return panel;
 	}
+	
 	private JPanel createUserActionsPanel() {
 		JPanel panel = new JPanel (new GridLayout(1, 4, 10, 10));
 		
@@ -179,15 +187,31 @@ public class ManagerView extends JPanel{
 		panel.add(btnDeleteUser);
 		return panel;
 	}
+	private JPanel createTKUserPanel() {
+		JPanel panel = new JPanel (new GridLayout(1, 2, 10, 10));
+		btnThongKeUser.setIcon(new ImageIcon(this.getClass().getResource("/chart-add-icon.png")));
+		panel.add(cbTKUser);
+		panel.add(btnThongKeUser);
+		return panel;
+	}
 	
 	/* Create Employment Manager Panel */
 	private JPanel createEmploymentManagerPanel() {
 		JPanel panel = new JPanel(new GridLayout(2, 1, 10, 10));
 		panel.add(createEmploymentActionsPanel());
-		btnThongKeEmployment.setIcon(new ImageIcon(this.getClass().getResource("/chart-add-icon.png")));
-		panel.add(btnThongKeEmployment);
+		
+		panel.add(createTKEmploymentPanel());
 		return panel;
 	}
+	
+	private JPanel createTKEmploymentPanel() {
+		JPanel panel = new JPanel (new GridLayout(1, 2, 10, 10));
+		btnThongKeEmployment.setIcon(new ImageIcon(this.getClass().getResource("/chart-add-icon.png")));
+		panel.add(cbTKEmployment);
+		panel.add(btnThongKeEmployment);
+		return panel;	
+	}
+	
 	private JPanel createEmploymentActionsPanel() {
 		JPanel panel = new JPanel (new GridLayout(1, 4, 10, 10));
 		

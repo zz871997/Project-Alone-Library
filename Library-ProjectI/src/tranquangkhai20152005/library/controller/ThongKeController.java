@@ -36,8 +36,6 @@ public class ThongKeController {
 	private MainUI mainUI;
 	private BookDB bookDB;
 	
-	
-	
 	private ThongKeView thongKeView;
 	private ThongKeInformation thongKeInformation;
 	private JButton btnThongKeSach;
@@ -173,9 +171,9 @@ public class ThongKeController {
 			FileOutputStream fos = new FileOutputStream(new File(path));
 			XSSFWorkbook workbook = new XSSFWorkbook();
 			XSSFSheet sheet = workbook.createSheet("ThongKeSach");
-			sheet.setColumnWidth(0, 8200);
-			sheet.setColumnWidth(1, 6000);
-			sheet.setColumnWidth(2, 8200);
+			sheet.setColumnWidth(0, 8400);
+			sheet.setColumnWidth(1, 5600);
+			sheet.setColumnWidth(2, 8400);
 			
 			Row row = sheet.createRow(0);
 			Cell cell = row.createCell(0, CellType.STRING);

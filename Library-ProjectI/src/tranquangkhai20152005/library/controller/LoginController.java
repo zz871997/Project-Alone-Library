@@ -73,6 +73,7 @@ public class LoginController {
 		new AddLoanBookController(mainUI);
 		new ShowDetailInformation(mainUI);
 		new ThongKeController(mainUI);
+		new TKPersonController(mainUI);
 	}
 	
 	private void cancelController() {
