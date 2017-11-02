@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
@@ -16,7 +17,8 @@ public class ManagerView extends JPanel{
 	private JButton btnEditBook     = new JButton("SỬA S");
 	private JButton btnDeleteBook   = new JButton("XÓA S");
 	private JButton btnThongKeSach  = new JButton("THỐNG KÊ S");
-	
+	private String[] listTKSach     = {"--Chọn kiểu thống kê--","Tác giả", "Nhà xuất bản", "Thể loại", "Năm xuất bản"};
+	private JComboBox<String> cbTKSach = new JComboBox<String>(listTKSach);
 	
 	private JButton btnAddUser      = new JButton("THÊM DG");
 	private JButton btnAddUserExcel = new JButton ("THÊM ĐG EXCEL");
@@ -42,7 +44,9 @@ public class ManagerView extends JPanel{
 	
 	private JPanel managerPanel;
 	
-	
+	public JComboBox<String> getCbTKSach() {
+		return cbTKSach;
+	}
 	public JButton getBtnAddBook() {
 		return btnAddBook;
 	}
@@ -128,8 +132,8 @@ public class ManagerView extends JPanel{
 	private JPanel createBookManagerPanel() {
 		JPanel panel = new JPanel(new GridLayout(2, 1, 10, 10));
 		panel.add(createBookActionsPanel());
-		btnThongKeSach.setIcon(new ImageIcon(this.getClass().getResource("/chart-add-icon.png")));
-		panel.add(btnThongKeSach);
+		
+		panel.add(createTKSachPanel());
 		return panel;
 	}
 	private JPanel createBookActionsPanel() {
@@ -143,6 +147,13 @@ public class ManagerView extends JPanel{
 		panel.add(btnAddFromExcel);
 		panel.add(btnEditBook);
 		panel.add(btnDeleteBook);
+		return panel;
+	}
+	private JPanel createTKSachPanel() {
+		JPanel panel = new JPanel (new GridLayout(1, 2, 10, 10));
+		btnThongKeSach.setIcon(new ImageIcon(this.getClass().getResource("/chart-add-icon.png")));
+		panel.add(cbTKSach);
+		panel.add(btnThongKeSach);
 		return panel;
 	}
 	

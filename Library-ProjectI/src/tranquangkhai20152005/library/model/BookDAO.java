@@ -19,4 +19,7 @@ public interface BookDAO {
 	
 	// Delete a book
 	public void deleteBook(Book book);
+	
+	// Thong ke sach
+	public ArrayList<ArrayList<String>> thongKeSach(String colName);
 }

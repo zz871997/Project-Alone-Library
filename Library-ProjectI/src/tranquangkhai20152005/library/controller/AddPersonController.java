@@ -221,9 +221,11 @@ public class AddPersonController {
 			else {
 				openFilePath = path + ".xlsx";
 			}
+			
+			System.out.println(openFilePath);
+			addPersonFromExcelFilePath(openFilePath, tableName);
 		}
-		System.out.println(openFilePath);
-		addPersonFromExcelFilePath(openFilePath, tableName);
+		
 	}
 	
 	private void addPersonFromExcelFilePath(String path, String tableName) {

@@ -9,9 +9,8 @@ encoding//src/tranquangkhai20152005/library/controller/EditPersonController.java
 encoding//src/tranquangkhai20152005/library/controller/LoginController.java=UTF-8
 encoding//src/tranquangkhai20152005/library/controller/PrintSearchInforController.java=UTF-8
 encoding//src/tranquangkhai20152005/library/controller/ShowDetailInformation.java=UTF-8
-encoding//src/tranquangkhai20152005/library/test/CreateExcelDemo.java=UTF-8
+encoding//src/tranquangkhai20152005/library/controller/ThongKeController.java=UTF-8
 encoding//src/tranquangkhai20152005/library/test/DemoPOI.java=UTF-8
-encoding//src/tranquangkhai20152005/library/test/DemoReadBookExcel.java=UTF-8
 encoding//src/tranquangkhai20152005/library/view/AddBookView.java=UTF-8
 encoding//src/tranquangkhai20152005/library/view/AddLoanBookView.java=UTF-8
 encoding//src/tranquangkhai20152005/library/view/AddPersonView.java=UTF-8
@@ -34,3 +33,6 @@ encoding//src/tranquangkhai20152005/library/view/TableBookView.java=UTF-8
 encoding//src/tranquangkhai20152005/library/view/TableBorrowView.java=UTF-8
 encoding//src/tranquangkhai20152005/library/view/TableDetailVew.java=UTF-8
 encoding//src/tranquangkhai20152005/library/view/TablePersonView.java=UTF-8
+encoding//src/tranquangkhai20152005/library/view/TableThongKeView.java=UTF-8
+encoding//src/tranquangkhai20152005/library/view/ThongKeInformation.java=UTF-8
+encoding//src/tranquangkhai20152005/library/view/ThongKeView.java=UTF-8

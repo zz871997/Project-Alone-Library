@@ -166,9 +166,12 @@ public class AddBookController {
 			else {
 				openFilePath = path + ".xlsx";
 			}
+			
+			System.out.println(openFilePath);
+			addBookFromExcelFile(openFilePath);
 		}
-		System.out.println(openFilePath);
-		addBookFromExcelFile(openFilePath);
+		
+		
 	}
 	
 	private void addBookFromExcelFile(String path) {

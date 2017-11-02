@@ -286,4 +286,49 @@ public class BookDB implements BookDAO{
 		}
 		
 	}
+
+	@Override
+	public ArrayList<ArrayList<String>> thongKeSach(String colName) {
+		connection = getConnection();
+		Statement statement = null;
+		ArrayList<ArrayList<String>> arrResult = new ArrayList<ArrayList<String>>();
+		
+		
+		try {
+			String sql = "SELECT " + colName + ", sum(Soluong)" + " FROM sach group by " + colName;
+			statement = connection.createStatement();
+			ResultSet result = statement.executeQuery(sql);
+			
+			while (result.next()) {
+				String column = result.getString(colName);
+				int   soLuong = result.getInt("sum(Soluong)");
+				
+				ArrayList<String> record = new ArrayList<String>();
+				record.add(column);
+				record.add(Integer.toString(soLuong));
+				arrResult.add(record);
+				//record.clear();
+			}
+			// Close connection
+			result.close();
+			statement.close();
+			connection.close();
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(new JDialog(), "Can't connect to database...");
+			
+		}
+		finally {
+			try {
+				if(statement  != null) statement.close();
+				if(connection != null) connection.close();	
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return arrResult;
+	}
 }

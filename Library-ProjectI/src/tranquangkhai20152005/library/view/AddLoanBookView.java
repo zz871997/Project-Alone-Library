@@ -21,7 +21,7 @@ public class AddLoanBookView extends JDialog{
 	// Constructor
 	public AddLoanBookView(MainUI mainUI) {
 		this.mainUI = mainUI;
-		setPreferredSize(new Dimension(960, 338));
+		setPreferredSize(new Dimension(1020, 338));
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setResizable(true);
 		setTitle("Thêm mượn trả mới");
