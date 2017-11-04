@@ -36,7 +36,7 @@ public class ManagerView extends JPanel{
 	private JComboBox<String> cbTKEmployment = new JComboBox<String>(listTKPerson);
 	
 	private JButton btnBorrow      = new JButton("THÊM MƯỢN");
-	private JButton btnPrintBorrow = new JButton("IN");
+	private JButton btnEditBorrow = new JButton("SỬA MT");
 	private JButton btnViewDetail  = new JButton("XEM CHI TIẾT");
 	private JButton btnThongKeMuon = new JButton("THỐNG KÊ");
 	
@@ -74,8 +74,8 @@ public class ManagerView extends JPanel{
 	public JButton getBtnBorrow() {
 		return btnBorrow;
 	}
-	public JButton getBtnPrintBorrow() {
-		return btnPrintBorrow;
+	public JButton getBtnEditBorrow() {
+		return btnEditBorrow;
 	}
 	public JButton getBtnViewDetail() {
 		return btnViewDetail;
@@ -233,11 +233,11 @@ public class ManagerView extends JPanel{
 		
 		btnBorrow.setIcon(new ImageIcon(this.getClass().getResource("/add-loan-icon.png")));
 		btnThongKeMuon.setIcon(new ImageIcon(this.getClass().getResource("/chart-add-icon.png")));
-		btnPrintBorrow.setIcon(new ImageIcon(this.getClass().getResource("/print-icon.png")));
+		btnEditBorrow.setIcon(new ImageIcon(this.getClass().getResource("/edit-icon.png")));
 		btnViewDetail.setIcon(new ImageIcon(this.getClass().getResource("/detail-icon.png")));
 		
 		panel.add(btnBorrow);
-		panel.add(btnPrintBorrow);
+		panel.add(btnEditBorrow);
 		panel.add(btnViewDetail);
 		panel.add(btnThongKeMuon);
 		return panel;

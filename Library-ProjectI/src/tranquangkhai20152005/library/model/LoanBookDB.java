@@ -169,4 +169,44 @@ public class LoanBookDB implements LoanBookDAO{
 		}
 	}
 
+
+
+	@Override
+	public void editLoanBook(LoanBook loanBook, String maDGMoi, String maNVMoi, String ngayHenTraMoi, int tienCocMoi) {
+		String maMT = loanBook.getMaMT();
+		connection = getConnection();
+		PreparedStatement preStatement = null;
+		
+		try {
+			String sql = "UPDATE muontra SET MaDG=?, MaNV=?, Ngayhentra=?, Tiencoc=? WHERE MaMT=?";
+			preStatement = connection.prepareStatement(sql);
+			preStatement.setString(1, maDGMoi);
+			preStatement.setString(2, maNVMoi);
+			preStatement.setString(3, ngayHenTraMoi);
+			preStatement.setInt(4, tienCocMoi);
+			preStatement.setString(5, maMT);
+			
+			int rows = preStatement.executeUpdate();
+			if (rows > 0) System.out.println("This loanBook has been update");
+			
+			// Close connection
+			preStatement.close();
+			connection.close();
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(new JDialog(), "Can't connect to database...");
+		}
+		finally {
+			try {
+				if(preStatement != null) preStatement.close();
+				if(connection != null) connection.close();	
+			} 
+			catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
 }

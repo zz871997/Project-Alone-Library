@@ -7,4 +7,6 @@ public interface LoanBookDAO {
 	public LoanBook getLoanBook(String maMT);
 	
 	public void insertLoanBook(LoanBook loanBook);
+	
+	public void editLoanBook (LoanBook loanBook, String maDGMoi, String maNVMoi, String ngayHenTraMoi, int tienCocMoi);
 }

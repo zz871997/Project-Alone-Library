@@ -54,6 +54,7 @@ public class TablePersonView extends JPanel{
 		JTable table = new JTable();
 		table.setCellSelectionEnabled(false);
 		table.setRowSelectionAllowed(true);
+		table.getTableHeader().setReorderingAllowed(false);
 		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		return table;
 	}

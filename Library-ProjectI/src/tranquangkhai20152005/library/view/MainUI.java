@@ -98,6 +98,7 @@ public class MainUI extends JFrame{
 	// Constructor
 	public MainUI() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setIconImage(new ImageIcon(this.getClass().getResource("/library-icon.png")).getImage());
 		setSize(850, 500);
 		setTitle("Demo quản lí thư viện by Tran Quang Khai");
 		setResizable(false);

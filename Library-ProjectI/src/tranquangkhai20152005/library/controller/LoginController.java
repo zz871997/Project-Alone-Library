@@ -74,6 +74,7 @@ public class LoginController {
 		new ShowDetailInformation(mainUI);
 		new ThongKeController(mainUI);
 		new TKPersonController(mainUI);
+		new EditLoanController(mainUI);
 	}
 	
 	private void cancelController() {

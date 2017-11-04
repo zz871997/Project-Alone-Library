@@ -26,11 +26,11 @@ public class LoanBookInformation extends JPanel {
 	private JTextField tfNgayMuon;
 	private JTextField tfTienCoc;
 	
-	private String[] date = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", 
+	private String[] date = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", 
 							 "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
 							 "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
 	private JComboBox<String> cbNgayHenTra = new JComboBox<String>(date);
-	private String[] month = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", 
+	private String[] month = {"01", "02", "03", "04", "05", "06", "07", "08", "09", "10", 
 			 				  "11", "12"};
 	private JComboBox<String> cbThangHenTra = new JComboBox<>(month);
 	private String[] year = {"2017", "2018", "2019", "2020"};
