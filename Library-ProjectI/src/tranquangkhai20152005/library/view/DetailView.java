@@ -15,6 +15,8 @@ public class DetailView extends JDialog{
 	
 	private JButton btnPrint = new JButton("IN");
 	private JButton btnCancel = new JButton("HỦY");
+	private JButton btnPay    = new JButton ("TRẢ SÁCH");
+	private JButton btnPayAll  = new JButton("TRẢ TẤT CẢ");
 	
 	public DetailInformation getDetailInformation() {
 		return detailInformation;
@@ -24,6 +26,12 @@ public class DetailView extends JDialog{
 	}
 	public JButton getBtnCancel() {
 		return btnCancel;
+	}
+	public JButton getBtnPay() {
+		return btnPay;
+	}
+	public JButton getBtnPayAll() {
+		return btnPayAll;
 	}
 	
 	public DetailView(MainUI mainUI) {
@@ -48,12 +56,14 @@ public class DetailView extends JDialog{
 	}
 	
 	private JPanel createButtonPanel() {
-		JPanel panel = new JPanel (new GridLayout(1, 2, 10, 10));
+		JPanel panel = new JPanel (new GridLayout(1, 4, 10, 10));
 		panel.setBorder(new EmptyBorder(10,10,10,10));
 		
 		btnPrint.setIcon(new ImageIcon(this.getClass().getResource("/print-icon.png")));
 		btnCancel.setIcon(new ImageIcon(this.getClass().getResource("/cancel-icon.png")));
 		
+		panel.add(btnPay);
+		panel.add(btnPayAll);
 		panel.add(btnPrint);
 		panel.add(btnCancel);
 		return panel;

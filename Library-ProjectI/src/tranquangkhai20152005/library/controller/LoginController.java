@@ -28,12 +28,12 @@ public class LoginController {
 	private JButton btnChangePass;
 	private JButton btnAboutMe;
 	
-	private AddBookController addBookController = null;
-	private EditBookController editBookController = null;
-	private DeleteBookController deleteBookController = null;
-	private SearchBookController searchBookController = null;
-	private PrintSearchInforController printSearchInforController = null;
-	private ChangeTableController changeTableController = null;
+//	private AddBookController addBookController = null;
+//	private EditBookController editBookController = null;
+//	private DeleteBookController deleteBookController = null;
+//	private SearchBookController searchBookController = null;
+//	private PrintSearchInforController printSearchInforController = null;
+//	private ChangeTableController changeTableController = null;
 	
 	private final String dbURL = "jdbc:mysql://localhost:3306/library";
 	private String user = "root";
@@ -60,12 +60,12 @@ public class LoginController {
 	}
 	
 	private void createController() {
-		addBookController = new AddBookController(mainUI);
-		editBookController = new EditBookController(mainUI);
-		deleteBookController = new DeleteBookController(mainUI);
-		searchBookController = new SearchBookController(mainUI);
-		printSearchInforController = new PrintSearchInforController(mainUI);
-		changeTableController = new ChangeTableController(mainUI);
+		AddBookController addBookController = new AddBookController(mainUI);
+		EditBookController editBookController = new EditBookController(mainUI);
+		DeleteBookController deleteBookController = new DeleteBookController(mainUI);
+		SearchBookController searchBookController = new SearchBookController(mainUI);
+		PrintSearchInforController printSearchInforController = new PrintSearchInforController(mainUI);
+		ChangeTableController changeTableController = new ChangeTableController(mainUI);
 		new AddPersonController(mainUI);
 		new EditPersonController(mainUI);
 		new DeletePersonController(mainUI);
@@ -78,12 +78,17 @@ public class LoginController {
 	}
 	
 	private void cancelController() {
-		addBookController = null;
-		editBookController = null;
-		deleteBookController = null;
-		searchBookController = null;
-		printSearchInforController = null;
-		changeTableController = null;
+//		addBookController = null;
+//		editBookController = null;
+//		deleteBookController = null;
+//		searchBookController = null;
+//		printSearchInforController = null;
+//		changeTableController = null;
+//		this.mainUI = null;
+//		//System.exit(0);
+//		mainUI = new MainUI();
+//		mainUI.setVisible(true);
+//		new LoginController(mainUI);
 	}
 	
 	private void setAction() {
@@ -134,7 +139,10 @@ public class LoginController {
 				loginPanel.setVisible(true);
 				mainUI.getMainPanel().setVisible(false);
 				mainUI.getMenuView().setVisible(false);
-				
+				//mainUI.setVisible(false);
+//				mainUI = null;
+//				MainUI mainUI2 = new MainUI();
+//				LoginController newLogin = new LoginController(mainUI2);
 				return;
 			}
 		});

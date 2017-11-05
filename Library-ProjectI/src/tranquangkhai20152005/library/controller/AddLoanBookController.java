@@ -354,6 +354,9 @@ public class AddLoanBookController {
 				String tenSach = arrBookIsLoanView.get(i).getLbTenSach().getText().trim().toString();
 				int soLuongMuon = Integer.parseInt(arrBookIsLoanView.get(i).getLbSoluong().getText().trim().toString());
 				Detail aDetail = new Detail(maMT, maSach, soLuongMuon, "", 0.0);
+				
+				// I'm edit here
+				//aDetail.setTrangThai("Chưa trả");
 				DetailDB detailDB = new DetailDB();
 				detailDB.insertDetail(aDetail);
 			}

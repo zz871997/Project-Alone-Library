@@ -25,6 +25,9 @@ public class Detail {
 	}
 	public void setTrangThai(String trangThai) {
 		this.trangThai = trangThai;
+	}	
+	public String getTrangThai() {
+		return trangThai;
 	}
 	
 	public Detail(String maMuon, String maSach, int soLuong, String ngayTra, double soTienPhat) {

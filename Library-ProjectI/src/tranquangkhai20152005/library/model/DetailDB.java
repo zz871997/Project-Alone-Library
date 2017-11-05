@@ -120,6 +120,85 @@ public class DetailDB implements DetailDAO{
 			}
 		}
 	}
+
+	@Override
+	public void updateDetail(Detail detail, String ngayTraMoi, double tienPhatMoi) {
+		String maMT = detail.getMaMuon();
+		String maSach = detail.getMaSach();
+		connection = getConnection();
+		PreparedStatement preStatement = null;
+		try {
+			String sql = "UPDATE chitietmuon SET Ngaytra=?, Sotienphat=? WHERE (Mamuon=? AND Masachmuon=?)";
+			preStatement = (PreparedStatement) connection.prepareStatement(sql);
+			preStatement.setString(1, ngayTraMoi);
+			preStatement.setDouble(2, tienPhatMoi);
+			preStatement.setString(3, maMT);
+			preStatement.setString(4, maSach);
+			
+			
+			int rows = preStatement.executeUpdate();
+			if (rows > 0) System.out.println("This loanBookDetail has been update");
+			
+			// Close connection
+			preStatement.close();
+			connection.close();
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(new JDialog(), "Can't connect to database...");
+		}
+		finally {
+			try {
+				if(preStatement != null) preStatement.close();
+				if(connection != null) connection.close();	
+			} 
+			catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+	@Override
+	public Detail getDetail(String maMT, String maSachMuon) {
+		Detail detail = null;
+		connection = getConnection();
+		PreparedStatement preStatement = null;
+		String sql = "SELECT * FROM chitietmuon WHERE (Mamuon=? AND Masachmuon=?)";
+		try {
+			preStatement = (PreparedStatement) connection.prepareStatement(sql);
+			preStatement.setString(1, maMT);
+			preStatement.setString(2, maSachMuon);
+			ResultSet result = preStatement.executeQuery();
+			
+			while (result.next()) {
+				int soLuongMuon = result.getInt("Soluongmuon");
+				String ngayTra  = result.getString("Ngaytra");
+				double soTienPhat = result.getDouble("Sotienphat");
+				
+				detail = new Detail(maMT, maSachMuon, soLuongMuon, ngayTra, soTienPhat);
+			}
+			// Close connection
+			result.close();
+			preStatement.close();
+			connection.close();			
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(new JDialog(), "Can't connect to database...");
+		}
+		finally {
+			try {
+				if(preStatement != null) preStatement.close();
+				if(connection != null) connection.close();	
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return detail;
+	}
 	
 	
 }
