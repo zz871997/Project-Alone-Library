@@ -56,14 +56,19 @@ public class PrintSearchInforController {
 		btnPrint.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				try {
-					setAction();
-				}
-				catch (UnsupportedEncodingException | FileNotFoundException e1) {
-					e1.printStackTrace();
-				} 
-				catch (Exception e1) {
-					e1.printStackTrace();
+//				try {
+//					setAction();
+//				}
+//				catch (UnsupportedEncodingException | FileNotFoundException e1) {
+//					e1.printStackTrace();
+//				} 
+//				catch (Exception e1) {
+//					e1.printStackTrace();
+//				}
+				System.out.println("Size: " + resultSearch.size());
+				for (int i = 0; i < resultSearch.size(); i++) {
+					System.out.println("Name " + resultSearch.get(i).getTenSach());
+					System.out.println("Author: " + resultSearch.get(i).getTacGia());
 				}
 				
 			}
@@ -71,6 +76,8 @@ public class PrintSearchInforController {
 		
 		//setAction();
 	}
+	
+	/* Main Test */
 	
 	
 	/*----------------Set Action------------------- */

@@ -35,10 +35,12 @@ public class ManagerView extends JPanel{
 	private JButton btnThongKeEmployment  = new JButton("THỐNG KÊ NV");
 	private JComboBox<String> cbTKEmployment = new JComboBox<String>(listTKPerson);
 	
-	private JButton btnBorrow      = new JButton("THÊM MƯỢN");
-	private JButton btnEditBorrow = new JButton("SỬA MT");
-	private JButton btnViewDetail  = new JButton("XEM CHI TIẾT");
-	private JButton btnThongKeMuon = new JButton("THỐNG KÊ");
+	private JButton btnBorrow       = new JButton("THÊM MƯỢN");
+	private JButton btnEditBorrow   = new JButton("SỬA MT");
+	private JButton btnViewDetail   = new JButton("XEM CHI TIẾT");
+	private JButton btnThongKeMuon  = new JButton("THỐNG KÊ");
+	private String[] listTKLoanBook = {"--Chọn kiểu thống kê--", "Mã độc giả", "Mã nhân viên", "Ngày mượn", "Ngày hẹn trả"};
+	private JComboBox<String> cbTKLoanBook = new JComboBox<String>(listTKLoanBook);
 	
 	private JPanel bookManagerPanel = createBookManagerPanel();
 	private JPanel userManagerPanel = createUserManagerPanel();
@@ -47,6 +49,9 @@ public class ManagerView extends JPanel{
 	
 	private JPanel managerPanel;
 	
+	public JComboBox<String> getCbTKLoanBook() {
+		return cbTKLoanBook;
+	}
 	public JComboBox<String> getCbTKSach() {
 		return cbTKSach;
 	}
@@ -229,17 +234,30 @@ public class ManagerView extends JPanel{
 	
 	/* Create Borrow Manager Panel */
 	private JPanel createBorrowManagerPanel() {
-		JPanel panel = new JPanel(new GridLayout(1, 4, 10, 10));
+		JPanel panel = new JPanel(new GridLayout(2, 1, 10, 10));
+		panel.add(createLoanBookActionPanel());
+		panel.add(createTKLoanBookPanel());
 		
+		return panel;
+	}
+	
+	private JPanel createLoanBookActionPanel() {
+		JPanel panel = new JPanel(new GridLayout(1, 3, 10, 10));
 		btnBorrow.setIcon(new ImageIcon(this.getClass().getResource("/add-loan-icon.png")));
-		btnThongKeMuon.setIcon(new ImageIcon(this.getClass().getResource("/chart-add-icon.png")));
 		btnEditBorrow.setIcon(new ImageIcon(this.getClass().getResource("/edit-icon.png")));
 		btnViewDetail.setIcon(new ImageIcon(this.getClass().getResource("/detail-icon.png")));
-		
 		panel.add(btnBorrow);
 		panel.add(btnEditBorrow);
 		panel.add(btnViewDetail);
+		return panel;
+	}
+	
+	private JPanel createTKLoanBookPanel() {
+		JPanel panel = new JPanel(new GridLayout(1, 2, 10, 10));
+		btnThongKeMuon.setIcon(new ImageIcon(this.getClass().getResource("/chart-add-icon.png")));
+		panel.add(cbTKLoanBook);
 		panel.add(btnThongKeMuon);
 		return panel;
 	}
 }
+

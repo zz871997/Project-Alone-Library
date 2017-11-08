@@ -3,8 +3,13 @@ package tranquangkhai20152005.library.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -22,10 +27,17 @@ import javax.swing.event.ListSelectionListener;
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.ClientAnchor;
+import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.Drawing;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.Picture;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.util.IOUtils;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -363,6 +375,10 @@ public class ShowDetailInformation {
 			cell.setCellStyle(createStyleDefault(workbook));
 			sheet.addMergedRegion(new CellRangeAddress(2, 2, 0, 1));
 			
+			
+			printImage(workbook, sheet);
+			
+			
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 			LocalDate localDate   = LocalDate.now();
 			String ngayHT         = Integer.toString(localDate.getDayOfMonth());
@@ -375,13 +391,34 @@ public class ShowDetailInformation {
 			cell.setCellStyle(createStyleForDate(workbook));
 			sheet.addMergedRegion(new CellRangeAddress(3, 3, 3, 4));
 			
-			row = sheet.createRow(5);
+			
+			
+			//////////////////////////////////////////////////////////
+//			row = sheet.createRow(3);
+//			cell = row.createCell(0);
+//			printImage(workbook, sheet);
+//			cell.setCellStyle(createStyleDefault(workbook));
+//			sheet.addMergedRegion(new CellRangeAddress(3, 5, 0, 1));
+			//////////////////////////////////////////////////////////
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			row = sheet.createRow(7);
 			cell = row.createCell(0, CellType.STRING);
 			cell.setCellValue("PHIẾU MƯỢN TRẢ");
 			cell.setCellStyle(createStyleForTitle(workbook));
-			sheet.addMergedRegion(new CellRangeAddress(5, 5, 0, 4));
+			sheet.addMergedRegion(new CellRangeAddress(7, 7, 0, 4));
 			
-			row = sheet.createRow(7);
+			row = sheet.createRow(9);
 			cell = row.createCell(0, CellType.STRING);
 			cell.setCellValue("Mã mượn trả");
 			cell.setCellStyle(createStyleDefault(workbook));
@@ -389,7 +426,7 @@ public class ShowDetailInformation {
 			cell.setCellValue(detailInformation.getLbMaMT().getText().toString());
 			cell.setCellStyle(createStyleDefault(workbook));
 			
-			row = sheet.createRow(8);
+			row = sheet.createRow(10);
 			cell = row.createCell(0, CellType.STRING);
 			cell.setCellValue("Mã độc giả");
 			cell.setCellStyle(createStyleDefault(workbook));
@@ -403,7 +440,7 @@ public class ShowDetailInformation {
 			cell.setCellValue(detailInformation.getLbHoTenDG().getText().toString());
 			cell.setCellStyle(createStyleDefault(workbook));
 			
-			row = sheet.createRow(9);
+			row = sheet.createRow(11);
 			cell = row.createCell(0, CellType.STRING);
 			cell.setCellValue("Mã nhân viên");
 			cell.setCellStyle(createStyleDefault(workbook));
@@ -417,7 +454,7 @@ public class ShowDetailInformation {
 			cell.setCellValue(detailInformation.getLbHoTenNV().getText().toString());
 			cell.setCellStyle(createStyleDefault(workbook));
 			
-			row = sheet.createRow(10);
+			row = sheet.createRow(12);
 			cell = row.createCell(0, CellType.STRING);
 			cell.setCellValue("Ngày mượn");
 			cell.setCellStyle(createStyleDefault(workbook));
@@ -432,7 +469,7 @@ public class ShowDetailInformation {
 			cell.setCellStyle(createStyleDefault(workbook));
 			
 			
-			row = sheet.createRow(12);
+			row = sheet.createRow(14);
 			cell = row.createCell(0, CellType.STRING);
 			cell.setCellValue("STT");
 			cell.setCellStyle(createStyleForTableTitle(workbook));
@@ -449,7 +486,7 @@ public class ShowDetailInformation {
 			cell.setCellValue("TIỀN PHẠT");
 			cell.setCellStyle(createStyleForTableTitle(workbook));
 			
-			int rowNum = 13;
+			int rowNum = 15;
 			for (int i = 0; i < data.length; i++) {
 				row = sheet.createRow(rowNum);
 				for (int j = 0; j < 5; j++) {
@@ -545,5 +582,43 @@ public class ShowDetailInformation {
 		styleData.setBorderRight(BorderStyle.MEDIUM);
 		styleData.setBorderLeft(BorderStyle.MEDIUM);
 		return styleData;
+	}
+	
+	/*Print image */
+	private void printImage (Workbook wb, Sheet sheet) {
+		 try {
+			 Path imagePath = Paths.get(ClassLoader.getSystemResource("bachkhoa.png").toURI());
+			 
+			 
+			   //FileInputStream obtains input bytes from the image file
+			   InputStream inputStream = Files.newInputStream(imagePath);
+			   //Get the contents of an InputStream as a byte[].
+			   byte[] bytes = IOUtils.toByteArray(inputStream);
+			   //Adds a picture to the workbook
+			   int pictureIdx = wb.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);
+			   //close the input stream
+			   inputStream.close();
+
+			   //Returns an object that handles instantiating concrete classes
+			   CreationHelper helper = wb.getCreationHelper();
+
+			   //Creates the top-level drawing patriarch.
+			   Drawing drawing = sheet.createDrawingPatriarch();
+
+			   //Create an anchor that is attached to the worksheet
+			   ClientAnchor anchor = helper.createClientAnchor();
+			   //set top-left corner for the image
+			   anchor.setCol1(1);
+			   anchor.setRow1(3);
+
+			   //Creates a picture
+			   Picture pict = drawing.createPicture(anchor, pictureIdx);
+			   //Reset the image to the original size
+			   pict.resize();
+			   
+			  }
+			  catch (Exception e) {
+			   System.out.println(e);
+			  }
 	}
 }

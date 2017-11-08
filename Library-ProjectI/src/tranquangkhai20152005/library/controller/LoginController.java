@@ -64,7 +64,8 @@ public class LoginController {
 		EditBookController editBookController = new EditBookController(mainUI);
 		DeleteBookController deleteBookController = new DeleteBookController(mainUI);
 		SearchBookController searchBookController = new SearchBookController(mainUI);
-		PrintSearchInforController printSearchInforController = new PrintSearchInforController(mainUI);
+		PrintSearchBookController printSearchBookController = new PrintSearchBookController(mainUI);
+		PrintSearchPersonController printSearchPersonController = new PrintSearchPersonController(mainUI);
 		ChangeTableController changeTableController = new ChangeTableController(mainUI);
 		new AddPersonController(mainUI);
 		new EditPersonController(mainUI);
@@ -75,6 +76,9 @@ public class LoginController {
 		new ThongKeController(mainUI);
 		new TKPersonController(mainUI);
 		new EditLoanController(mainUI);
+		new SearchLoanBookController(mainUI);
+		new PrintSearchLoanBookController(mainUI);
+		new TKLoanBookController(mainUI);
 	}
 	
 	private void cancelController() {

@@ -9,4 +9,7 @@ public interface LoanBookDAO {
 	public void insertLoanBook(LoanBook loanBook);
 	
 	public void editLoanBook (LoanBook loanBook, String maDGMoi, String maNVMoi, String ngayHenTraMoi, int tienCocMoi);
+
+	// Thong Ke Muon tra
+	public ArrayList<ArrayList<String>> thongKeMuonTra (String colName);
 }

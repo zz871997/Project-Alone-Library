@@ -197,6 +197,7 @@ public class BookDB implements BookDAO{
 			// CLose connections
 			preStatement.close();
 			connection.close();
+			
 		} 
 		
 		catch (SQLException e) {
