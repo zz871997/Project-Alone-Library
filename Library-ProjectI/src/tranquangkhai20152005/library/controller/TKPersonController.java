@@ -45,12 +45,11 @@ public class TKPersonController {
 	
 	public TKPersonController(MainUI mainUI) {
 		this.mainUI = mainUI;
-		personDB = new PersonDB();
-		
-		btnTKUser = mainUI.getManagerView().getBtnThongKeUser();
-		btnTKEmpl = mainUI.getManagerView().getBtnThongKeEmployment();
-		cbTKUser  = mainUI.getManagerView().getCbTKUser();
-		cbTKEmpl  = mainUI.getManagerView().getCbTKEmployment();
+		personDB    = new PersonDB();
+		btnTKUser   = mainUI.getManagerView().getBtnThongKeUser();
+		btnTKEmpl   = mainUI.getManagerView().getBtnThongKeEmployment();
+		cbTKUser    = mainUI.getManagerView().getCbTKUser();
+		cbTKEmpl    = mainUI.getManagerView().getCbTKEmployment();
 		
 		/* btnTKEmpl Event */
 		btnTKEmpl.addActionListener(new ActionListener() {
@@ -92,10 +91,10 @@ public class TKPersonController {
 	private void setActionTKPerson(String tableName) {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 		LocalDate localDate   = LocalDate.now();
-		String ngayHT     = Integer.toString(localDate.getDayOfMonth());
-		String thangHT    = Integer.toString(localDate.getMonthValue());
-		String namHT      = Integer.toString(localDate.getYear());
-		String now = ngayHT + "-" + thangHT + "-" + namHT;
+		String ngayHT         = Integer.toString(localDate.getDayOfMonth());
+		String thangHT        = Integer.toString(localDate.getMonthValue());
+		String namHT          = Integer.toString(localDate.getYear());
+		String now   		  = ngayHT + "-" + thangHT + "-" + namHT;
 		tkPersonInformation.getLbCurrentDate().setText(now);
 		
 		int indexOfCombo = -1;
@@ -131,7 +130,6 @@ public class TKPersonController {
 		else if (indexOfCb == 4) {
 			result = personDB.thongKePerson(tableName, "Diachi");
 		}
-		
 		String[][] data = convertToString(result);
 		return data;
 	}
@@ -144,7 +142,6 @@ public class TKPersonController {
 			convertResult[i][1] = arr.get(i).get(0);
 			convertResult[i][2] = arr.get(i).get(1);
 		}
-		
 		return convertResult;
 	}
 	
@@ -183,7 +180,6 @@ public class TKPersonController {
 			else {
 				saveFilePath = path + ".xlsx";
 			}
-			
 			System.out.println("Save file to: " + saveFilePath);
 			saveThongKeExcelTo(saveFilePath, data, tableName);
 		}
@@ -351,14 +347,4 @@ public class TKPersonController {
 	private void huy() {
 		this.tkPersonView.setVisible(false);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

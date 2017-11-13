@@ -34,8 +34,6 @@ public class LoanBookDB implements LoanBookDAO{
 		return conn;
 	}
 	
-	
-	
 	@Override
 	public ArrayList<LoanBook> getAllLoanBooks() {
 		connection = getConnection();
@@ -115,10 +113,6 @@ public class LoanBookDB implements LoanBookDAO{
 				e.printStackTrace();
 			}
 		}
-		
-		
-		
-		
 		return loanBook;
 	}
 
@@ -168,9 +162,7 @@ public class LoanBookDB implements LoanBookDAO{
 			}
 		}
 	}
-
-
-
+	
 	@Override
 	public void editLoanBook(LoanBook loanBook, String maDGMoi, String maNVMoi, String ngayHenTraMoi, int tienCocMoi) {
 		String maMT = loanBook.getMaMT();
@@ -208,8 +200,6 @@ public class LoanBookDB implements LoanBookDAO{
 			}
 		}
 	}
-
-
 
 	@Override
 	public ArrayList<ArrayList<String>> thongKeMuonTra(String colName) {
@@ -253,5 +243,4 @@ public class LoanBookDB implements LoanBookDAO{
 		
 		return arrResult;
 	}
-
 }

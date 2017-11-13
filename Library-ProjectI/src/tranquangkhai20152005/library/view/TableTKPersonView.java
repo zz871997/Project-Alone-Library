@@ -43,7 +43,6 @@ public class TableTKPersonView extends JPanel{
 	private JPanel createTablePanel() {
 		JPanel panel = new JPanel(new BorderLayout());
 		table = createTable();
-		//Load data...?????????????
 		loadData(table);
 		JScrollPane scroll = new JScrollPane(table);
 		scroll.setPreferredSize(new Dimension(TABLE_TK_WIDTH, TABLE_TK_HEIGHT));

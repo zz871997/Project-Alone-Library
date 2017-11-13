@@ -132,6 +132,8 @@ public class ShowDetailInformation {
 		detailInformation.getLbNgayTra().setText("");
 		detailInformation.getLbTrangThai().setText("");
 		detailInformation.getLbSoTienPhat().setText("");
+		//-----------------------------------------
+		detailInformation.getLbTongTienPhat().setText(detailDB.tinhTongPhat(maMT) + "");
 		
 		/* Update table list book is loan */
 		String[][] listBook = new String[listDetail.size()][3];
@@ -195,7 +197,6 @@ public class ShowDetailInformation {
 				String thangTraHT     = Integer.toString(localDate.getMonthValue());
 				String namTraHT       = Integer.toString(localDate.getYear());
 				String ngayTra        = ngayTraHT + "-" + thangTraHT + "-" + namTraHT;
-				
 				double tienPhat       = tinhTienPhat(ngayTra, detailInformation.getLbNgayHenTra().getText().toString());
 				
 				// Update ngayTra, tienPhat 
@@ -211,10 +212,10 @@ public class ShowDetailInformation {
 				detailInformation.getLbTrangThai().setText("Đã trả");
 				detailInformation.getLbNgayTra().setText(ngayTra);
 				detailInformation.getLbSoTienPhat().setText(tienPhat + "");
+				detailInformation.getLbTongTienPhat().setText(detailDB.tinhTongPhat(maMT) + "");
 				
 				// Disable this btnPay of this book
 				btnPay.setEnabled(false);
-				
 			}
 		});
 		
@@ -237,9 +238,7 @@ public class ShowDetailInformation {
 						String thangTraHT     = Integer.toString(localDate.getMonthValue());
 						String namTraHT       = Integer.toString(localDate.getYear());
 						String ngayTra        = ngayTraHT + "-" + thangTraHT + "-" + namTraHT;
-						
 						double tienPhat       = tinhTienPhat(ngayTra, detailInformation.getLbNgayHenTra().getText().toString());
-						
 						detailDB.updateDetail(aDetail, ngayTra, tienPhat);
 						
 						// Update number of book
@@ -248,8 +247,9 @@ public class ShowDetailInformation {
 						mainUI.getTableBookView().updateTable(new BookDB().getAllBooks());
 					}
 				}
+
+				detailInformation.getLbTongTienPhat().setText(detailDB.tinhTongPhat(maMT) + "");
 				JOptionPane.showMessageDialog(new JDialog(), "Tất cả sách còn lại đã được trả");
-				
 				btnPayAll.setEnabled(false);
 			}
 		});
@@ -374,10 +374,8 @@ public class ShowDetailInformation {
 			cell.setCellValue("Trần Quang Khải - 20152005");
 			cell.setCellStyle(createStyleDefault(workbook));
 			sheet.addMergedRegion(new CellRangeAddress(2, 2, 0, 1));
-			
-			
+		
 			printImage(workbook, sheet);
-			
 			
 			DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 			LocalDate localDate   = LocalDate.now();
@@ -390,28 +388,7 @@ public class ShowDetailInformation {
 			cell.setCellValue(now);
 			cell.setCellStyle(createStyleForDate(workbook));
 			sheet.addMergedRegion(new CellRangeAddress(3, 3, 3, 4));
-			
-			
-			
-			//////////////////////////////////////////////////////////
-//			row = sheet.createRow(3);
-//			cell = row.createCell(0);
-//			printImage(workbook, sheet);
-//			cell.setCellStyle(createStyleDefault(workbook));
-//			sheet.addMergedRegion(new CellRangeAddress(3, 5, 0, 1));
-			//////////////////////////////////////////////////////////
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
+
 			row = sheet.createRow(7);
 			cell = row.createCell(0, CellType.STRING);
 			cell.setCellValue("PHIẾU MƯỢN TRẢ");
@@ -497,6 +474,14 @@ public class ShowDetailInformation {
 				rowNum++;
 			}
 			
+			row = sheet.createRow(rowNum + 1);
+			cell = row.createCell(3, CellType.STRING);
+			cell.setCellValue("Tổng tiền phạt");
+			cell.setCellStyle(createStyleDefault(workbook));
+			cell = row.createCell(4, CellType.STRING);
+			cell.setCellValue(detailInformation.getLbTongTienPhat().getText().toString());
+			cell.setCellStyle(createStyleDefault(workbook));
+			
 			row = sheet.createRow(rowNum + 2);
 			cell = row.createCell(0, CellType.STRING);
 			cell.setCellValue("Người mượn");
@@ -516,8 +501,7 @@ public class ShowDetailInformation {
 			cell.setCellValue(detailInformation.getLbHoTenNV().getText().toString());
 			cell.setCellStyle(createStyleDefault(workbook));
 			sheet.addMergedRegion(new CellRangeAddress(rowNum + 3, rowNum + 3, 3, 4));
-			
-			
+				
 			workbook.write(fos);
 			System.out.println("Create file: " + path);
 			fos.close();
@@ -586,39 +570,22 @@ public class ShowDetailInformation {
 	
 	/*Print image */
 	private void printImage (Workbook wb, Sheet sheet) {
-		 try {
+		try {
 			 Path imagePath = Paths.get(ClassLoader.getSystemResource("bachkhoa.png").toURI());
-			 
-			 
-			   //FileInputStream obtains input bytes from the image file
-			   InputStream inputStream = Files.newInputStream(imagePath);
-			   //Get the contents of an InputStream as a byte[].
-			   byte[] bytes = IOUtils.toByteArray(inputStream);
-			   //Adds a picture to the workbook
-			   int pictureIdx = wb.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);
-			   //close the input stream
-			   inputStream.close();
-
-			   //Returns an object that handles instantiating concrete classes
-			   CreationHelper helper = wb.getCreationHelper();
-
-			   //Creates the top-level drawing patriarch.
-			   Drawing drawing = sheet.createDrawingPatriarch();
-
-			   //Create an anchor that is attached to the worksheet
-			   ClientAnchor anchor = helper.createClientAnchor();
-			   //set top-left corner for the image
-			   anchor.setCol1(1);
-			   anchor.setRow1(3);
-
-			   //Creates a picture
-			   Picture pict = drawing.createPicture(anchor, pictureIdx);
-			   //Reset the image to the original size
-			   pict.resize();
-			   
-			  }
-			  catch (Exception e) {
-			   System.out.println(e);
-			  }
+			 InputStream inputStream = Files.newInputStream(imagePath);
+			 byte[] bytes = IOUtils.toByteArray(inputStream);
+			 int pictureIdx = wb.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);
+			 inputStream.close();
+			 CreationHelper helper = wb.getCreationHelper();
+			 Drawing drawing = sheet.createDrawingPatriarch();
+			 ClientAnchor anchor = helper.createClientAnchor();
+			 anchor.setCol1(1);
+			 anchor.setRow1(3);
+			 Picture pict = drawing.createPicture(anchor, pictureIdx);
+			 pict.resize();   
+		}
+		catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 }

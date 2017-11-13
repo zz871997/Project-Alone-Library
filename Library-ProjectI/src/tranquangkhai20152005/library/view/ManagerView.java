@@ -134,7 +134,6 @@ public class ManagerView extends JPanel{
 		return managerPanel;
 	}
 
-
 	public ManagerView () {
 		setBorder(new EmptyBorder(10, 150, 10, 150));
 		setLayout(new BorderLayout());
@@ -260,4 +259,3 @@ public class ManagerView extends JPanel{
 		return panel;
 	}
 }
-

@@ -28,21 +28,10 @@ public class LoginController {
 	private JButton btnChangePass;
 	private JButton btnAboutMe;
 	
-//	private AddBookController addBookController = null;
-//	private EditBookController editBookController = null;
-//	private DeleteBookController deleteBookController = null;
-//	private SearchBookController searchBookController = null;
-//	private PrintSearchInforController printSearchInforController = null;
-//	private ChangeTableController changeTableController = null;
-	
 	private final String dbURL = "jdbc:mysql://localhost:3306/library";
 	private String user = "root";
 	private String password = "1234";
 	private Connection connection;
-	
-	
-	
-	
 
 	public LoginController(MainUI mainUI) {
 		this.mainUI = mainUI;
@@ -60,13 +49,13 @@ public class LoginController {
 	}
 	
 	private void createController() {
-		AddBookController addBookController = new AddBookController(mainUI);
-		EditBookController editBookController = new EditBookController(mainUI);
-		DeleteBookController deleteBookController = new DeleteBookController(mainUI);
-		SearchBookController searchBookController = new SearchBookController(mainUI);
-		PrintSearchBookController printSearchBookController = new PrintSearchBookController(mainUI);
-		PrintSearchPersonController printSearchPersonController = new PrintSearchPersonController(mainUI);
-		ChangeTableController changeTableController = new ChangeTableController(mainUI);
+		new AddBookController(mainUI);
+		new EditBookController(mainUI);
+		new DeleteBookController(mainUI);
+		new SearchBookController(mainUI);
+		new PrintSearchBookController(mainUI);
+		new PrintSearchPersonController(mainUI);
+		new ChangeTableController(mainUI);
 		new AddPersonController(mainUI);
 		new EditPersonController(mainUI);
 		new DeletePersonController(mainUI);
@@ -81,20 +70,6 @@ public class LoginController {
 		new TKLoanBookController(mainUI);
 	}
 	
-	private void cancelController() {
-//		addBookController = null;
-//		editBookController = null;
-//		deleteBookController = null;
-//		searchBookController = null;
-//		printSearchInforController = null;
-//		changeTableController = null;
-//		this.mainUI = null;
-//		//System.exit(0);
-//		mainUI = new MainUI();
-//		mainUI.setVisible(true);
-//		new LoginController(mainUI);
-	}
-	
 	private void setAction() {
 		btnLogin.addActionListener(new ActionListener() {
 			@Override
@@ -103,26 +78,12 @@ public class LoginController {
 				String passFromDB = getPassFromDB();
 				System.out.println(pass);
 				if(pass.equals(passFromDB)) {
-					
 					System.out.println("Login success");
 					tfPass.setText("");
-					
 					loginPanel.setVisible(false);
 					mainUI.getMainPanel().setVisible(true);
 					mainUI.getMenuView().setVisible(true);
-					
-					
 					createController();
-//					AddBookController addBookController = new AddBookController(mainUI);
-//					EditBookController editBookController = new EditBookController(mainUI);
-//					DeleteBookController deleteBookController = new DeleteBookController(mainUI);
-//					SearchBookController searchBookController = new SearchBookController(mainUI);
-//					PrintSearchInforController printSearchInforController = new PrintSearchInforController(mainUI);
-//					ChangeTableController changeTableController = new ChangeTableController(mainUI);
-					
-					
-					//mainUI.setVisible(true);
-					
 					return;
 				}
 				else {
@@ -135,25 +96,16 @@ public class LoginController {
 		btnLogout.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-			
-				
-				cancelController();
-				
 				loginPanel.setVisible(true);
 				mainUI.getMainPanel().setVisible(false);
 				mainUI.getMenuView().setVisible(false);
-				//mainUI.setVisible(false);
-//				mainUI = null;
-//				MainUI mainUI2 = new MainUI();
-//				LoginController newLogin = new LoginController(mainUI2);
+				mainUI.setVisible(false);
+				mainUI = null;
+				MainUI mainUI2 = new MainUI();
+				LoginController newLogin = new LoginController(mainUI2);
 				return;
 			}
 		});
-		
-		
-		
-		
 		
 		btnChangePass.addActionListener(new ActionListener() {
 			@Override
@@ -165,9 +117,7 @@ public class LoginController {
 				JPasswordField tfReNewPass = changePassView.getTfReNewPass();
 				JButton btnChange = changePassView.getBtnChange();
 				JButton btnCancel = changePassView.getBtnCancel();
-				
-				
-				
+
 				btnChange.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -202,10 +152,6 @@ public class LoginController {
 				});
 			}
 		});
-		
-		
-		
-		
 		
 		btnAboutMe.addActionListener(new ActionListener() {
 			@Override

@@ -40,7 +40,6 @@ public class AddLoanBookController {
 	
 	private ArrayList<Book> listBookIsLoan = new ArrayList<Book>();
 	private JPanel rightPanel;
-	//private JPanel bookIsLoanView;
 	private ArrayList<BookIsLoanView> arrBookIsLoanView = new ArrayList<BookIsLoanView>();
 	
 	// Constructor
@@ -48,10 +47,8 @@ public class AddLoanBookController {
 		this.mainUI = mainUI;
 		loanBookDB = new LoanBookDB();
 		JButton btnAddLoanBookManager = mainUI.getManagerView().getBtnBorrow();
-		
-		
-		tableBorrowView = mainUI.getTableBorrowView();
 		//Update Table
+		tableBorrowView = mainUI.getTableBorrowView();
 		tableBorrowView.updateTable(loanBookDB.getAllLoanBooks());
 		
 		btnAddLoanBookManager.addActionListener(new ActionListener() {
@@ -91,8 +88,6 @@ public class AddLoanBookController {
 						setActionOnRightPanel();
 					}
 				});
-				
-				
 				
 				JComboBox<String> cbMaDG = loanBookInformation.getCbMaDG();
 				cbMaDG.addActionListener(new ActionListener() {
@@ -153,8 +148,7 @@ public class AddLoanBookController {
 			rightPanel.repaint();
 			rightPanel.setVisible(true);
 			loanBookInformation.getTfMaSach().setText("");
-			loanBookInformation.getTfSoLuongSach().setText("");
-				
+			loanBookInformation.getTfSoLuongSach().setText("");		
 		}
 	}
 	/* Check id of book and check text field "Add book" to loan*/
@@ -235,10 +229,8 @@ public class AddLoanBookController {
 					rightPanel.repaint();
 				}
 			});
-			
 		}
 	}
-	
 	
 	/*------------------------------Actions on AddLoanBookView----------------------*/
 	// Check format of text field
@@ -341,26 +333,16 @@ public class AddLoanBookController {
 			
 			loanBook = new LoanBook(maMT, maDG, maNV, ngayMuon, ngayHenTra, tienCoc);
 			loanBookDB.insertLoanBook(loanBook);
-			
-//			for (int i  = 0; i < listBookIsLoan.size(); i++) {
-//				Detail detail = new Detail(maMT, listBookIsLoan.get(i).getMaSach(),Integer.parseInt(loanBookInformation.getTfSoLuongSach().getText().trim().toString()) 
-//										   , "", 0.0);
-//				DetailDB detailDB = new DetailDB();
-//				detailDB.insertDetail(detail);
-//			}
-			
+
 			for (int i = 0; i < arrBookIsLoanView.size(); i++) {
 				String maSach = arrBookIsLoanView.get(i).getLbMaSach().getText().trim().toString();
 				String tenSach = arrBookIsLoanView.get(i).getLbTenSach().getText().trim().toString();
 				int soLuongMuon = Integer.parseInt(arrBookIsLoanView.get(i).getLbSoluong().getText().trim().toString());
 				Detail aDetail = new Detail(maMT, maSach, soLuongMuon, "", 0.0);
 				
-				// I'm edit here
-				//aDetail.setTrangThai("Chưa trả");
 				DetailDB detailDB = new DetailDB();
 				detailDB.insertDetail(aDetail);
 			}
-			
 			
 			// Recreate number of Book is Loan
 			for (int i = 0; i < listBookIsLoan.size(); i++) {
@@ -369,9 +351,7 @@ public class AddLoanBookController {
 				bookDB.updateBook(listBookIsLoan.get(i), soLuongMoi);
 			}
 			TableBookView tableBookView = mainUI.getTableBookView();
-			tableBookView.updateTable(new BookDB().getAllBooks());
-			
-			
+			tableBookView.updateTable(new BookDB().getAllBooks());	
 			tableBorrowView.updateTable(loanBookDB.getAllLoanBooks());
 			clearInput();
 			this.addLoanBookView.setVisible(false);
@@ -403,5 +383,4 @@ public class AddLoanBookController {
 		arrBookIsLoanView.clear();
 		listBookIsLoan.clear();
 	}
-
 }

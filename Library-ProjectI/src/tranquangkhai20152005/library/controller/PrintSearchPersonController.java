@@ -57,15 +57,13 @@ public class PrintSearchPersonController {
 	private JTextField tfSearchEmployee;
 	
 	public PrintSearchPersonController(MainUI mainUI) {
-		this.mainUI = mainUI;
-		personDB = new PersonDB();
-		
-		cbSearchUser = mainUI.getSearchUserView().getCbSearch();
-		cbSearchEmployee = mainUI.getSearchEmploymentView().getCbSearch();
-		tfSearchUser = mainUI.getSearchUserView().getTfSearch();
-		tfSearchEmployee = mainUI.getSearchEmploymentView().getTfSearch();
-		
-		JButton btnPrintUser = mainUI.getSearchUserView().getBtnPrint();
+		this.mainUI              = mainUI;
+		personDB                 = new PersonDB();
+		cbSearchUser             = mainUI.getSearchUserView().getCbSearch();
+		cbSearchEmployee         = mainUI.getSearchEmploymentView().getCbSearch();
+		tfSearchUser             = mainUI.getSearchUserView().getTfSearch();
+		tfSearchEmployee         = mainUI.getSearchEmploymentView().getTfSearch();
+		JButton btnPrintUser     = mainUI.getSearchUserView().getBtnPrint();
 		JButton btnPrintEmployee = mainUI.getSearchEmploymentView().getBtnPrint();
 		
 		resultSearch = new SearchPersonController(mainUI).getResultSearch();
@@ -86,8 +84,7 @@ public class PrintSearchPersonController {
 			}
 		});
 	}
-	
-	
+
 	private String[][] convertData(ArrayList<Person> resultSearch) {
 		String data[][] = new String[resultSearch.size()][7];
 		
@@ -119,7 +116,6 @@ public class PrintSearchPersonController {
 			else {
 				saveFilePath = path + ".xlsx";
 			}
-			
 			System.out.println("Save file to: " + saveFilePath);
 			saveSearchExcelTo(saveFilePath, data, tableName);
 		}
@@ -182,10 +178,12 @@ public class PrintSearchPersonController {
 			row = sheet.createRow(7);
 			cell = row.createCell(0, CellType.STRING);
 			if (tableName.equals("docgia")) {
-				cell.setCellValue("TÌM KIẾM ĐỘC GIẢ THEO " + cbSearchUser.getSelectedItem().toString().toUpperCase() +": " + tfSearchUser.getText().toString());
+				cell.setCellValue("TÌM KIẾM ĐỘC GIẢ THEO " + cbSearchUser.getSelectedItem().toString().toUpperCase() +": " 
+								   + tfSearchUser.getText().toString());
 			}
 			else if (tableName.equals("nhanvien")) {
-				cell.setCellValue("TÌM KIẾM NHÂN VIÊN THEO " + cbSearchEmployee.getSelectedItem().toString().toUpperCase() +": " + tfSearchEmployee.getText().toString());
+				cell.setCellValue("TÌM KIẾM NHÂN VIÊN THEO " + cbSearchEmployee.getSelectedItem().toString().toUpperCase() +": " 
+			                	   + tfSearchEmployee.getText().toString());
 			}
 			cell.setCellStyle(createStyleForTitle(workbook));
 			sheet.addMergedRegion(new CellRangeAddress(7, 7, 0, 6));
@@ -200,8 +198,7 @@ public class PrintSearchPersonController {
 				cell.setCellValue("Mã nhân viên");
 				cell.setCellStyle(createStyleForTableTitle(workbook));
 			}
-			
-			
+
 			cell = row.createCell(1, CellType.STRING);
 			cell.setCellValue("Họ tên");
 			cell.setCellStyle(createStyleForTableTitle(workbook));
@@ -243,10 +240,6 @@ public class PrintSearchPersonController {
 			sheet.addMergedRegion(new CellRangeAddress(rowNum + 2, rowNum + 2, 4, 6));
 			
 			row = sheet.createRow(rowNum + 3);
-//			cell = row.createCell(0, CellType.STRING);
-//			cell.setCellValue(detailInformation.getLbHoTenDG().getText().toString());
-//			cell.setCellStyle(createStyleDefault(workbook));
-//			sheet.addMergedRegion(new CellRangeAddress(rowNum + 3, rowNum + 3, 0, 1));
 			cell = row.createCell(4, CellType.STRING);
 			cell.setCellValue("Admin");
 			cell.setCellStyle(createStyleDefault(workbook));
@@ -322,51 +315,20 @@ public class PrintSearchPersonController {
 	private void printImage (Workbook wb, Sheet sheet) {
 		 try {
 			 Path imagePath = Paths.get(ClassLoader.getSystemResource("bachkhoa.png").toURI());
-			 
-			 //FileInputStream obtains input bytes from the image file
 			 InputStream inputStream = Files.newInputStream(imagePath);
-			 //Get the contents of an InputStream as a byte[].
-			 byte[] bytes = IOUtils.toByteArray(inputStream);
-			 //Adds a picture to the workbook
+			 byte[] bytes = IOUtils.toByteArray(inputStream);	
 			 int pictureIdx = wb.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);
-			 //close the input stream
 			 inputStream.close();
-
-			 //Returns an object that handles instantiating concrete classes
-			 CreationHelper helper = wb.getCreationHelper();
-
-			 //Creates the top-level drawing patriarch.
-			 Drawing drawing = sheet.createDrawingPatriarch();
-
-			 //Create an anchor that is attached to the worksheet
+			 CreationHelper helper = wb.getCreationHelper();	
+			 Drawing drawing = sheet.createDrawingPatriarch();	
 			 ClientAnchor anchor = helper.createClientAnchor();
-			 //set top-left corner for the image
 			 anchor.setCol1(1);
 			 anchor.setRow1(3);
-
-			 //Creates a picture
 			 Picture pict = drawing.createPicture(anchor, pictureIdx);
-			 //Reset the image to the original size
-			 pict.resize();
-			 
+			 pict.resize();	 
 		 }
 		 catch (Exception e) {
 			 System.out.println(e);
 		 }
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

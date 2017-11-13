@@ -64,5 +64,4 @@ public class AddPersonView extends JDialog{
 		panel.add(btnCancel);
 		return panel;
 	}
-	
 }

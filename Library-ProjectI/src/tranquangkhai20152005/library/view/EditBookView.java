@@ -39,8 +39,7 @@ public class EditBookView extends JDialog{
 	}
 	public JButton getBtnEdit() {
 		return btnEdit;
-	}
-	
+	}	
 	public JButton getBtnCancel() {
 		return btnCancel;
 	}

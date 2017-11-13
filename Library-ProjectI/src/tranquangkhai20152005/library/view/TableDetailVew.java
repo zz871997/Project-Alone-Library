@@ -92,23 +92,4 @@ public class TableDetailVew extends JPanel {
 			table.setModel(tableModel);	
 		}});
 	}
-	
-	// Convert list of Book => Array 2D
-//	private String[][] convertData(String[][] listBook) {
-//		int size = listBook.length;
-//		String data[][] = new String[size][titleItem.length];
-//		for (int i = 0; i < size; i++) {
-////			LoanBook aLoanBook = list.get(i);
-////			data[i][0] = aLoanBook.getMaMT();
-////			data[i][1] = aLoanBook.getMaDG();
-////			data[i][2] = aLoanBook.getMaNV();
-////			data[i][3] = aLoanBook.getNgayMuon();
-////			data[i][4] = aLoanBook.getNgayHenTra();
-////			Book aBookIsLoan = list.get(i);
-//			data[i][0] = listBook[i][0];
-//			data[i][1] = listBook[i][1];
-//			data[i][2] = listBook[i][2];
-//		}
-//		return data;
-//	}
 }

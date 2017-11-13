@@ -108,7 +108,4 @@ public class DeletePersonController {
 		}
 		return null;
 	}
-	
-	
-	
 }

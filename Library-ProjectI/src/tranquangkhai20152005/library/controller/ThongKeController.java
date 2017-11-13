@@ -42,11 +42,10 @@ public class ThongKeController {
 	private JComboBox<String> cbTKSach;
 	
 	public ThongKeController(MainUI mainUI) {
-		this.mainUI = mainUI;
-		bookDB = new BookDB();
-		
+		this.mainUI    = mainUI;
+		bookDB         = new BookDB();
 		btnThongKeSach = mainUI.getManagerView().getBtnThongKeSach();
-		cbTKSach = mainUI.getManagerView().getCbTKSach();
+		cbTKSach       = mainUI.getManagerView().getCbTKSach();
 		
 		btnThongKeSachEvent();
 	}
@@ -76,17 +75,12 @@ public class ThongKeController {
 					int indexOfCombo = cbTKSach.getSelectedIndex();
 					String title = cbTKSach.getSelectedItem().toString();
 					thongKeInformation.getLbTitle().setText("THỐNG KÊ SÁCH THEO " + title);
-					
-					
-					//System.out.println("Index cb: " + indexOfCombo);
+		
 					String data[][] = getDataTKSachFromDB(indexOfCombo);
 
 					thongKeInformation.getTableThongKeView().updateTable(data, indexOfCombo);
-					//loadDataForTKTable(indexOfCombo);
 					
 					setActionForThongKeSachView(data);
-					
-				
 				}
 			}
 		});
@@ -107,10 +101,8 @@ public class ThongKeController {
 		else if (indexOfCb == 4) {
 			result = bookDB.thongKeSach("NamXB");
 		}
-		
 		String[][] data = convertToString(result);
 		return data;
-		
 	}
 	
 	/* Convert ArrayList<ArrayList<String>> to String[][] */
@@ -121,7 +113,6 @@ public class ThongKeController {
 			convertResult[i][1] = arr.get(i).get(0);
 			convertResult[i][2] = arr.get(i).get(1);
 		}
-		
 		return convertResult;
 	}
 	
@@ -160,7 +151,6 @@ public class ThongKeController {
 			else {
 				saveFilePath = path + ".xlsx";
 			}
-			
 			System.out.println("Save file to: " + saveFilePath);
 			saveThongKeExcelTo(saveFilePath, data);
 		}

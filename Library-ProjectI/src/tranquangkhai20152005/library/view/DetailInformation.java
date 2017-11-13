@@ -1,6 +1,8 @@
 package tranquangkhai20152005.library.view;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.JLabel;
@@ -85,14 +87,20 @@ public class DetailInformation extends JPanel{
 	
 	private JPanel createCenterPanel() {
 		JPanel center = new JPanel (new BorderLayout());
-		center.add(new JLabel("Danh sách sách được mượn"), BorderLayout.PAGE_START);
-		
-		
-		// Hmmmm .......... Load Data???????????
+		center.add(createTitlePanel(), BorderLayout.PAGE_START);
 		tableDetailVew = new TableDetailVew();
 		center.add(tableDetailVew, BorderLayout.CENTER);
-		
 		return center;
+	}
+	
+	private JPanel createTitlePanel() {
+		JPanel panel = new JPanel();
+		JLabel lbTitle  = new JLabel("DANH SÁCH SÁCH ĐƯỢC MƯỢN");
+		lbTitle.setFont(new Font("Caribli", Font.BOLD, 22));
+		lbTitle.setForeground(Color.BLUE);
+		lbTitle.setAlignmentX(CENTER_ALIGNMENT);
+		panel.add(lbTitle);
+		return panel;
 	}
 	
 	private JPanel createFooterPanel() {
@@ -106,6 +114,4 @@ public class DetailInformation extends JPanel{
 		footer.add(new JLabel("Tổng tiền phạt: "));   		footer.add(lbTongTienPhat = new JLabel("0"));
 		return footer;
 	}
-	
-
 }

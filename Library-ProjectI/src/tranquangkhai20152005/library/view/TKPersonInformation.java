@@ -24,8 +24,7 @@ public class TKPersonInformation extends JPanel{
 	public TKPersonInformation() {
 		setLayout(new BorderLayout());
 		add(createDatePanel (), BorderLayout.PAGE_START);
-		add(createTablePanel(), BorderLayout.CENTER);
-		
+		add(createTablePanel(), BorderLayout.CENTER);	
 	}
 	
 	private JPanel createDatePanel() {

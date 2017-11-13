@@ -39,28 +39,30 @@ public class AddBookController {
 	private BookInformation bookInformation;
 	private TableBookView tableBookView;
 	
-	// Constructor
+	/* Constructor */
 	public AddBookController(MainUI mainUI){
 		this.mainUI = mainUI;
 		bookDB = new BookDB();
 		JButton btnAddBookManager = mainUI.getManagerView().getBtnAddBook();
 		JButton btnAddFromExcel   = mainUI.getManagerView().getBtnAddFromExcel();
 		
+		/* Update table book view */
 		tableBookView = mainUI.getTableBookView();
-		//Update table
 		tableBookView.updateTable(bookDB.getAllBooks());
 		
+		/* BtnAddBook's event */
 		btnAddBookManager.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				addBookView     = new AddBookView(mainUI);
 				bookInformation = addBookView.getBookInformation();
 				addBookView.setVisible(true);
-				// Set actions on AddBook View
+				/* Set actions on AddBook View (Dialog) */
 				setActions();
 			}
 		});
 		
+		/* btnAddFromExcel's Event */
 		btnAddFromExcel.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -70,9 +72,9 @@ public class AddBookController {
 	}
 	
 	/*------------------------------Actions on AddBookView----------------------*/
-	// Check format of text field
+	/* Check format of text field */
 	private boolean checkInfor(BookInformation bookInformation) {
-		// Are text fields empty?
+		/* Are text fields empty? */
 		if (bookInformation.getTfMaSach().getText().toString().trim().equals("")  ||
 			bookInformation.getTfTenSach().getText().toString().trim().equals("") ||
 			bookInformation.getTfTacGia().getText().toString().trim().equals("")  ||
@@ -84,12 +86,11 @@ public class AddBookController {
 			JOptionPane.showMessageDialog(this.addBookView, "Các trường dữ liệu không được để trống");
 			return false;
 		}
-		// Check namXB and soLuong are integer?
+		/* Check namXB and soLuong are integer? */
 		try {
-			//if (strNamXB.length() == 0) continue;
 			int namXB = Integer.parseInt(bookInformation.getTfNamXB().getText().trim().toString());
 			int soLuong = Integer.parseInt(bookInformation.getTfSoLuong().getText().toString().trim());
-			// Test < 0 ????
+			/* Test < 0 ????  */
 			if(namXB < 0 || soLuong <0 || namXB > 9999 || namXB < 1000) {
 				JOptionPane.showMessageDialog(this.addBookView, "Nhập lại đúng định dạng các trường số !!!");
 				return false;
@@ -100,18 +101,15 @@ public class AddBookController {
 			System.out.println(e.toString());
 			return false;
 		}
-		
-		
 		/* Check if maSach is exist*/
 		if (!checkID(bookInformation.getTfMaSach().getText().toString())) {
 			JOptionPane.showMessageDialog(new JDialog(), "Mã sách đã tồn tại - Hãy nhập lại");
 			return false;
 		}
-		
-		///////////////////////////////...............//////////
 		return true;
 	}
 	
+	/* CheckID - Check if maSach is exist - Loop all maSach and check */
 	private boolean checkID(String id) {
 		ArrayList<Book> listBook = bookDB.getAllBooks();
 		for (int i = 0; i < listBook.size(); i++) {
@@ -121,13 +119,13 @@ public class AddBookController {
 		return true;
 	}
 	
-	/* Set Actions */
+	/* Set Actions on Dialog */
 	private void setActions() {
 		JButton btnThem = addBookView.getBtnAdd();
 		JButton btnTaoLai = addBookView.getBtnReset();
 		JButton btnHuy = addBookView.getBtnCancel();
 		
-		// Set actions for buttons
+		/* Set actions for buttons */
 		btnThem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -151,7 +149,7 @@ public class AddBookController {
 		});
 	}
 	
-	/*Add Book From Excel */
+	/*Add Book From Excel - Show JFileChooser */
 	private void addFromExcel() {
 		JFileChooser fileChooser = new JFileChooser();
 		int select = fileChooser.showOpenDialog(this.mainUI);
@@ -166,22 +164,20 @@ public class AddBookController {
 			else {
 				openFilePath = path + ".xlsx";
 			}
-			
 			System.out.println(openFilePath);
 			addBookFromExcelFile(openFilePath);
 		}
-		
-		
 	}
 	
+	/* Using POI to write a excel file */
 	private void addBookFromExcelFile(String path) {
 		try {
 			FileInputStream fis = new FileInputStream(new File(path));
-			// Create workbook Object
+			/* Create workbook Object */
 			XSSFWorkbook workbook = new XSSFWorkbook(fis);
-			// Get the first sheet from workbook
+			/* Get the first sheet from workbook */
 			XSSFSheet sheet = workbook.getSheetAt(0);
-			// Get all row of the current sheet
+			/* Get all row of the current sheet */
 			Iterator<Row> rowIterator = sheet.iterator();
 			List<Row> rowList = IteratorUtils.toList(rowIterator);
 			
@@ -190,7 +186,7 @@ public class AddBookController {
 				Iterator<Cell> cellIterator = row.cellIterator();
 				List<Cell> cellList = IteratorUtils.toList(cellIterator);
 				
-				// ArrayList save data of current row
+				/* ArrayList save data of current row */
 				ArrayList<String> dataOfRow = new ArrayList<String>();
 				for (int j = 0; j < cellList.size(); j++) {
 					Cell cell = cellList.get(j);
@@ -228,18 +224,16 @@ public class AddBookController {
 					tableBookView.updateTable(bookDB.getAllBooks());
 					dataOfRow.clear();
 				}
-			
 				else return;
 			}
-
 		} 
-		
 		catch (IOException e) {
 			JOptionPane.showMessageDialog(new JDialog(), "Lỗi File");
 			e.printStackTrace();
 		}
 	}
 	
+	/* Check format of current row */
 	private boolean checkInfor(ArrayList<String> dataOfRow) {
 		// Check if empty
 		for (int i = 0; i < dataOfRow.size(); i++) {

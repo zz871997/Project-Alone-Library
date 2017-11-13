@@ -101,7 +101,6 @@ public class PrintSearchBookController {
 			else {
 				saveFilePath = path + ".xlsx";
 			}
-			
 			System.out.println("Save file to: " + saveFilePath);
 			saveSearchExcelTo(saveFilePath, data);
 		}
@@ -163,7 +162,8 @@ public class PrintSearchBookController {
 			
 			row = sheet.createRow(7);
 			cell = row.createCell(0, CellType.STRING);
-			cell.setCellValue("TÌM KIẾM SÁCH THEO " + cbSearch.getSelectedItem().toString().toUpperCase() +": " + tfSearch.getText().toString());
+			cell.setCellValue("TÌM KIẾM SÁCH THEO " + cbSearch.getSelectedItem().toString().toUpperCase() +": " 
+							   + tfSearch.getText().toString());
 			cell.setCellStyle(createStyleForTitle(workbook));
 			sheet.addMergedRegion(new CellRangeAddress(7, 7, 0, 6));
 			
@@ -212,10 +212,6 @@ public class PrintSearchBookController {
 			sheet.addMergedRegion(new CellRangeAddress(rowNum + 2, rowNum + 2, 4, 6));
 			
 			row = sheet.createRow(rowNum + 3);
-//			cell = row.createCell(0, CellType.STRING);
-//			cell.setCellValue(detailInformation.getLbHoTenDG().getText().toString());
-//			cell.setCellStyle(createStyleDefault(workbook));
-//			sheet.addMergedRegion(new CellRangeAddress(rowNum + 3, rowNum + 3, 0, 1));
 			cell = row.createCell(4, CellType.STRING);
 			cell.setCellValue("Admin");
 			cell.setCellStyle(createStyleDefault(workbook));
@@ -290,8 +286,7 @@ public class PrintSearchBookController {
 	/*Print image */
 	private void printImage (Workbook wb, Sheet sheet) {
 		 try {
-			 Path imagePath = Paths.get(ClassLoader.getSystemResource("bachkhoa.png").toURI());
-			 
+			 Path imagePath = Paths.get(ClassLoader.getSystemResource("bachkhoa.png").toURI()); 
 			 //FileInputStream obtains input bytes from the image file
 			 InputStream inputStream = Files.newInputStream(imagePath);
 			 //Get the contents of an InputStream as a byte[].
@@ -300,39 +295,22 @@ public class PrintSearchBookController {
 			 int pictureIdx = wb.addPicture(bytes, Workbook.PICTURE_TYPE_PNG);
 			 //close the input stream
 			 inputStream.close();
-
 			 //Returns an object that handles instantiating concrete classes
 			 CreationHelper helper = wb.getCreationHelper();
-
 			 //Creates the top-level drawing patriarch.
 			 Drawing drawing = sheet.createDrawingPatriarch();
-
 			 //Create an anchor that is attached to the worksheet
 			 ClientAnchor anchor = helper.createClientAnchor();
 			 //set top-left corner for the image
 			 anchor.setCol1(1);
 			 anchor.setRow1(3);
-
 			 //Creates a picture
 			 Picture pict = drawing.createPicture(anchor, pictureIdx);
 			 //Reset the image to the original size
-			 pict.resize();
-			 
+			 pict.resize();	 
 		 }
 		 catch (Exception e) {
 			 System.out.println(e);
 		 }
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

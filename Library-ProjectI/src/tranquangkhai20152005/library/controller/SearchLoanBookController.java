@@ -53,7 +53,7 @@ public class SearchLoanBookController {
 			public void keyTyped(KeyEvent e) {
 				
 			}
-			
+	
 			/* Event when press a button on keyboard */
 			@Override
 			public void keyReleased(KeyEvent e) {

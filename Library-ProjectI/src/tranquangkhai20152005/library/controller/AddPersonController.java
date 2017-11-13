@@ -131,8 +131,6 @@ public class AddPersonController {
 			JOptionPane.showMessageDialog(new JDialog(), "Mã này đã tồn tại!!!");
 			return false;
 		}
-		
-		///////////////////////////////////////////////////
 		return true;
 	}
 	
@@ -224,12 +222,10 @@ public class AddPersonController {
 			
 			System.out.println(openFilePath);
 			addPersonFromExcelFilePath(openFilePath, tableName);
-		}
-		
+		}	
 	}
 	
 	private void addPersonFromExcelFilePath(String path, String tableName) {
-		
 		try {
 			FileInputStream fis = new FileInputStream(new File(path));
 			// Create workbook Object
@@ -297,15 +293,11 @@ public class AddPersonController {
 				}
 				else return;
 			}
-			
-		}
-		
-		
+		}	
 		catch (IOException e) {
 			JOptionPane.showMessageDialog(new JDialog(), "Lỗi File");
 			e.printStackTrace();
-		}
-		
+		}	
 	}
 	
 	// Check Information of dataOfRow
@@ -339,10 +331,8 @@ public class AddPersonController {
 			JOptionPane.showMessageDialog(new JDialog(), "Mã này đã tồn tại - Hãy kiểm tra lại");
 			return false;
 		}
-		
 		return true;
 	}
-	
 	
 	private void themNguoi(String tableName) {
 		if (checkInfor(personInformation, tableName)) {
@@ -353,7 +343,6 @@ public class AddPersonController {
 			String queQuan  = personInformation.getTfQueQuan().getText().toString();
 			String diaChi   = personInformation.getTfDiaChi().getText().toString();
 			String sdt      = personInformation.getTfSDT().getText().toString();
-			
 			person = new Person(id, name, namSinh, gioiTinh, queQuan, diaChi, sdt);
 			personDB.insertPerson(tableName, person);
 			
@@ -364,9 +353,6 @@ public class AddPersonController {
 			if (tableName.equals("nhanvien")) {
 				tableEmploymentView.updateTable(personDB.getAllPersons(tableName));
 			}
-			
-			
-			
 			clearInput();
 			this.addPersonView.setVisible(false);
 		}
@@ -378,7 +364,6 @@ public class AddPersonController {
 	private void taoLai() {
 		clearInput();
 	}
-	
 	private void huy() {
 		clearInput();
 		this.addPersonView.setVisible(false);
@@ -392,6 +377,4 @@ public class AddPersonController {
 		 personInformation.getTfDiaChi().setText("");
 		 personInformation.getTfSDT().setText("");
 	}
-	
-	
 }

@@ -28,8 +28,7 @@ public class ChangePassView extends JDialog{
 		add(createMainPanel());
 		pack();
 	}
-		
-		
+			
 	/* Setter - Getter */
 	public JButton getBtnChange() {
 		return btnChange;
@@ -61,6 +60,5 @@ public class ChangePassView extends JDialog{
 		panel.add(btnChange);
 		panel.add(btnCancel);
 		return panel;
-	}
-	
+	}	
 }

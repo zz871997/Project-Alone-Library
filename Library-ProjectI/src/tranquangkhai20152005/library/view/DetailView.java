@@ -39,7 +39,7 @@ public class DetailView extends JDialog{
 		setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 		setResizable(false);
 		setTitle("Chi tiết mượn trả");
-		
+	
 		detailInformation =  new DetailInformation();
 		
 		add(createMainPanel());
@@ -49,6 +49,7 @@ public class DetailView extends JDialog{
 	
 	private JPanel createMainPanel() {
 		JPanel mainPanel = new JPanel(new BorderLayout());
+		mainPanel.setBorder(new EmptyBorder(10, 10, 10, 10));
 		mainPanel.add(detailInformation, BorderLayout.CENTER);
 		mainPanel.add(createButtonPanel(), BorderLayout.PAGE_END);
 		

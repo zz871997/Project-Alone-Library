@@ -24,32 +24,25 @@ public class MenuView extends JPanel {
 	private JButton btnChangePass = new JButton("ĐỔI MẬT KHẨU");
 	
 	private JButton btnAboutMe = new JButton("ABOUT ME");
-
 	
 	public JButton getBtnLogout() {
 		return btnLogout;
 	}
-
 	public JButton getBtnChangePass() {
 		return btnChangePass;
 	}
-
 	public JButton getBtnViewListBook() {
 		return btnViewListBook;
 	}
-
 	public JButton getBtnViewListUser() {
 		return btnViewListUser;
 	}
-
 	public JButton getBtnViewListEmployment() {
 		return btnViewListEmployment;
 	}
-
 	public JButton getBtnBorrow() {
 		return btnBorrow;
 	}
-
 	public JButton getBtnAboutMe() {
 		return btnAboutMe;
 	}
@@ -71,6 +64,7 @@ public class MenuView extends JPanel {
 		btnBorrow.setIcon(new ImageIcon(this.getClass().getResource("/loan-book-icon.png")));
 		btnLogout.setIcon(new ImageIcon(this.getClass().getResource("/log-out-icon.png")));
 		btnChangePass.setIcon(new ImageIcon(this.getClass().getResource("/change-pass-icon.png")));
+		
 		panel.add(btnViewListBook);
 		panel.add(btnViewListUser);
 		panel.add(btnViewListEmployment);

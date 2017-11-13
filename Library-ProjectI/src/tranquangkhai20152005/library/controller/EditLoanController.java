@@ -39,6 +39,7 @@ public class EditLoanController {
 	private ArrayList<String> arrMonth = new ArrayList<String>(Arrays.asList(month));
 	private String[] year = {"2017", "2018", "2019", "2020"};
 	private ArrayList<String> arrYear = new ArrayList<String>(Arrays.asList(year));
+	
 	public EditLoanController(MainUI mainUI) {
 		this.mainUI = mainUI;
 		loanBookDB = new LoanBookDB();
@@ -72,9 +73,7 @@ public class EditLoanController {
 						editLoanView.getCbMaNV().addItem(listNV.get(i).getId());
 						listMaNV.add(listNV.get(i).getId());
 					}
-					
 					loadInfor(maMT);
-					
 					setActions();
 				}
 				else {
@@ -201,7 +200,6 @@ public class EditLoanController {
 		try {
 			String tienCoc = editLoanView.getTfTienCoc().getText().trim().toString();
 			int money = Integer.parseInt(tienCoc);
-			
 			// Test < 0 ????
 			if(money < 0) {
 				JOptionPane.showMessageDialog(this.editLoanView, "Nhập đúng định dạng các trường số !!!!");
@@ -216,6 +214,4 @@ public class EditLoanController {
 		
 		return true;
 	}
-	
-	
 }

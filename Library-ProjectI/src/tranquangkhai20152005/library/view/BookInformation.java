@@ -32,39 +32,30 @@ public class BookInformation extends JPanel{
 	public JTextField getTfMaSach() {
 		return tfMaSach;
 	}
-
 	public void setTfMaSach(JTextField tfMaSach) {
 		this.tfMaSach = tfMaSach;
 	}
-
 	public JTextField getTfTenSach() {
 		return tfTenSach;
 	}
-
 	public void setTfTenSach(JTextField tfTenSach) {
 		this.tfTenSach = tfTenSach;
 	}
-
 	public JTextField getTfTacGia() {
 		return tfTacGia;
 	}
-
 	public void setTfTacGia(JTextField tfTacGia) {
 		this.tfTacGia = tfTacGia;
 	}
-
 	public JTextField getTfNXB() {
 		return tfNXB;
 	}
-
 	public void setTfNXB(JTextField tfNXB) {
 		this.tfNXB = tfNXB;
 	}
-
 	public JTextField getTfTheLoai() {
 		return tfTheLoai;
 	}
-
 	public void setTfTheLoai(JTextField tfTheLoai) {
 		this.tfTheLoai = tfTheLoai;
 	}
@@ -72,15 +63,12 @@ public class BookInformation extends JPanel{
 	public JTextField getTfNamXB() {
 		return tfNamXB;
 	}
-
 	public void setTfNamXB(JTextField tfNamXB) {
 		this.tfNamXB = tfNamXB;
 	}
-
 	public JTextField getTfSoLuong() {
 		return tfSoLuong;
 	}
-
 	public void setTfSoLuong(JTextField tfSoLuong) {
 		this.tfSoLuong = tfSoLuong;
 	}
@@ -114,6 +102,5 @@ public class BookInformation extends JPanel{
 		tfSoLuong = new JTextField(30);			panel.add(tfSoLuong);
 			
 		return panel;
-	}
-	
+	}	
 }

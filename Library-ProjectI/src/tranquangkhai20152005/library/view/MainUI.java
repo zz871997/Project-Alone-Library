@@ -103,15 +103,11 @@ public class MainUI extends JFrame{
 		setTitle("Demo quản lí thư viện by Tran Quang Khai");
 		setResizable(false);
 		setLocationRelativeTo(null);
-		
 		managerView = new ManagerView();
-		
 		setLayout(new BorderLayout(10, 10));
-		
 		add(createLoginPanel(), BorderLayout.PAGE_START);
 		add(createMainPanel(), BorderLayout.CENTER);
 		add(menuView, BorderLayout.WEST);
-		
 		pack();
 		setVisible(true);
 	}
@@ -138,10 +134,7 @@ public class MainUI extends JFrame{
 		
 		return mainPanel;
 	}
-	
-	// Create DataPanel
-	
-	
+
 	// Create Table Book Data
 	public JPanel createBookDataPanel() {
 		JPanel panel = new JPanel(new BorderLayout());

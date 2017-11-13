@@ -199,6 +199,42 @@ public class DetailDB implements DetailDAO{
 		
 		return detail;
 	}
-	
-	
+
+	@Override
+	public double tinhTongPhat(String maMT) {
+		double tongTienPhat = 0.0;
+		connection = getConnection();
+		PreparedStatement preStatement = null;
+		String sql = "SELECT sum(Sotienphat) FROM chitietmuon WHERE Mamuon=?";
+		try {
+			preStatement = (PreparedStatement) connection.prepareStatement(sql);
+			preStatement.setString(1, maMT);
+			
+			ResultSet result = preStatement.executeQuery();
+			
+			while (result.next()) {
+				
+				tongTienPhat = result.getDouble("sum(Sotienphat)");
+			}
+			// Close connection
+			result.close();
+			preStatement.close();
+			connection.close();			
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(new JDialog(), "Can't connect to database...");
+		}
+		finally {
+			try {
+				if(preStatement != null) preStatement.close();
+				if(connection != null) connection.close();	
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return tongTienPhat;
+	}
 }

@@ -35,12 +35,7 @@ public class BookIsLoanView extends JPanel {
 		this.lbSoluong = lbSoluong;
 	}
 	
-	JButton btnMaSach;
-	JButton btnTenSach;
-	JButton btnSoluong;
-	
 	public BookIsLoanView(String maSach, String tenSach, String soLuong) {
-//		setBounds(5, 5, 400, 20);
 		setBorder(new TitledBorder(""));
 		GridBagLayout layout = new GridBagLayout();
 		setLayout(layout);
@@ -66,21 +61,13 @@ public class BookIsLoanView extends JPanel {
 	private JPanel createMaSachPanel(String maSach) {
 		JPanel maSachPanel = new JPanel (new FlowLayout());
 		maSachPanel.setPreferredSize(new Dimension(15, 20));
-//		maSachPanel.setMinimumSize(new Dimension(40, 20));
-//		maSachPanel.setMaximumSize(new Dimension(40, 20));
-		//maSachPanel.setBorder(new TitledBorder(""));
-		
 		maSachPanel.add(lbMaSach = new JLabel(maSach), FlowLayout.LEFT);
-//		maSachPanel.repaint();
-//		maSachPanel.validate();
 		return maSachPanel;
 	}
 	
 	private JPanel createTenSachPanel(String tenSach) {
 		JPanel tenSachPanel = new JPanel (new FlowLayout());
-		
 		tenSachPanel.setPreferredSize(new Dimension(140, 20));
-		//tenSachPanel.setBorder(new TitledBorder(""));
 		tenSachPanel.add(lbTenSach = new JLabel(tenSach), FlowLayout.LEFT);
 		return tenSachPanel;
 	}
@@ -88,7 +75,6 @@ public class BookIsLoanView extends JPanel {
 	private JPanel createSoLuongPanel(String soLuong) {
 		JPanel soLuongPanel = new JPanel (new FlowLayout());
 		soLuongPanel.setPreferredSize(new Dimension(15, 20));
-		//soLuongPanel.setBorder(new TitledBorder(""));
 		soLuongPanel.add(lbSoluong = new JLabel(soLuong), FlowLayout.LEFT);
 		return soLuongPanel;
 	}

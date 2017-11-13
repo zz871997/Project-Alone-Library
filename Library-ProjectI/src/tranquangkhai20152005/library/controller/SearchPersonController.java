@@ -255,7 +255,4 @@ public class SearchPersonController {
 			tableEmploymentView.updateTable(personDB.getAllPersons(tableName));
 		}
 	}
-	
-
-	
 }

@@ -65,8 +65,6 @@ public class EditBookController {
 		});
 	}
 	
-	//private String getOldID(String i)
-	
 	private int findIndexOfData() {
 		int index = tableBookView.getTable().getSelectedRow();
 		return index;
@@ -148,7 +146,7 @@ public class EditBookController {
 			JOptionPane.showMessageDialog(new JDialog(), "Mã sách đã tồn tại - Hãy nhập lại");
 			return false;
 		}
-		///////////////////////////////...............//////////
+		
 		return true;
 	}
 	

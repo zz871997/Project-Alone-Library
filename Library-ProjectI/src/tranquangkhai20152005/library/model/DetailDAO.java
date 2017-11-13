@@ -10,4 +10,6 @@ public interface DetailDAO {
 	public void insertDetail(Detail detail);
 	
 	public void updateDetail(Detail detail, String ngayTraMoi, double tienPhatMoi);
+	
+	public double tinhTongPhat(String maMT);
 }

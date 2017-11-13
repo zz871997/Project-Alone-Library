@@ -44,11 +44,10 @@ public class TKLoanBookController {
 	private JComboBox<String> cbTKLoanBook;
 	
 	public TKLoanBookController(MainUI mainUI) {
-		this.mainUI = mainUI;
-		loanBookDB = new LoanBookDB();
-		
+		this.mainUI   = mainUI;
+		loanBookDB    = new LoanBookDB();
 		btnTKLoanBook = mainUI.getManagerView().getBtnThongKeMuon();
-		cbTKLoanBook = mainUI.getManagerView().getCbTKLoanBook();
+		cbTKLoanBook  = mainUI.getManagerView().getCbTKLoanBook();
 		
 		btnThongKeMuonEvent();
 	}
@@ -61,7 +60,6 @@ public class TKLoanBookController {
 					JOptionPane.showMessageDialog(mainUI, "Hãy chọn 1 kiểu thống kê");
 					return;
 				}
-				
 				else {
 					tkLoanBookView = new TKLoanBookView(mainUI);
 					tkLoanBookInformation = tkLoanBookView.getTkLoanBookInformation();
@@ -78,13 +76,10 @@ public class TKLoanBookController {
 					int indexOfCombo = cbTKLoanBook.getSelectedIndex();
 					String title = cbTKLoanBook.getSelectedItem().toString();
 					tkLoanBookInformation.getLbTitle().setText("THỐNG KÊ MƯỢN TRẢ THEO " + title);
-					
-					
-					//System.out.println("Index cb: " + indexOfCombo);
+			
 					String data[][] = getDataTKMTFromDB(indexOfCombo);
 
 					tkLoanBookInformation.getTableTKLoanBookView().updateTable(data, indexOfCombo);
-					//loadDataForTKTable(indexOfCombo);
 					
 					setActionForThongKeMTView(data);
 				}
@@ -312,12 +307,4 @@ public class TKLoanBookController {
 	private void huy() {
 		this.tkLoanBookView.setVisible(false);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 }

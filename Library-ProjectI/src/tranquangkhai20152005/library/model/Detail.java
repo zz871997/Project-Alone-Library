@@ -38,6 +38,4 @@ public class Detail {
 		this.ngayTra = ngayTra;
 		this.soTienPhat = soTienPhat;
 	}
-	
-	
 }

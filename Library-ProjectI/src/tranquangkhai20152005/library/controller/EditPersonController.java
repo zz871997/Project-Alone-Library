@@ -42,13 +42,6 @@ public class EditPersonController {
 		tableEmploymentView = mainUI.getTableEmploymentView();
 		tableEmploymentView.updateTable(personDB.getAllPersons("nhanvien"));
 		
-//		btnEditUser.addActionListener(new ActionListener() {
-//			@Override
-//			public void actionPerformed(ActionEvent arg0) {
-//				editPersonView = new EditPersonView(mainUI);
-//				
-//			}
-//		});
 		btnEditEvent();
 	}
 	
@@ -59,7 +52,7 @@ public class EditPersonController {
 			public void actionPerformed(ActionEvent arg0) {
 				editPersonView = new EditPersonView(mainUI);
 				personInformation = editPersonView.getPersonInformation();
-				
+	
 				// When click "SUA" on MainUI, AddPerson Panel will be visible 
 				// if row is selected
 				int index = findIndexOfData("docgia");
@@ -91,14 +84,12 @@ public class EditPersonController {
 					editPersonView.setVisible(true);
 					// Get id Person
 					oldID = getId("nhanvien", index, 0);
-					
 					loadInfor("nhanvien", oldID);
 					setActionsEditEmployment();
 				}
 				else {
 					JOptionPane.showMessageDialog(mainUI, "Chọn 1 người để sửa");
 				}
-
 			}
 		});
 	}
@@ -215,8 +206,7 @@ public class EditPersonController {
 			JOptionPane.showMessageDialog(new JDialog(), "Mã này đã tồn tại!!!");
 			return false;
 		}
-		
-		///////////////////////////////////////////////////
+	
 		return true;
 	}
 	
@@ -239,7 +229,6 @@ public class EditPersonController {
 			String newQueQuan = personInformation.getTfQueQuan().getText().toString();
 			String newDiaChi = personInformation.getTfDiaChi().getText().toString();
 			String newSdt = personInformation.getTfSDT().getText().toString();
-			
 			personDB.updatePerson(tableName, this.person, newId, newName, newNamSinh, newGioiTinh, newQueQuan, newDiaChi, newSdt);
 			if (tableName.equals("docgia")) {
 				tableUserView.updateTable(personDB.getAllPersons(tableName));
@@ -247,9 +236,7 @@ public class EditPersonController {
 			else if(tableName.equals("nhanvien")) {
 				tableEmploymentView.updateTable(personDB.getAllPersons(tableName));
 			}
-			
 			this.editPersonView.setVisible(false);
-			
 		}
 		else {
 			System.out.println("Edit fail !!!");
@@ -260,10 +247,4 @@ public class EditPersonController {
 	private void huy() {		
 		this.editPersonView.setVisible(false);
 	}
-	
-	
-	
-	
-	
-	
 }

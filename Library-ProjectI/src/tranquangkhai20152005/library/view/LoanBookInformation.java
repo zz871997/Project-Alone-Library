@@ -40,34 +40,20 @@ public class LoanBookInformation extends JPanel {
 	private JButton btnAddThisBook = new JButton("THÊM");
 	
 	private JPanel rightPanel      = createRightPanel();
-	//private JPanel detailBookPanel = createDetailBookPanel();
-	//private JPanel contentBookPanel;// = new JPanel(new FlowLayout(FlowLayout.LEFT));
 	
 	public LoanBookInformation() {
-		//setSize(650, 400);
-		//setLayout(new BorderLayout(5, 5));
 		setLayout(new GridLayout(1, 2, 5, 5));
 		add(createCenterPanel());
 		JScrollPane scroll = new JScrollPane(rightPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
 	            JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		//JScrollPane scroll = new JScrollPane(rightPanel);
 		scroll.setPreferredSize(new Dimension(430, 400));
-		//scroll.getVerticalScrollBar().setUnitIncrement(12);
 		scroll.setBorder(new TitledBorder("Sách mượn"));
 		
 		add(scroll);
 		repaint();
-//		add(rightPanel, BorderLayout.CENTER);
-//		add(createCenterPanel(), BorderLayout.WEST);
 	}
 
 	// Setter - Getter
-//	public JPanel getContentBookPanel() {
-//		return contentBookPanel;
-//	}
-//	public JPanel getDetailBookPanel() {
-//		return detailBookPanel;
-//	}
 	public JPanel getRightPanel() {
 		return rightPanel;
 	}
@@ -118,25 +104,19 @@ public class LoanBookInformation extends JPanel {
 	public JTextField getTfTienCoc() {
 		return tfTienCoc;
 	}
+	
 	// Create Right panel 
 	private JPanel createRightPanel() {
 		JPanel right = new JPanel();
-		//right.setBorder(new TitledBorder("Sách mượn"));
 		right.setLayout(new FlowLayout(FlowLayout.CENTER));
 		right.add(createTitlePanel());
-//		right.setLayout(new BorderLayout(5, 5));
-//		right.add(createTitlePanel(), BorderLayout.PAGE_START);
-		//right.add(createDetailBookPanel(), BorderLayout.CENTER);
 		right.setPreferredSize(new Dimension(430, 520));
-		//right.setSize(400, 300);
-		
 		right.setVisible(true);
 		return right;
 	}
 	
 	private JPanel createTitlePanel () {
 		JPanel titlePanel = new JPanel();
-		//titlePanel.setPreferredSize(new Dimension(400, 25));
 		GridBagLayout layout = new GridBagLayout();
 		titlePanel.setLayout(layout);
 		GridBagConstraints gbc = new GridBagConstraints();
@@ -155,8 +135,7 @@ public class LoanBookInformation extends JPanel {
 		gbc.gridx = 2;
 		gbc.ipadx = 25;
 		titlePanel.add(createLPanelTitle("SL", 15, 20), gbc);
-//		titlePanel.validate();
-//		titlePanel.repaint();
+
 		return titlePanel;
 	}
 	
@@ -165,25 +144,15 @@ public class LoanBookInformation extends JPanel {
 		panelTitle.setPreferredSize(new Dimension(width, height));
 		panelTitle.add(new Label(titleLabel), FlowLayout.LEFT);
 		return panelTitle;
-		
 	}
-	
-	
-	
+
 	// Create Center Panel
 	private JPanel createCenterPanel() {
 		JPanel panel = new JPanel (new BorderLayout(5, 5));
 		panel.setBorder(new TitledBorder("Mượn trả"));
-		
 		panel.add(createLabelPanel(), BorderLayout.WEST);
 		panel.add(createInputPanel(), BorderLayout.CENTER);
 		panel.add(createSubPanel(), BorderLayout.EAST);
-		
-		
-		
-		
-		
-		
 		return panel;
 	}
 	
@@ -217,7 +186,6 @@ public class LoanBookInformation extends JPanel {
 		subPanel.add(createSoLuongPanel());
 		subPanel.add(new JLabel(""));
 		subPanel.add(createTienCocPanel());
-
 		return subPanel;
 	}
 	
@@ -244,6 +212,5 @@ public class LoanBookInformation extends JPanel {
 		tienCocPanel.add(new JLabel("Tiền cọc"), BorderLayout.WEST);
 		tienCocPanel.add(tfTienCoc = new JTextField(10));
 		return tienCocPanel;
-	}
-	
+	}	
 }
