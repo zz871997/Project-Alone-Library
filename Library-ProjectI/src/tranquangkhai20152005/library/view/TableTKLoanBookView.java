@@ -20,6 +20,10 @@ public class TableTKLoanBookView extends JPanel{
 	private String[] title2 = {"STT", "MÃ NHÂN VIÊN", "SỐ LƯỢNG"};
 	private String[] title3 = {"STT", "NGÀY MƯỢN", "SỐ LƯỢNG"};
 	private String[] title4 = {"STT", "NGÀY HẸN TRẢ", "SỐ LƯỢNG"};
+	private String[] title5 = {"STT", "MÃ ĐỘC GIẢ", "SỐ LẦN VI PHẠM"};
+	private String[] title6 = {"STT", "MÃ ĐỘC GIẢ", "TỔNG SỐ TIỀN PHẠT"};
+	private String[] title7 = {"STT", "MÃ ĐỘC GIẢ", "TỔNG SỐ SÁCH MƯỢN"};
+	private String[] title8 = {"STT", "MÃ ĐỘC GIẢ", "SỐ SÁCH CHƯA TRẢ"};
 	
 	public JTable getTable() {
 		return table;
@@ -99,6 +103,10 @@ public class TableTKLoanBookView extends JPanel{
 		else if (mode == 2) return title2;
 		else if (mode == 3) return title3;
 		else if (mode == 4) return title4;
+		else if (mode == 5) return title5;
+		else if (mode == 6) return title6;
+		else if (mode == 7) return title7;
+		else if (mode == 8) return title8;
 		return null;
 	}
 }

@@ -243,4 +243,221 @@ public class LoanBookDB implements LoanBookDAO{
 		
 		return arrResult;
 	}
+
+	@Override
+	public ArrayList<ArrayList<String>> thongKeViPhamDG() {
+		connection = getConnection();
+		Statement statement = null;
+		ArrayList<ArrayList<String>> arrResult = new ArrayList<ArrayList<String>>();
+		
+		try {
+			String sql = "select MaDG, count(Ngayhentra) " + // from muontra MT, chitietmuon CT where MT.MaMT = CT.Mamuon and Ngaytra <> "" and " + 
+						 "from muontra MT, chitietmuon CT " + 
+						 "where MT.MaMT = CT.Mamuon and (Ngaytra <> \"\") and (CT.Ngaytra > MT.Ngayhentra) " + 
+						 "group by MaDG";
+			statement = connection.createStatement();
+			ResultSet result = statement.executeQuery(sql);
+			
+			while (result.next()) {
+				String maDG  = result.getString("MaDG");
+				int soViPham = result.getInt("count(Ngayhentra)");
+				
+				ArrayList<String> record = new ArrayList<String>();
+				record.add(maDG);
+				record.add(Integer.toString(soViPham));
+				arrResult.add(record);
+				//record.clear();
+			}
+			// Close connection
+			result.close();
+			statement.close();
+			connection.close();
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(new JDialog(), "Can't connect to database...");
+		}
+		finally {
+			try {
+				if(statement  != null) statement.close();
+				if(connection != null) connection.close();	
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return arrResult;
+	}
+
+	@Override
+	public ArrayList<ArrayList<String>> thongKeTongTienPhat() {
+		connection = getConnection();
+		Statement statement = null;
+		ArrayList<ArrayList<String>> arrResult = new ArrayList<ArrayList<String>>();
+		
+		try {
+			String sql = "select MaDG, sum(Sotienphat) " + // from muontra MT, chitietmuon CT where MT.MaMT = CT.Mamuon and Ngaytra <> "" and " + 
+						 "from muontra MT, chitietmuon CT " + 
+						 "where MT.MaMT = CT.Mamuon " + 
+						 "group by MaDG";
+			statement = connection.createStatement();
+			ResultSet result = statement.executeQuery(sql);
+			
+			while (result.next()) {
+				String maDG  = result.getString("MaDG");
+				int soViPham = result.getInt("sum(Sotienphat)");
+				
+				ArrayList<String> record = new ArrayList<String>();
+				record.add(maDG);
+				record.add(Integer.toString(soViPham));
+				arrResult.add(record);
+				//record.clear();
+			}
+			// Close connection
+			result.close();
+			statement.close();
+			connection.close();
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(new JDialog(), "Can't connect to database...");
+		}
+		finally {
+			try {
+				if(statement  != null) statement.close();
+				if(connection != null) connection.close();	
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return arrResult;
+	}
+
+	@Override
+	public ArrayList<ArrayList<String>> thongKeTongSachMuon() {
+		connection = getConnection();
+		Statement statement = null;
+		ArrayList<ArrayList<String>> arrResult = new ArrayList<ArrayList<String>>();
+		
+		try {
+			String sql = "select MaDG, sum(Soluongmuon) " + // from muontra MT, chitietmuon CT where MT.MaMT = CT.Mamuon and Ngaytra <> "" and " + 
+						 "from muontra MT, chitietmuon CT " + 
+						 "where MT.MaMT = CT.Mamuon " + 
+						 "group by MaDG";
+			statement = connection.createStatement();
+			ResultSet result = statement.executeQuery(sql);
+			
+			while (result.next()) {
+				String maDG  = result.getString("MaDG");
+				int soViPham = result.getInt("sum(Soluongmuon)");
+				
+				ArrayList<String> record = new ArrayList<String>();
+				record.add(maDG);
+				record.add(Integer.toString(soViPham));
+				arrResult.add(record);
+				//record.clear();
+			}
+			// Close connection
+			result.close();
+			statement.close();
+			connection.close();
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(new JDialog(), "Can't connect to database...");
+		}
+		finally {
+			try {
+				if(statement  != null) statement.close();
+				if(connection != null) connection.close();	
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return arrResult;
+	}
+
+	@Override
+	public ArrayList<ArrayList<String>> thongKeSachChuaTra() {
+		connection = getConnection();
+		Statement statement = null;
+		ArrayList<ArrayList<String>> arrResult = new ArrayList<ArrayList<String>>();
+		
+		try {
+			String sql = "select MaDG, sum(Soluongmuon) " + // from muontra MT, chitietmuon CT where MT.MaMT = CT.Mamuon and Ngaytra <> "" and " + 
+						 "from muontra MT, chitietmuon CT " + 
+						 "where MT.MaMT = CT.Mamuon and Ngaytra = \"\" " + 
+						 "group by MaDG";
+			statement = connection.createStatement();
+			ResultSet result = statement.executeQuery(sql);
+			
+			while (result.next()) {
+				String maDG  = result.getString("MaDG");
+				int soViPham = result.getInt("sum(Soluongmuon)");
+				
+				ArrayList<String> record = new ArrayList<String>();
+				record.add(maDG);
+				record.add(Integer.toString(soViPham));
+				arrResult.add(record);
+				//record.clear();
+			}
+			// Close connection
+			result.close();
+			statement.close();
+			connection.close();
+		} 
+		catch (SQLException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(new JDialog(), "Can't connect to database...");
+		}
+		finally {
+			try {
+				if(statement  != null) statement.close();
+				if(connection != null) connection.close();	
+			} 
+			catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return arrResult;
+	}
+
+	@Override
+	public void deleteLoanBook(String maMT) {
+		connection = getConnection();
+		PreparedStatement preStatement = null;
+		
+		try {
+			String sql = "DELETE FROM muontra WHERE MaMT = ?";
+			preStatement = (PreparedStatement) connection.prepareStatement(sql);
+			preStatement.setString(1, maMT);
+			
+			int rows = preStatement.executeUpdate();
+			if(rows > 0) System.out.println("This LoanBook has been deleted");
+			
+			//Close connection
+			preStatement.close();
+			connection.close();
+		}
+		catch (SQLException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(new JDialog(), "Can't connect to database... \n Check your internet...");
+		}
+		finally {
+			try {
+				if(preStatement != null) preStatement.close();
+				if(connection != null) connection.close();	
+			} 
+			catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
 }

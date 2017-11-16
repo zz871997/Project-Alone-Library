@@ -102,6 +102,18 @@ public class TKLoanBookController {
 		else if (indexOfCb == 4) {
 			result = loanBookDB.thongKeMuonTra("Ngayhentra");
 		}
+		else if (indexOfCb == 5) {
+			result = loanBookDB.thongKeViPhamDG();
+		}
+		else if (indexOfCb == 6) {
+			result = loanBookDB.thongKeTongTienPhat();
+		}
+		else if (indexOfCb == 7){
+			result = loanBookDB.thongKeTongSachMuon();
+		}
+		else if (indexOfCb == 8) {
+			result = loanBookDB.thongKeSachChuaTra();
+		}
 		
 		String[][] data = convertToString(result);
 		return data;
@@ -307,4 +319,29 @@ public class TKLoanBookController {
 	private void huy() {
 		this.tkLoanBookView.setVisible(false);
 	}
+	
+	
+//	/* Thong ke so lan vi pham moi doc gia tung muon sach */
+//	private ArrayList<ArrayList<String>> thongKeViPham () {
+//		ArrayList<ArrayList<String>> arrResult = new ArrayList<ArrayList<String>>();
+//		ArrayList<LoanBook> listLoanBook = loanBookDB.getAllLoanBooks();
+//		
+//		
+//		return arrResult;
+//	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

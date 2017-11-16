@@ -2,13 +2,18 @@ package tranquangkhai20152005.library.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 import tranquangkhai20152005.library.model.Book;
 import tranquangkhai20152005.library.model.BookDB;
+import tranquangkhai20152005.library.model.Detail;
+import tranquangkhai20152005.library.model.DetailDB;
+import tranquangkhai20152005.library.model.LoanBookDB;
 import tranquangkhai20152005.library.view.MainUI;
 import tranquangkhai20152005.library.view.TableBookView;
 
@@ -43,9 +48,19 @@ public class DeleteBookController {
 							 JOptionPane.QUESTION_MESSAGE, null, null, null);
 					if(select == 0) {
 						String id = getId(index, 0);
-						book = bookDB.getBook(id);
-						bookDB.deleteBook(book);
-						tableBookView.updateTable(bookDB.getAllBooks());
+						
+						if (!checkBook(id)) {
+							JOptionPane.showMessageDialog(new JDialog(), "Sách đã hoặc đang trong quan hệ mượn trả \n " +
+																		  "Hãy xóa các mượn trả liên quan đến sách này");
+							return;
+						}
+						else {
+							book = bookDB.getBook(id);
+							bookDB.deleteBook(book);
+							tableBookView.updateTable(bookDB.getAllBooks());
+						}
+						
+						
 					}
 				}
 				else {
@@ -66,5 +81,13 @@ public class DeleteBookController {
 		JTable table = tableBookView.getTable();
 		String id = table.getModel().getValueAt(indexRow, indexCol).toString();
 		return id;
+	}
+	
+	private boolean checkBook (String id) {
+		ArrayList<String> listIdBookIsLoan = new DetailDB().getListBookIsLoan();
+		for (int i = 0; i < listIdBookIsLoan.size(); i++) {
+			if (listIdBookIsLoan.get(i).equals(id)) return false;
+		}
+		return true;
 	}
 }

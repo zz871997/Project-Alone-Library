@@ -166,6 +166,8 @@ public class AddBookController {
 			}
 			System.out.println(openFilePath);
 			addBookFromExcelFile(openFilePath);
+			
+			JOptionPane.showMessageDialog(new JDialog(), "Đã thêm từ Excel");
 		}
 	}
 	

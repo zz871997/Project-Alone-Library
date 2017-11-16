@@ -13,7 +13,8 @@ public class ChangePassView extends JDialog{
 	private MainUI mainUI;
 	private JButton btnChange = new JButton("ĐỔI MẬT KHẨU");
 	private JButton btnCancel = new JButton("HỦY");
-		
+	
+	private JLabel lbAccount = new JLabel("");
 	private JPasswordField tfOldPass;
 	private JPasswordField tfNewPass;
 	private JPasswordField tfReNewPass;
@@ -33,6 +34,9 @@ public class ChangePassView extends JDialog{
 	public JButton getBtnChange() {
 		return btnChange;
 	}
+	public JLabel getLbAccount() {
+		return lbAccount;
+	}
 	public JButton getBtnCancel() {
 		return btnCancel;
 	}
@@ -48,8 +52,11 @@ public class ChangePassView extends JDialog{
 	
 	// Create Main Panel
 	private JPanel createMainPanel(){
-		JPanel panel = new JPanel(new GridLayout(4, 2, 5, 5));
+		JPanel panel = new JPanel(new GridLayout(5, 2, 5, 5));
 		panel.setBorder(new EmptyBorder(5, 5, 5, 5));
+		
+		panel.add(new JLabel("Tài khoản"));
+		panel.add(lbAccount);
 		
 		panel.add(new JLabel("Mật khẩu cũ"));
 		panel.add(tfOldPass = new JPasswordField(20));

@@ -7,13 +7,20 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import org.apache.poi.ss.formula.functions.T;
+
 public class LoginView extends JPanel{
+	private JTextField tfAcount;
 	private JPasswordField tfPass;
 	private JButton btnLogin  = new JButton("ĐĂNG NHẬP");
 	private JButton btnCancel = new JButton("HỦY");
 
+	public JTextField getTfAcount() {
+		return tfAcount;
+	}
 	public JPasswordField getTfPass() {
 		return tfPass;
 	}
@@ -37,7 +44,7 @@ public class LoginView extends JPanel{
 		JPanel panel = new JPanel (new GridLayout(2, 2, 10, 10));
 		panel.setBorder(new EmptyBorder(10, 10, 10, 10));
 		panel.add(new JLabel("Tài khoản "));
-		panel.add(new JLabel("Admin"));
+		panel.add(tfAcount = new JTextField(20));
 		panel.add(new JLabel("Mật khẩu"));
 		panel.add(tfPass = new JPasswordField(20));
 		return panel;

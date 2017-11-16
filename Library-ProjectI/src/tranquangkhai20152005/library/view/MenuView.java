@@ -21,6 +21,7 @@ public class MenuView extends JPanel {
 	private JButton btnBorrow = new JButton("MƯỢN SÁCH");
 	
 	private JButton btnLogout = new JButton("ĐĂNG XUẤT");
+	private JButton btnInfor  = new JButton("CÁ NHÂN");
 	private JButton btnChangePass = new JButton("ĐỔI MẬT KHẨU");
 	
 	private JButton btnAboutMe = new JButton("ABOUT ME");
@@ -28,6 +29,10 @@ public class MenuView extends JPanel {
 	public JButton getBtnLogout() {
 		return btnLogout;
 	}
+	public JButton getBtnInfor() {
+		return btnInfor;
+	}
+
 	public JButton getBtnChangePass() {
 		return btnChangePass;
 	}
@@ -70,6 +75,7 @@ public class MenuView extends JPanel {
 		panel.add(btnViewListEmployment);
 		panel.add(btnBorrow);
 		panel.add(btnLogout);
+		//panel.add(btnInfor);
 		panel.add(btnChangePass);
 		return panel;
 	}

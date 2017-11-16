@@ -3,6 +3,7 @@ encoding//src/tranquangkhai20152005/library/controller/AddBookController.java=UT
 encoding//src/tranquangkhai20152005/library/controller/AddLoanBookController.java=UTF-8
 encoding//src/tranquangkhai20152005/library/controller/AddPersonController.java=UTF-8
 encoding//src/tranquangkhai20152005/library/controller/DeleteBookController.java=UTF-8
+encoding//src/tranquangkhai20152005/library/controller/DeleteLoanBookController.java=UTF-8
 encoding//src/tranquangkhai20152005/library/controller/DeletePersonController.java=UTF-8
 encoding//src/tranquangkhai20152005/library/controller/EditBookController.java=UTF-8
 encoding//src/tranquangkhai20152005/library/controller/EditLoanController.java=UTF-8

@@ -22,6 +22,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import tranquangkhai20152005.library.model.AcountDB;
 import tranquangkhai20152005.library.model.Person;
 import tranquangkhai20152005.library.model.PersonDB;
 import tranquangkhai20152005.library.view.AddPersonView;
@@ -222,6 +223,8 @@ public class AddPersonController {
 			
 			System.out.println(openFilePath);
 			addPersonFromExcelFilePath(openFilePath, tableName);
+			
+			JOptionPane.showMessageDialog(new JDialog(), "Đã thêm từ Excel");
 		}	
 	}
 	
@@ -281,7 +284,9 @@ public class AddPersonController {
 					
 					Person person = new Person(id, name, namSinhStr, gioiTinh, queQuan, diaChi, sdt);
 					personDB.insertPerson(tableName, person);
-					
+					if (tableName.equals("nhanvien")) {
+						new AcountDB().insertAccEmpl(id);
+					}
 					//Update table
 					if (tableName.equals("docgia")) {
 						tableUserView.updateTable(personDB.getAllPersons("docgia"));
@@ -345,6 +350,12 @@ public class AddPersonController {
 			String sdt      = personInformation.getTfSDT().getText().toString();
 			person = new Person(id, name, namSinh, gioiTinh, queQuan, diaChi, sdt);
 			personDB.insertPerson(tableName, person);
+			
+			/* add account */
+			if (tableName.equals("nhanvien")) {
+				new AcountDB().insertAccEmpl(id);
+			}
+			
 			
 			// Update table
 			if (tableName.equals("docgia")) {

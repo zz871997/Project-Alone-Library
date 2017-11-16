@@ -2,11 +2,17 @@ package tranquangkhai20152005.library.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JDesktopPane;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
+import tranquangkhai20152005.library.model.AcountDB;
+import tranquangkhai20152005.library.model.LoanBook;
+import tranquangkhai20152005.library.model.LoanBookDB;
 import tranquangkhai20152005.library.model.Person;
 import tranquangkhai20152005.library.model.PersonDB;
 import tranquangkhai20152005.library.view.MainUI;
@@ -49,9 +55,26 @@ public class DeletePersonController {
 							 JOptionPane.QUESTION_MESSAGE, null, null, null);
 					if(select == 0) {
 						String id = getId("docgia", index, 0);
-						person = personDB.getPerson("docgia", id);
-						personDB.deletePerson("docgia", person);
-						tableUserView.updateTable(personDB.getAllPersons("docgia"));
+						
+						if (!checkUser(id)) {
+							JOptionPane.showMessageDialog(new JDialog(), "Độc giả đã hoặc đang trong quan hệ mượn trả \n " +
+																		  "Hãy xóa các mượn trả liên quan đến độc giả này");
+							return;
+						}
+						else {
+							person = personDB.getPerson("docgia", id);
+							personDB.deletePerson("docgia", person);
+							tableUserView.updateTable(personDB.getAllPersons("docgia"));
+						}
+						
+						
+						
+						
+						
+						
+						
+						
+						
 					}
 				}
 				else {
@@ -70,9 +93,18 @@ public class DeletePersonController {
 							 JOptionPane.QUESTION_MESSAGE, null, null, null);
 					if(select == 0) {
 						String id = getId("nhanvien", index, 0);
-						person = personDB.getPerson("nhanvien", id);
-						personDB.deletePerson("nhanvien", person);
-						tableEmploymentView.updateTable(personDB.getAllPersons("nhanvien"));
+						
+						if (!checkEmpl(id)) {
+							JOptionPane.showMessageDialog(new JDialog(), "Nhân viên đã hoặc đang trong quan hệ mượn trả \n " +
+																		  "Hãy xóa các mượn trả liên quan đến nhân viên này");
+							return;
+						}
+						else {
+							person = personDB.getPerson("nhanvien", id);
+							new AcountDB().deleteAccEmpl(id);
+							personDB.deletePerson("nhanvien", person);
+							tableEmploymentView.updateTable(personDB.getAllPersons("nhanvien"));
+						}
 					}
 				}
 				else {
@@ -107,5 +139,22 @@ public class DeletePersonController {
 			return idEmp;
 		}
 		return null;
+	}
+	
+	/* Kiem tra xem nhan vien co dang cho trong quan he muon tra nao khong */
+	private boolean checkEmpl (String id) {
+		ArrayList<LoanBook> listLoanBook = new LoanBookDB().getAllLoanBooks();
+		for (int i = 0; i < listLoanBook.size(); i++) {
+			if (listLoanBook.get(i).getMaNV().equals(id)) return false;
+		}
+		return true;
+	}
+	
+	private boolean checkUser (String id) {
+		ArrayList<LoanBook> listLoanBook = new LoanBookDB().getAllLoanBooks();
+		for (int i = 0; i < listLoanBook.size(); i++) {
+			if (listLoanBook.get(i).getMaDG().equals(id)) return false;
+		}
+		return true;
 	}
 }

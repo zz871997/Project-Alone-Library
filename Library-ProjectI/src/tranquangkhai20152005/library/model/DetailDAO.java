@@ -7,6 +7,9 @@ public interface DetailDAO {
 	
 	public Detail getDetail(String maMT, String maSachMuon);
 	
+	public ArrayList<String> getListBookIsLoan ();
+	public void deleteDetail(String maMT);
+	
 	public void insertDetail(Detail detail);
 	
 	public void updateDetail(Detail detail, String ngayTraMoi, double tienPhatMoi);

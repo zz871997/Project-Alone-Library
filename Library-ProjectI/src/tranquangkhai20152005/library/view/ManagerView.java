@@ -37,9 +37,12 @@ public class ManagerView extends JPanel{
 	
 	private JButton btnBorrow       = new JButton("THÊM MƯỢN");
 	private JButton btnEditBorrow   = new JButton("SỬA MT");
+	private JButton btnDeleteBorrow = new JButton("XÓA MT");
 	private JButton btnViewDetail   = new JButton("XEM CHI TIẾT");
 	private JButton btnThongKeMuon  = new JButton("THỐNG KÊ");
-	private String[] listTKLoanBook = {"--Chọn kiểu thống kê--", "Mã độc giả", "Mã nhân viên", "Ngày mượn", "Ngày hẹn trả"};
+	private String[] listTKLoanBook = {"--Chọn kiểu thống kê--", "Mã độc giả", "Mã nhân viên", "Ngày mượn", "Ngày hẹn trả",
+										"Độc giả vi phạm", "Tổng tiền phạt của độc giả", "Tổng sách mượn của độc giả", 
+										"Số sách chưa trả của độc giả"};
 	private JComboBox<String> cbTKLoanBook = new JComboBox<String>(listTKLoanBook);
 	
 	private JPanel bookManagerPanel = createBookManagerPanel();
@@ -54,6 +57,9 @@ public class ManagerView extends JPanel{
 	}
 	public JComboBox<String> getCbTKSach() {
 		return cbTKSach;
+	}
+	public JButton getBtnDeleteBorrow() {
+		return btnDeleteBorrow;
 	}
 	public JComboBox<String> getCbTKUser() {
 		return cbTKUser;
@@ -241,12 +247,14 @@ public class ManagerView extends JPanel{
 	}
 	
 	private JPanel createLoanBookActionPanel() {
-		JPanel panel = new JPanel(new GridLayout(1, 3, 10, 10));
+		JPanel panel = new JPanel(new GridLayout(1, 4, 10, 10));
 		btnBorrow.setIcon(new ImageIcon(this.getClass().getResource("/add-loan-icon.png")));
 		btnEditBorrow.setIcon(new ImageIcon(this.getClass().getResource("/edit-icon.png")));
+		btnDeleteBorrow.setIcon(new ImageIcon(this.getClass().getResource("/cancel-icon.png")));
 		btnViewDetail.setIcon(new ImageIcon(this.getClass().getResource("/detail-icon.png")));
 		panel.add(btnBorrow);
 		panel.add(btnEditBorrow);
+		panel.add(btnDeleteBorrow);
 		panel.add(btnViewDetail);
 		return panel;
 	}
