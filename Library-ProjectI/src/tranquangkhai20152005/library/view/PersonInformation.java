@@ -57,7 +57,7 @@ public class PersonInformation extends JPanel{
 		panel.add(new JLabel("Năm sinh"));
 		panel.add(new JLabel("Giới tính"));
 		panel.add(new JLabel("Quê quán"));
-		panel.add(new JLabel("Đại chỉ"));
+		panel.add(new JLabel("Địa chỉ"));
 		panel.add(new JLabel("Số điện thoại"));
 		
 		return panel;

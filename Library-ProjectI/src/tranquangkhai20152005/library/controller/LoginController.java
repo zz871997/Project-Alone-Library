@@ -116,15 +116,24 @@ public class LoginController {
 		btnLogout.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				account = "";
-				loginPanel.setVisible(true);
-				mainUI.getMainPanel().setVisible(false);
-				mainUI.getMenuView().setVisible(false);
-				mainUI.setVisible(false);
-				mainUI = null;
-				MainUI mainUI2 = new MainUI();
-				LoginController newLogin = new LoginController(mainUI2);
-				return;
+				
+				int select = JOptionPane.showOptionDialog(null, "Bạn có đăng xuất không?",
+						 "Đăng xuất", JOptionPane.YES_NO_OPTION,
+						 JOptionPane.QUESTION_MESSAGE, null, null, null);
+				
+				if (select == 0) {
+					account = "";
+					loginPanel.setVisible(true);
+					mainUI.getMainPanel().setVisible(false);
+					mainUI.getMenuView().setVisible(false);
+					mainUI.setVisible(false);
+					mainUI = null;
+					MainUI mainUI2 = new MainUI();
+					LoginController newLogin = new LoginController(mainUI2);
+					return;
+				}
+				
+				
 			}
 		});
 		
